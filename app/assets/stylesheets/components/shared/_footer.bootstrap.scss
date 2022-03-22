@@ -1,0 +1,13 @@
+$footer-height: 62px;
+
+.copyright-footer {
+    height: $footer-height;
+    background-color: black;
+}
+
+.copyright-footer .content {
+    display: flex;
+    height: $footer-height;
+    justify-content: center;
+    align-items: center;
+}

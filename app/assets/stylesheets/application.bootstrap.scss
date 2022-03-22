@@ -2,6 +2,20 @@
 
 @import 'config/custom_variables.bootstrap.scss';
 @import 'config/bootstrap_overrides.bootstrap.scss';
+@import 'components/shared/navbar.bootstrap.scss';
+@import 'components/shared/footer.bootstrap.scss';
 
 @import 'bootstrap/scss/bootstrap';
 //@import 'bootstrap-icons/font/bootstrap-icons';
+
+body {
+    padding-top: $navbar-height;
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+}
+
+.main {
+    flex: 1;
+    padding-top: 12px;
+}
