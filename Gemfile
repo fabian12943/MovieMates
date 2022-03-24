@@ -51,6 +51,18 @@ gem "haml", "~> 5.2"
 # Use Sass to process CSS
 gem "sassc-rails"
 
+# Ruby wrapper to provide a simple, easy to use interface for the Movie Database API
+gem "themoviedb", "~> 1.0"
+
+# Present users countries/languages in their language
+gem "i18n_data", "~> 0.16.0"
+
+# Centralization of locale data collection for Ruby on Rails
+gem "rails-i18n", "~> 7.0.0"
+
+# Embed SVG documents in Rails views and style them with CSS
+gem "inline_svg", "~> 1.8"
+
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
 

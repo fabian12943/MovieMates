@@ -1,0 +1,28 @@
+.component h2, .component h3 {
+    line-height: 100%;
+    text-transform: uppercase;
+    margin-bottom: 0.4rem;
+    font-weight: 600;
+}
+
+.component h3 {
+    margin-bottom: 0.1rem;
+    color: $c-text-muted;
+}
+
+.component p {
+    font-weight: 300;
+    text-align: justify;
+}
+
+.component:not(:last-child) {
+    margin-bottom: 0.6rem;
+}
+
+.inline-components .component {
+    margin-bottom: 0.6rem;
+}
+
+.sidebar {
+    margin-right: 30px;
+}
