@@ -1,9 +1,21 @@
 module ApplicationHelper
 
-    def formatted_duration(total_minutes)
+    def duration_hours_minutes_format(total_minutes)
         hours = total_minutes / 60
         minutes = (total_minutes) % 60
-        "#{ hours }h #{ minutes }min"
+        "#{hours}h #{minutes}min"
+    end
+
+    def tmdb_image_url(image_path, image_size = 'original')
+        "#{Tmdb::Configuration.new.secure_base_url}#{image_size}#{image_path}"
+    end
+
+    def full_language_name_in_locale(language_code, locale = I18n.locale)
+        I18nData.languages(locale)[language_code.upcase]
+    end
+
+    def date_in_locale_format(date, locale = I18n.locale)
+        I18n.l(date, format: :long, locale: locale)
     end
 
 end

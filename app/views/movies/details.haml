@@ -1,83 +1,84 @@
-= content_for(:html_title) { @movie["title"] }
+= content_for(:html_title) { @movie_details.title }
 
 .container.movie
     .row
         .col-5.col-md-4.col-lg-3
             .sidebar
                 .component.cover.movie-cover
-                    = render 'shared/image_with_placeholder', image_path: "#{@movie["poster_path"]}", image_size: "original"
-                    .actions
+                    = render 'shared/image_with_placeholder', image_path: @movie_details.poster_path, image_size: "w400"
                 .component.details
-                    - unless @movie["original_title"].empty?
+                    - if @movie_details.original_title?
                         .detail
                             %h3= "Originaltitel"
-                            %p= @movie["original_title"]
-                    - unless @movie["original_language"].empty?
+                            %p= @movie_details.original_title
+                    - if @movie_details.original_language?
                         .detail
                             %h3= "Originalsprache"
-                            %p= I18nData.languages('de')[@movie["original_language"].upcase]
-                    - unless @movie["release_date"].empty?
+                            %p= full_language_name_in_locale(@movie_details.original_language)
+                    - if @movie_details.release_date?
                         .detail
                             %h3= "Veröffentlichung"
-                            %p= I18n.l(Date::strptime(@movie["release_date"], "%Y-%m-%d"), format: :long, locale: :de)
-                    - unless @movie["runtime"] == 0 || @movie["runtime"].nil?
+                            %p= date_in_locale_format(@movie_details.release_date)
+                    - unless @movie_details.runtime == 0
                         .detail
                             %h3= "Laufzeit"
-                            %p= formatted_duration(@movie["runtime"])
-                    - unless @movie["genres"].empty?
+                            %p= duration_hours_minutes_format(@movie_details.runtime)
+                    - if @movie_details.genres?
                         .detail
                             %h3= "Genres"
-                            %p= @movie["genres"].map { |genre| genre["name"] }.join(", ")
-                    - unless @movie["budget"] == 0
+                            %p= @movie_details.genres.map { |genre| genre["name"] }.join(", ")
+                    - unless @movie_details.budget == 0
                         .detail 
                             %h3= "Budget"
-                            %p= number_to_currency(@movie["budget"], locale: :en)
-                    - unless @movie["revenue"] == 0
+                            %p= number_to_currency(@movie_details.budget, locale: :en)
+                    - unless @movie_details.revenue == 0
                         .detail
                             %h3= "Einspielergebnis"
-                            %p= number_to_currency(@movie["revenue"], locale: :en)
-                    - unless @movie_keywords["keywords"].empty?
+                            %p= number_to_currency(@movie_details.revenue, locale: :en)
+                    - if @movie_keyword_set.keywords?
                         .detail
                             %h3= "Schlüsselwörter"
                             .keywords
-                                - @movie_keywords["keywords"].each do |keyword|
-                                    %span.keyword= keyword["name"]
+                                - @movie_keyword_set.keywords.each do |keyword|
+                                    %span.keyword= keyword
         .col-7.col-md-8.col-lg-9
             .main-content
                 .title-block
                     %h1
-                        = @movie["title"]
-                        - unless @movie["release_date"].empty?
-                            %span.release= "(#{@movie["release_date"].split('-')[0]})"
-                - unless @movie["tagline"].empty?
+                        = @movie_details.title
+                        - if @movie_details.release_date?
+                            %span.release= "(#{@movie_details.release_date.year})"
+                - if @movie_details.tagline?
                     .component.tagline
                         %i.fa-solid.fa-quote-left.fa-pull-left
-                        = @movie["tagline"]
+                        = @movie_details.tagline
                 .inline-components
                     .row
                         .col-6.col-lg-3
                             .component.imdb-rating
                                 %h2= "IMDb Rating"
                                 .content.rating-block
-                                    .rating= "#{@movie["vote_average"]} / 10"
-                                    .caption.vote-count= "#{@movie["vote_count"]} Stimmen"
-                        - unless @movie_trailers["youtube"].empty?
+                                    .rating= "#{@movie_details.vote_average} / 10"
+                                    .caption.vote-count= "#{@movie_details.vote_count} Stimmen"
+                        - unless @movie_details.youtube_trailer_keys.empty?
                             .col-6.col-lg-3
                                 .component.trailer
                                     %h2= "Trailer"
-                                    %a.content.trailer-link{ href: "https://www.youtube.com/watch?v=#{@movie_trailers["youtube"][0]["source"]}", target: "_blank" }
+                                    %a.content.trailer-link{ href: "https://www.youtube.com/watch?v=#{@movie_details.youtube_trailer_keys[0]}", target: "_blank" }
                                         %i.bi.bi-play-circle.trailer-play-button
-                        - unless @movie_backdrops.empty?
+                        - unless @movie_backdrop_set.file_paths.empty?
                             .col-6.col-lg-3
                                 .component.images
                                     %h2= "Bilder"
                                     .photo-stack-wrapper
-                                        %a.photo-stack{"data-bs-target" => "#imagesModal", "data-bs-toggle" => "modal"}
-                                            - ([@movie_backdrops.size, 5].min).times do |i|
-                                                = image_tag("#{@configuration.base_url}w300#{@movie_backdrops[i]["file_path"]}")
+                                        %a.photo-stack
+                                            - ([@movie_backdrop_set.file_paths.size, 5].min).times do |i|
+                                                = image_tag(tmdb_image_url(@movie_backdrop_set.file_paths[i], "w300"))
                 .component.plot
                     %h2= "Handlung"
-                    - if @movie["overview"].empty?
+                    - if @movie_details.overview?
+                        %p= @movie_details.overview
+                    - else
                         %p.empty= "Leider liegt uns bei diesem Film keine Handlung in deiner gewählten Sprache vor."
                     - else
-                        %p= @movie["overview"]
+                        %p.empty= "Leider liegt uns bei diesem Film keine Handlung in deiner gewählten Sprache vor."

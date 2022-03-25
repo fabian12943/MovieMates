@@ -1,4 +1,4 @@
-- if image_path.empty?
+- if image_path.blank?
     = inline_svg_tag "no_image_placeholder.svg", class: "no-image-placeholder img-fluid"
 - else
-    = image_tag "#{@configuration.base_url}#{image_size}#{image_path}", class: "img-fluid"
+    = image_tag tmdb_image_url(image_path, image_size), class: "img-fluid", loading: "lazy"
