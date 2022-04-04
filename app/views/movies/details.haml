@@ -1,5 +1,5 @@
 = content_for(:html_title) { @movie_details.title }
-
+= turbo_stream_from "movie"
 .container.movie
     .row
         .col-5.col-md-4.col-lg-3
@@ -80,5 +80,8 @@
                         %p= @movie_details.overview
                     - else
                         %p.empty= "Leider liegt uns bei diesem Film keine Handlung in deiner gewählten Sprache vor."
-                    - else
-                        %p.empty= "Leider liegt uns bei diesem Film keine Handlung in deiner gewählten Sprache vor."
+                %hr
+                .component.recommendations 
+                    %h2= "Empfohlene Filme"
+                    = turbo_frame_tag "recommendations_#{@movie.id}_#{@movie_details.language_code}" do
+                        = render 'recommendations', recommendation_set: @movie.recommendation_sets.find_by(language_code: @movie_details.language_code)

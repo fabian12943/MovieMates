@@ -52,6 +52,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_03_27_002712) do
     t.integer "vote_count"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["movie_id", "language_code"], name: "index_movie_detail_sets_on_movie_id_and_language_code", unique: true
     t.index ["movie_id"], name: "index_movie_detail_sets_on_movie_id"
   end
 

@@ -63,6 +63,9 @@ gem "rails-i18n", "~> 7.0.0"
 # Embed SVG documents in Rails views and style them with CSS
 gem "inline_svg", "~> 1.8"
 
+# Simple, efficient background processing for Ruby
+gem "sidekiq", "~> 6.4"
+
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
 

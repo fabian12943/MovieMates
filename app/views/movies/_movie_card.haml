@@ -1,0 +1,14 @@
+.c-card.movie-card
+    .c-card-img
+        = render 'shared/image_with_placeholder', image_path: movie.poster_path, image_size: "w185"
+        .overlay
+            .show-label
+                %i.fa-solid.fa-eye
+                %span= "Anzeigen"
+        - if movie.vote_count > 0
+            .rating{ class: "#{movie.rating_classification}-rating" }
+                = "#{movie.vote_average}"
+    .detail-box
+        .content
+            %p.main-text= movie.title
+            %span.secondary-text= movie.release_date.year

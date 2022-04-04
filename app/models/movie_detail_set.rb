@@ -3,7 +3,7 @@ class MovieDetailSet < ApplicationRecord
 
     UPDATE_INTERVAL = 1.day
 
-    def self.create_or_update(tmdb_id, language_code = I18n.locale)
+    def self.create_or_update(tmdb_id, language_code)
         movie_detail_set = MovieDetailSet.find_by(movie_id: tmdb_id, language_code: language_code)
         if movie_detail_set.nil? || movie_detail_set.outdated_data?
             if movie_detail_set.nil?
@@ -15,7 +15,7 @@ class MovieDetailSet < ApplicationRecord
         end
     end
 
-    def self.tmdb_map(tmdb_id, language_code = I18n.locale)
+    def self.tmdb_map(tmdb_id, language_code)
         tmdb_map = Tmdb::Movie.detail(tmdb_id, language: language_code, append_to_response: "trailers")
         if tmdb_map["status_code"] == 34
             raise "The resource with tmdb id #{tmdb_id} could not be found."
@@ -36,16 +36,31 @@ class MovieDetailSet < ApplicationRecord
         self.updated_at < UPDATE_INTERVAL.ago
     end
 
-    def self.create_several(tmdb_ids, language_code = I18n.locale)
+    def rating_classification
+        return "no-votes" if self.vote_count == 0
+        case self.vote_average
+        when 0...5
+            "bad"
+        when 5...7
+            "average"
+        when 7...8
+            "good"
+        when 8..10
+            "excellent"
+        end
+    end
+
+    def self.create_several(tmdb_ids, language_code)
         threads = []
         tmdb_ids.each do |tmdb_id| 
             threads << Thread.new do
-                Movie::create(id: tmdb_id) if Movie.exists?(tmdb_id) == false
-                MovieDetailSet::create_or_update(tmdb_id, language_code)
+                Movie.create(id: tmdb_id) if Movie.exists?(tmdb_id) == false
+                MovieDetailSet.create_or_update(tmdb_id, language_code)
                 ActiveRecord::Base.connection.close
             end
         end
         threads.each(&:join)
+        I18n.locale = language_code # TODO: Temporary Fix: Locale get lost after threads are finished
     end
 
 end

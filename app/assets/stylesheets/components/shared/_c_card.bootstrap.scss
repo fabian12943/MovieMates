@@ -1,0 +1,95 @@
+.c-card {
+    width: 170px;
+    height: 100%;
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+.c-card-img {
+    height: 255px;
+    position: relative;
+}
+
+.c-card-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    box-sizing: border-box;
+    border-radius: 12px 12px 0px 0px;
+}
+
+.c-card .detail-box {
+    width: 100%;
+    flex-grow: 1;
+    display: flex;
+    justify-content: space-between;
+    padding: 5px 8px 8px 8px;
+    box-sizing: border-box;
+    background-color: $c-bg-secondary;
+    border-radius: 0px 0px 12px 12px;
+}
+
+.c-card .detail-box .content {
+    display: flex;
+    width: inherit;
+    flex-direction: column;
+}
+
+.c-card .detail-box .content p.main-text {
+    color: $c-text-main;
+    font-size: 0.95rem;
+    margin: 2px 0px;
+    font-weight: 600;
+    text-align: left;
+    white-space: normal;
+}
+
+.c-card .detail-box .content span.secondary-text {
+    color: $c-text-muted;
+    font-size: 0.9rem;
+}
+
+.overlay {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom,  rgba($c-bg-main, 0.90) 0%, rgba($c-bg-main,0.65) 25%,rgba($c-bg-main, 0.1) 60%, rgba($c-bg-main, 0) 100%);
+    display: flex;
+    justify-content: center;
+    border-radius: 11px 11px 0px 0px;
+}
+
+.show-label {
+    padding: 15px 15px;
+    display: flex;
+    align-items: flex-start;
+    color: $c-highlight;
+}
+
+.show-label span {
+    margin-left: 10px;
+    font-weight: 600;
+}
+
+.overlay {
+    visibility: hidden;
+}
+
+a:hover .overlay {
+    visibility: visible;
+    animation: fade 0.4s;
+}
+
+@keyframes fade {
+    0%{
+        opacity: 0;
+    }
+    100%{
+        opacity: 1;
+    }
+}

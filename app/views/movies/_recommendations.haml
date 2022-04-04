@@ -1,0 +1,9 @@
+- if recommendation_set.blank? || recommendation_set.recommendation_movie_ids.blank?
+    %p.empty= "Basierend auf diesem Film liegen uns leider keine Empfehlungen vor."
+- else
+    .horizontal-scroller
+        .items
+            - recommendation_set.recommendation_movie_ids.each do |movie_id|
+                - movie = MovieDetailSet.find_by(movie_id: movie_id, language_code: recommendation_set.language_code)
+                = link_to movie_details_path("#{movie.movie_id}-#{movie.title.parameterize}"), class: 'item', "data-turbo-frame": "_top" do
+                    = render "movies/movie_card", movie: movie

@@ -31,6 +31,8 @@ class CreateMovieDetailSets < ActiveRecord::Migration[7.0]
       t.integer :vote_count
 
       t.timestamps
+
+      t.index [:movie_id, :language_code], unique: true
     end
   end
 end

@@ -1,0 +1,32 @@
+.horizontal-scroller {
+    height: fit-content;
+    position: relative;
+    overflow-x: auto;
+    overflow-y: hidden;
+    white-space: nowrap;
+}
+
+.horizontal-scroller::-webkit-scrollbar {
+    height: 8px;
+}
+
+.horizontal-scroller::-webkit-scrollbar-thumb {
+    background-color: $c-bg-secondary;
+    border-radius: 20px;
+    &:hover {
+        background-color: $c-highlight;
+    }
+}
+
+.horizontal-scroller .items {
+    margin-bottom: 0.6rem;
+    display: flex;             
+}
+
+.horizontal-scroller .items .item {
+    display: inline-block;
+    margin-right: 1rem;
+    &:last-child {
+        margin-right: 0;
+    }
+}
