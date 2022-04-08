@@ -1,0 +1,52 @@
+// Language Selection
+
+.navbar .language-selection .img-flag {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+  
+.navbar .language-selection .dropdown-menu h3 {
+    text-transform: uppercase;
+    color: $c-text-muted;
+    font-weight: 600;
+    text-align: center;
+    margin: 4px 6px 10px 6px;
+}
+
+.language-item {
+    margin: 2px 10px;
+    padding: 5px 10px;
+    border: 2px solid $c-bg-secondary;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+
+    & svg {
+        visibility: hidden;
+    }
+
+    &:hover {
+        border-color: $c-text-muted;
+    }
+
+    &:hover svg {
+        visibility: visible;
+        color: $c-text-muted;
+    }
+}
+
+.language-item.active {
+    border-color: $c-highlight;
+
+    & svg {
+        color: $c-highlight;
+        visibility: visible;
+    }
+}
+
+.language-item span {
+    width: 165px;
+    margin-left: 15px;
+}

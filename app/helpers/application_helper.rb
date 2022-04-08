@@ -11,7 +11,7 @@ module ApplicationHelper
     end
 
     def full_language_name_in_locale(language_code, locale = I18n.locale)
-        I18nData.languages(locale)[language_code.upcase]
+        I18nData.languages(locale)[language_code.upcase].titleize  
     end
 
     def date_in_locale_format(date, locale = I18n.locale)

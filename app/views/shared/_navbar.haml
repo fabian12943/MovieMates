@@ -1,2 +1,23 @@
-%nav.navbar.fixed-top
+%nav.navbar.fixed-top.navbar-expand
   .container
+    .collapse.navbar-collapse
+      %ul.navbar-nav
+        %li.nav-item.dropdown
+          .language-selection
+            %a#languageDropdown.nav-link{"aria-expanded" => "false", "data-bs-toggle" => "dropdown", href: "#", role: "button"}
+              = image_tag "flags/#{I18n.locale}.png", class: "img-flag"
+            %ul.dropdown-menu.input-focused{"aria-labelledby" => "languageDropdown"}
+              %h3= "Sprache ändern"
+              %li
+                = link_to '#', target: '_top' do
+                  .language-item.active
+                    = image_tag "flags/#{I18n.locale}.png", class: "img-flag"
+                    %span= full_language_name_in_locale(I18n.locale.to_s)
+                    %i.fa-solid.fa-check
+              - (I18n.available_locales - [I18n.locale]).each do |locale|
+                %li
+                  = link_to url_for(locale: locale), params.merge({locale: locale}), target: '_top' do
+                    .language-item
+                      = image_tag "flags/#{locale}.png", class: "img-flag"
+                      %span= "#{full_language_name_in_locale(locale.to_s, locale.to_s)} (#{full_language_name_in_locale(locale.to_s)})"
+                      %i.fa-solid.fa-check

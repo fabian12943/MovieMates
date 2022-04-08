@@ -6,7 +6,7 @@
 @import 'components/shared/component.bootstrap.scss';
 @import 'components/shared/footer.bootstrap.scss';
 @import 'components/shared/image_with_placeholder.bootstrap.scss';
-@import 'components/shared/navbar.bootstrap.scss';
+@import 'components/shared/navbar/navbar.bootstrap.scss';
 @import 'components/shared/photo_stack.bootstrap.scss';
 @import 'components/shared/c_card.bootstrap.scss';
 @import 'components/shared/horizontal_scroller.bootstrap.scss';
@@ -49,4 +49,8 @@ a:hover {
 
 p.empty {
     color: $c-text-muted;
+}
+
+.input-focused {
+    box-shadow: 0 0 0 9999px #000000b0;
 }
