@@ -10,9 +10,36 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_03_27_002712) do
+ActiveRecord::Schema[7.0].define(version: 2022_04_05_103247) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "cast_detail_sets", force: :cascade do |t|
+    t.bigint "cast_id", null: false
+    t.string "language_code", null: false
+    t.string "name", null: false
+    t.boolean "adult"
+    t.string "also_known_as", array: true
+    t.text "biography"
+    t.date "birthday"
+    t.date "deathday"
+    t.integer "gender"
+    t.string "homepage"
+    t.string "imdb_id"
+    t.string "known_for_department"
+    t.string "place_of_birth"
+    t.float "popularity"
+    t.string "profile_path"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["cast_id", "language_code"], name: "index_cast_detail_sets_on_cast_id_and_language_code", unique: true
+    t.index ["cast_id"], name: "index_cast_detail_sets_on_cast_id"
+  end
+
+  create_table "casts", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "movie_backdrop_sets", force: :cascade do |t|
     t.bigint "movie_id", null: false
@@ -20,6 +47,15 @@ ActiveRecord::Schema[7.0].define(version: 2022_03_27_002712) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["movie_id"], name: "index_movie_backdrop_sets_on_movie_id"
+  end
+
+  create_table "movie_cast_sets", force: :cascade do |t|
+    t.bigint "movie_id", null: false
+    t.string "language_code", null: false
+    t.jsonb "cast"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["movie_id"], name: "index_movie_cast_sets_on_movie_id"
   end
 
   create_table "movie_detail_sets", force: :cascade do |t|
@@ -88,7 +124,9 @@ ActiveRecord::Schema[7.0].define(version: 2022_03_27_002712) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "cast_detail_sets", "casts"
   add_foreign_key "movie_backdrop_sets", "movies"
+  add_foreign_key "movie_cast_sets", "movies"
   add_foreign_key "movie_detail_sets", "movies"
   add_foreign_key "movie_keyword_sets", "movies"
   add_foreign_key "movie_recommendation_sets", "movies"

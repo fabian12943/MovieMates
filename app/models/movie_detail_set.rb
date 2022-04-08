@@ -63,4 +63,13 @@ class MovieDetailSet < ApplicationRecord
         I18n.locale = language_code # TODO: Temporary Fix: Locale get lost after threads are finished
     end
 
+    def picture_path(image_size = "original")
+        return nil if self.poster_path.blank?
+        Tmdb::Configuration.new.secure_base_url + "#{image_size}" + self.poster_path
+    end
+
+    def picture_placeholder
+        "no_image_placeholder.svg"
+    end
+
 end

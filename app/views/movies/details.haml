@@ -5,7 +5,7 @@
         .col-5.col-md-4.col-lg-3
             .sidebar
                 .component.cover.movie-cover
-                    = render 'shared/image_with_placeholder', image_path: @movie_details.poster_path, image_size: "w400"
+                    = picture(@movie_details, "w400")
                 .component.details
                     - if @movie_details.original_title?
                         .detail
@@ -80,6 +80,10 @@
                         %p= @movie_details.overview
                     - else
                         %p.empty= "Leider liegt uns bei diesem Film keine Handlung in deiner gewählten Sprache vor."
+                .component.cast
+                    %h2= "Besetzung"
+                    = turbo_frame_tag "casts_#{@movie.id}_#{@movie_details.language_code}" do
+                        = render 'cast', cast_set: @movie.cast_sets.find_by(language_code: @movie_details.language_code)
                 %hr
                 .component.recommendations 
                     %h2= "Empfohlene Filme"

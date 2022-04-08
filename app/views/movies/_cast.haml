@@ -1,0 +1,19 @@
+- if cast_set.blank? || cast_set.cast.blank?
+    %p.empty= "Zu diesem Film sind uns keine Darsteller bekannt."
+- else
+    .horizontal-scroller
+        .items
+            - cast_set.cast.each do |person|
+                - person_details = CastDetailSet.find_by(cast_id: person["id"], language_code: cast_set.language_code)
+                = link_to '#', class: 'item', "data-turbo-frame": "_top" do
+                    .c-card.cast-card
+                        .c-card-img
+                            = picture(person_details, "w185")
+                            .overlay
+                                .show-label
+                                    %i.fa-solid.fa-user
+                                    %span= "Anzeigen"
+                        .detail-box
+                            .content
+                                %p.main-text= person_details.name
+                                %span.secondary-text= person["character"].gsub(/\([^()]*\)/, '')

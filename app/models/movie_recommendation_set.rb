@@ -31,7 +31,6 @@ class MovieRecommendationSet < ApplicationRecord
         MovieDetailSet.create_several(self.recommendation_movie_ids, self.language_code)
         
         self.changed? ? self.save : self.touch
-        
     end
 
     def outdated_data?

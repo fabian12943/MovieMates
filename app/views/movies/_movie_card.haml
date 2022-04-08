@@ -1,9 +1,9 @@
 .c-card.movie-card
     .c-card-img
-        = render 'shared/image_with_placeholder', image_path: movie.poster_path, image_size: "w185"
+        = picture(movie, "w185")
         .overlay
             .show-label
-                %i.fa-solid.fa-eye
+                %i.fa-solid.fa-film
                 %span= "Anzeigen"
         - if movie.vote_count > 0
             .rating{ class: "#{movie.rating_classification}-rating" }
