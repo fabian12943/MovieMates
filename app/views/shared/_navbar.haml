@@ -16,7 +16,7 @@
                     %i.fa-solid.fa-check
               - (I18n.available_locales - [I18n.locale]).each do |locale|
                 %li
-                  = link_to url_for(locale: locale), params.merge({locale: locale}), target: '_top' do
+                  = link_to url_for(locale: locale), params.merge({locale: locale, target: '_top'}) do
                     .language-item
                       = image_tag "flags/#{locale}.png", class: "img-flag"
                       %span= "#{full_language_name_in_locale(locale.to_s, locale.to_s)} (#{full_language_name_in_locale(locale.to_s)})"

@@ -1,5 +1,6 @@
 = content_for(:html_title) { @movie_details.title }
 = turbo_stream_from "movie"
+= render "trailer", resource: @movie_details
 .container.movie
     .row
         .col-5.col-md-4.col-lg-3
@@ -68,7 +69,7 @@
                             .col-6.col-lg-3
                                 .component.trailer
                                     %h2= "Trailer"
-                                    %a.content.trailer-link{ href: "https://www.youtube.com/watch?v=#{@movie_details.youtube_trailer_keys[0]}", target: "_blank" }
+                                    %a.content.trailer-link{"data-bs-target" => "#trailerModal", "data-bs-toggle" => "modal"}
                                         %i.bi.bi-play-circle.trailer-play-button
                         - unless @movie_backdrop_set.file_paths.empty?
                             .col-6.col-lg-3

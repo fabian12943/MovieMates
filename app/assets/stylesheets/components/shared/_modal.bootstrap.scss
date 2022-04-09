@@ -1,0 +1,24 @@
+.c-modal .modal-content{
+    border-radius: 12px;
+}
+
+.c-modal .modal-header{
+    justify-content: center;
+    border: none;
+}
+
+.c-modal .modal-header h1 {
+    margin: 0 0;
+}
+
+.c-modal .modal-header .close-modal {
+    color: $c-text-main;
+    position: absolute;
+    right: 20px;
+    top: 15px;
+    font-size: 22px;
+}
+
+.c-modal .modal-header .close-modal:hover {
+    color: $c-highlight;
+}
