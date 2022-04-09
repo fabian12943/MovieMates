@@ -27,6 +27,10 @@
                         .detail
                             %h3= "Genres"
                             %p= @movie_details.genres.map { |genre| genre["name"] }.join(", ")
+                    - if @movie_releases.certification?
+                        .detail
+                            %h3= "Altersfreigabe"
+                            %p= @movie_releases.certification
                     - unless @movie_details.budget == 0
                         .detail 
                             %h3= "Budget"
