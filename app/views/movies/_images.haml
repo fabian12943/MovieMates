@@ -1,0 +1,21 @@
+#imagesModal.modal-images.modal.c-modal.fade{"aria-hidden" => "true", "aria-labelledby" => "imagesModalLabel", "data-bs-backdrop" => "static", "data-bs-keyboard" => "false", :tabindex => "-1"}
+  .modal-dialog.modal-dialog-centered.modal-xl
+    .modal-content
+      .modal-header
+        %h1= "Bilder"
+        %a.float-end{"aria-label" => "Close", "data-bs-dismiss" => "modal", :type => "button"}
+          %span.close-icon.fa-solid.fa-xmark.close-modal
+      .modal-body
+        .expanded-img-container
+          = image_tag tmdb_image_url(@movie_backdrop_set.file_paths[0], "original"), id: "expanded-img", class: "image image-expanded"
+        %hr
+        .horizontal-scroller
+          .items
+            - @movie_backdrop_set.file_paths.first(20).each do |file_path|
+              = image_tag tmdb_image_url(file_path, "w300"), class: "image item", onclick: "replaceExpandedImg('#{tmdb_image_url(file_path, "original")}');"
+
+:javascript
+  function replaceExpandedImg(img) {
+    var expandImg = document.getElementById("expanded-img");
+    expandImg.src = img;
+  }

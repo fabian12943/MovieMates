@@ -1,6 +1,10 @@
 = content_for(:html_title) { @movie_details.title }
+
 = turbo_stream_from "movie"
+
 = render "trailer", resource: @movie_details
+= render "images", resource: @movie_backdrop_set
+
 .container.movie
     .row
         .col-5.col-md-4.col-lg-3
@@ -76,7 +80,7 @@
                                 .component.images
                                     %h2= "Bilder"
                                     .photo-stack-wrapper
-                                        %a.photo-stack
+                                        %a.photo-stack{"data-bs-target" => "#imagesModal", "data-bs-toggle" => "modal"}
                                             - ([@movie_backdrop_set.file_paths.size, 5].min).times do |i|
                                                 = image_tag(tmdb_image_url(@movie_backdrop_set.file_paths[i], "w300"))
                 .component.plot

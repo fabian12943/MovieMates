@@ -1,0 +1,12 @@
+.modal-images .image {
+    border-radius: 12px;
+    cursor: pointer;
+}
+
+.modal-images .image.image-expanded {
+    width: 100%;
+}
+
+.modal-images .horizontal-scroller .image {
+    width: 30%;
+}
