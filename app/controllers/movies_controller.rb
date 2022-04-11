@@ -6,7 +6,7 @@ class MoviesController < ApplicationController
         country_code = "DE"
         begin
             @movie.create_or_update_movie_information_if_necessary_for_language(I18n.locale, country_code)
-        rescue
+        rescue TmdbErrors::ResourceNotFoundError => e
             @movie.destroy
             not_found
         end

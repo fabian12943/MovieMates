@@ -14,6 +14,9 @@ module MovieMates
     # Set API key for TMDb
     Tmdb::Api.key(Rails.application.credentials.tmdb[:api_key])
 
+    # Include custom errors
+    config.autoload_paths << Rails.root.join('app/errors')
+
     # Configuration for the application, engines, and railties goes here.
     #
     # These settings can be overridden in specific environments using the files

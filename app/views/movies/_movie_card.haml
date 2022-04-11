@@ -7,7 +7,7 @@
                 %span= "Anzeigen"
         - if movie.vote_count > 0
             .rating{ class: "#{movie.rating_classification}-rating" }
-                = "#{movie.vote_average}"
+                = "#{movie.vote_average.round(1)}"
     .detail-box
         .content
             %p.main-text= movie.title

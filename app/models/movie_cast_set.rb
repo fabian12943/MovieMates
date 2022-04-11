@@ -19,7 +19,7 @@ class MovieCastSet < ApplicationRecord
     def self.tmdb_map(tmdb_id, language_code = I18n.locale)
         tmdb_map = Tmdb::Movie.detail(tmdb_id, language: language_code, append_to_response: "credits")
         if tmdb_map["status_code"] == 34
-            raise "The resource with tmdb id #{tmdb_id} could not be found."
+            raise TmdbErrors::ResourceNotFoundError.new("The movie with tmdb id #{self.movie_id} could not be found.")
         end
         tmdb_map["credits"]
     end
@@ -27,9 +27,7 @@ class MovieCastSet < ApplicationRecord
     def update
         tmdb_map = MovieCastSet::tmdb_map(self.movie_id, self.language_code)
         self.cast = JSON.parse(tmdb_map["cast"].first(PERSONS_PER_MOVIE).to_json(only: ["id", "character"]))
-
-        CastDetailSet.create_several(self.cast.map { |person| person["id"] }, self.language_code)
-        
+        CastDetailSet.create_or_update_basic_details_of_cast_from_json(tmdb_map["cast"], self.language_code)
         self.changed? ? self.save : self.touch
         
     end

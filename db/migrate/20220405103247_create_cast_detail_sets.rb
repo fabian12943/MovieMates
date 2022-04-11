@@ -18,6 +18,8 @@ class CreateCastDetailSets < ActiveRecord::Migration[7.0]
       t.float :popularity
       t.string :profile_path
 
+      t.boolean :complete, default: false
+
       t.timestamps
 
       t.index [:cast_id, :language_code], unique: true

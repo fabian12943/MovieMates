@@ -30,6 +30,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_05_103247) do
     t.string "place_of_birth"
     t.float "popularity"
     t.string "profile_path"
+    t.boolean "complete", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["cast_id", "language_code"], name: "index_cast_detail_sets_on_cast_id_and_language_code", unique: true
@@ -86,6 +87,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_05_103247) do
     t.boolean "video"
     t.float "vote_average"
     t.integer "vote_count"
+    t.boolean "complete", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["movie_id", "language_code"], name: "index_movie_detail_sets_on_movie_id_and_language_code", unique: true

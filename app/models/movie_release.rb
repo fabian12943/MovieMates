@@ -21,7 +21,7 @@ class MovieRelease < ApplicationRecord
         tmdb_map = Tmdb::Movie.releases(tmdb_id)
 
         if tmdb_map["status_code"] == 34
-            raise "The resource with tmdb id #{tmdb_id} could not be found."
+            raise TmdbErrors::ResourceNotFoundError.new("The movie with tmdb id #{self.movie_id} could not be found.")
         end
         tmdb_map
     end

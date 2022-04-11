@@ -3,37 +3,44 @@ class MovieDetailSet < ApplicationRecord
 
     UPDATE_INTERVAL = 1.day
 
-    def self.create_or_update(tmdb_id, language_code)
+    REQUIRED_ATTRIBUTES = ['id', 'movie_id', 'language_code', 'created_at', 'updated_at']
+    BASIC_ATTRIBUTES = ['title', 'poster_path', 'vote_average', 'vote_count', 'release_date']
+
+    def self.create_or_update_all_details_of_movie(tmdb_id, language_code, only_basic_details = false) 
         movie_detail_set = MovieDetailSet.find_by(movie_id: tmdb_id, language_code: language_code)
-        if movie_detail_set.nil? || movie_detail_set.outdated_data?
-            if movie_detail_set.nil?
-                movie_detail_set = MovieDetailSet.new
-                movie_detail_set.movie_id = tmdb_id
-                movie_detail_set.language_code = language_code
+        if movie_detail_set.nil? || movie_detail_set.outdated_data? || (movie_detail_set.complete == false && only_basic_details == false)
+            movie_detail_set = MovieDetailSet.add_required_attributes(tmdb_id, language_code) if movie_detail_set.nil?
+            movie_detail_set.update_details_by_request(only_basic_details)
+        end
+    end
+
+    def self.create_or_update_all_details_of_movies(tmdb_ids, language_code, only_basic_details = false)
+        threads = []
+        tmdb_ids.each do |tmdb_id| 
+            threads << Thread.new do
+                self.create_or_update_all_details_of_movie(tmdb_id, language_code, only_basic_details)
+                ActiveRecord::Base.connection.close
             end
-            movie_detail_set.update
         end
+        threads.each(&:join)
+        I18n.locale = language_code # TODO: Temporary Fix: Locale get lost after threads are finished
     end
 
-    def self.tmdb_map(tmdb_id, language_code)
-        tmdb_map = Tmdb::Movie.detail(tmdb_id, language: language_code, append_to_response: "trailers")
-        if tmdb_map["status_code"] == 34
-            raise "The resource with tmdb id #{tmdb_id} could not be found."
+    def self.create_or_update_basic_details_of_movies_from_json(json, language_code)
+        threads = []
+        json["results"].each do |movie_json| 
+            threads << Thread.new do
+                movie_id = movie_json["id"]
+                movie_detail_set = MovieDetailSet.find_by(movie_id: movie_id, language_code: language_code)
+                if movie_detail_set.nil? || movie_detail_set.outdated_data?
+                    movie_detail_set = MovieDetailSet.add_required_attributes(movie_id, language_code) if movie_detail_set.nil?
+                    movie_detail_set.update_basic_details_of_movie_from_json(movie_json)
+                end
+                ActiveRecord::Base.connection.close
+            end
         end
-        tmdb_map
-    end
-
-    def update
-        tmdb_map = MovieDetailSet::tmdb_map(self.movie_id, self.language_code)
-        (MovieDetailSet.column_names - ['id', 'movie_id', 'language_code', 'trailers', 'created_at', 'updated_at']).each do |column_name|
-            self.send("#{column_name}=", tmdb_map[column_name])
-        end
-        self.youtube_trailer_keys = tmdb_map["trailers"]["youtube"].map { |trailer| trailer["source"] if trailer["type"] == "Trailer" }.compact
-        self.changed? ? self.save : self.touch
-    end
-
-    def outdated_data?
-        self.updated_at < UPDATE_INTERVAL.ago
+        threads.each(&:join)
+        I18n.locale = language_code # TODO: Temporary Fix: Locale get lost after threads are finished
     end
 
     def rating_classification
@@ -50,19 +57,6 @@ class MovieDetailSet < ApplicationRecord
         end
     end
 
-    def self.create_several(tmdb_ids, language_code)
-        threads = []
-        tmdb_ids.each do |tmdb_id| 
-            threads << Thread.new do
-                Movie.create(id: tmdb_id) if Movie.exists?(tmdb_id) == false
-                MovieDetailSet.create_or_update(tmdb_id, language_code)
-                ActiveRecord::Base.connection.close
-            end
-        end
-        threads.each(&:join)
-        I18n.locale = language_code # TODO: Temporary Fix: Locale get lost after threads are finished
-    end
-
     def picture_path(image_size = "original")
         return nil if self.poster_path.blank?
         Tmdb::Configuration.new.secure_base_url + "#{image_size}" + self.poster_path
@@ -70,6 +64,49 @@ class MovieDetailSet < ApplicationRecord
 
     def picture_placeholder
         "no_image_placeholder.svg"
+    end
+
+    
+    def outdated_data?
+        self.updated_at < UPDATE_INTERVAL.ago
+    end
+
+    def self.add_required_attributes(movie_id, language_code)
+        Movie.create(id: movie_id) if Movie.exists?(movie_id) == false
+        movie_detail_set = MovieDetailSet.new
+        movie_detail_set.movie_id = movie_id
+        movie_detail_set.language_code = language_code
+        movie_detail_set
+    end
+
+    def update_details_by_request(only_basic_details)
+        tmdb_details_map = self.tmdb_details_map
+        only_basic_details ? self.update_basic_details_of_movie_from_json(tmdb_details_map) : self.update_all_details_of_movie_from_json(tmdb_details_map)
+    end
+
+    def update_basic_details_of_movie_from_json(json)
+        (BASIC_ATTRIBUTES).each do |column_name|
+            self.send("#{column_name}=", json[column_name])
+        end
+        self.complete = false
+        self.changed? ? self.save : self.touch
+    end
+
+    def update_all_details_of_movie_from_json(json)
+        (MovieDetailSet.column_names - REQUIRED_ATTRIBUTES - ['trailers']).each do |column_name|
+            self.send("#{column_name}=", json[column_name])
+        end
+        self.youtube_trailer_keys = json["trailers"]["youtube"].map { |trailer| trailer["source"] if trailer["type"] == "Trailer" }.compact
+        self.complete = true
+        self.changed? ? self.save : self.touch
+    end
+
+    def tmdb_details_map
+        tmdb_map = Tmdb::Movie.detail(self.movie_id, language: language_code, append_to_response: "trailers")
+        if tmdb_map["status_code"] == 34
+            raise TmdbErrors::ResourceNotFoundError.new("The movie with tmdb id #{self.movie_id} could not be found.")
+        end
+        tmdb_map
     end
 
 end

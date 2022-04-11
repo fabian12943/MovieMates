@@ -8,7 +8,7 @@ class Movie < ApplicationRecord
 
     def create_or_update_movie_information_if_necessary_for_language(language_code, country_code)
         # Perform immediately
-        MovieDetailSet.create_or_update(self.id, language_code)
+        MovieDetailSet.create_or_update_all_details_of_movie(self.id, language_code)
         MovieKeywordSet.create_or_update(self.id)
         MovieRelease.create_or_update(self.id, country_code)
         MovieBackdropSet.create_or_update(self.id)

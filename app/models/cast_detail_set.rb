@@ -3,49 +3,43 @@ class CastDetailSet < ApplicationRecord
 
     UPDATE_INTERVAL = 1.day
 
-    def self.create_or_update(tmdb_id, language_code)
-        cast_detail_set = CastDetailSet.find_by(cast_id: tmdb_id, language_code: language_code)
-        if cast_detail_set.nil? || cast_detail_set.outdated_data?
-            if cast_detail_set.nil?
-                cast_detail_set = CastDetailSet.new
-                cast_detail_set.cast_id = tmdb_id
-                cast_detail_set.language_code = language_code
+    BASIC_ATTRIBUTES = ['name', 'profile_path', 'gender']
+
+    def self.create_or_update_basic_details_of_cast_from_json(json, language_code)
+        threads = []
+        json.each do |cast_json|
+            threads << Thread.new do
+                cast_id = cast_json["id"]
+                cast_detail_set = CastDetailSet.find_by(cast_id: cast_id, language_code: language_code)
+                if cast_detail_set.nil? || cast_detail_set.outdated_data?
+                    cast_detail_set = CastDetailSet.add_required_attributes(cast_id, language_code) if cast_detail_set.nil?
+                    cast_detail_set.update_basic_details_of_cast_from_json(cast_json)
+                end
+                ActiveRecord::Base.connection.close
             end
-            cast_detail_set.update
         end
-    end
-
-    def self.tmdb_map(tmdb_id, language_code)
-        tmdb_map = Tmdb::Person.detail(tmdb_id, language: language_code)
-        if tmdb_map["status_code"] == 34
-            raise "The resource with tmdb id #{tmdb_id} could not be found."
-        end
-        tmdb_map
-    end
-
-    def update
-        tmdb_map = CastDetailSet::tmdb_map(self.cast_id, self.language_code)
-        (CastDetailSet.column_names - ['id', 'cast_id', 'language_code', 'created_at', 'updated_at']).each do |column_name|
-            self.send("#{column_name}=", tmdb_map[column_name])
-        end
-        self.changed? ? self.save : self.touch
+        threads.each(&:join)
+        I18n.locale = language_code # TODO: Temporary Fix: Locale get lost after threads are finished
     end
 
     def outdated_data?
         self.updated_at < UPDATE_INTERVAL.ago
     end
 
-    def self.create_several(tmdb_ids, language_code)
-        threads = []
-        tmdb_ids.each do |tmdb_id| 
-            threads << Thread.new do
-                Cast.create(id: tmdb_id) if Cast.exists?(tmdb_id) == false
-                CastDetailSet.create_or_update(tmdb_id, language_code)
-                ActiveRecord::Base.connection.close
-            end
+    def self.add_required_attributes(cast_id, language_code)
+        Cast.create(id: cast_id) if Cast.exists?(cast_id) == false
+        cast_detail_set = CastDetailSet.new
+        cast_detail_set.cast_id = cast_id
+        cast_detail_set.language_code = language_code
+        cast_detail_set
+    end
+
+    def update_basic_details_of_cast_from_json(json)
+        (BASIC_ATTRIBUTES).each do |column_name|
+            self.send("#{column_name}=", json[column_name])
         end
-        threads.each(&:join)
-        I18n.locale = language_code # TODO: Temporary Fix: Locale get lost after threads are finished
+        self.complete = false
+        self.changed? ? self.save : self.touch
     end
 
     def picture_path(image_size = "original")

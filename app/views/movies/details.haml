@@ -67,7 +67,7 @@
                             .component.imdb-rating
                                 %h2= "IMDb Rating"
                                 .content.rating-block
-                                    .rating= "#{@movie_details.vote_average} / 10"
+                                    .rating= "#{@movie_details.vote_average.round(1)} / 10"
                                     .caption.vote-count= "#{@movie_details.vote_count} Stimmen"
                         - unless @movie_details.youtube_trailer_keys.empty?
                             .col-6.col-lg-3

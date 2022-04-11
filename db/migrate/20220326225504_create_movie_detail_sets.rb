@@ -30,6 +30,8 @@ class CreateMovieDetailSets < ActiveRecord::Migration[7.0]
       t.float :vote_average
       t.integer :vote_count
 
+      t.boolean :complete, default: false
+
       t.timestamps
 
       t.index [:movie_id, :language_code], unique: true
