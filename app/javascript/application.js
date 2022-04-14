@@ -4,4 +4,5 @@ import "./controllers"
 import * as bootstrap from "bootstrap"
 import "@fortawesome/fontawesome-free/js/all"
 
+import './add_jquery'
 import "./yt_controls"

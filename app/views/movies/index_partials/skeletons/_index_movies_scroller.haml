@@ -1,0 +1,7 @@
+.skeleton
+    .horizontal-scroller
+        .items
+            - movies_amount.times do
+                = link_to '#', class: 'item', "target": "_top" do
+                    .c-card.movie-card
+                        .c-card-img

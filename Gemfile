@@ -66,6 +66,9 @@ gem "inline_svg", "~> 1.8"
 # Simple, efficient background processing for Ruby
 gem "sidekiq", "~> 6.4"
 
+# Sidekiq-Cron runs a thread alongside Sidekiq workers to schedule jobs at specified times
+gem "sidekiq-cron", "~> 1.3"
+
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
 

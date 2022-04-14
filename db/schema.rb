@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_04_05_103247) do
+ActiveRecord::Schema[7.0].define(version: 2022_04_12_132642) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -126,6 +126,34 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_05_103247) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "now_playing_movies", force: :cascade do |t|
+    t.bigint "movie_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["movie_id"], name: "index_now_playing_movies_on_movie_id"
+  end
+
+  create_table "popular_movies", force: :cascade do |t|
+    t.bigint "movie_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["movie_id"], name: "index_popular_movies_on_movie_id"
+  end
+
+  create_table "top_rated_movies", force: :cascade do |t|
+    t.bigint "movie_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["movie_id"], name: "index_top_rated_movies_on_movie_id"
+  end
+
+  create_table "upcoming_movies", force: :cascade do |t|
+    t.bigint "movie_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["movie_id"], name: "index_upcoming_movies_on_movie_id"
+  end
+
   add_foreign_key "cast_detail_sets", "casts"
   add_foreign_key "movie_backdrop_sets", "movies"
   add_foreign_key "movie_cast_sets", "movies"
@@ -133,4 +161,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_05_103247) do
   add_foreign_key "movie_keyword_sets", "movies"
   add_foreign_key "movie_recommendation_sets", "movies"
   add_foreign_key "movie_releases", "movies"
+  add_foreign_key "now_playing_movies", "movies"
+  add_foreign_key "popular_movies", "movies"
+  add_foreign_key "top_rated_movies", "movies"
+  add_foreign_key "upcoming_movies", "movies"
 end

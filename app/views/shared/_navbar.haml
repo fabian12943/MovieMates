@@ -1,12 +1,22 @@
 %nav.navbar.fixed-top.navbar-expand
   .container
     .collapse.navbar-collapse
-      %ul.navbar-nav
+      %ul.navbar-nav.me-auto.mb-2.mb-lg-0
+        %li.nav-item
+          = link_to movies_path, class: 'nav-link nav-text-link', target: "_top" do
+            = "Filme"
+        %li.nav-item
+          = link_to watchlists_path, class: 'nav-link nav-text-link', target: "_top" do
+            = "Watchlists"
+        %li.nav-item
+          = link_to '#', class: 'nav-link nav-text-link' do
+            = "Gesehene Filme"
+      %form.d-flex
         %li.nav-item.dropdown
           .language-selection
-            %a#languageDropdown.nav-link{"aria-expanded" => "false", "data-bs-toggle" => "dropdown", href: "#", role: "button"}
+            %a#languageDropdown.nav-link{"aria-expanded": "false", "data-bs-toggle": "dropdown", href: "#", role: "button"}
               = image_tag "flags/#{I18n.locale}.png", class: "img-flag"
-            %ul.dropdown-menu.input-focused{"aria-labelledby" => "languageDropdown"}
+            %ul.dropdown-menu.dropdown-menu-end.input-focused{"aria-labelledby": "languageDropdown"}
               %h3= "Sprache ändern"
               %li
                 = link_to '#', target: '_top' do
@@ -21,3 +31,12 @@
                       = image_tag "flags/#{locale}.png", class: "img-flag"
                       %span= "#{full_language_name_in_locale(locale.to_s, locale.to_s)} (#{full_language_name_in_locale(locale.to_s)})"
                       %i.fa-solid.fa-check
+
+  :javascript
+    path = window.location.href
+    elements = document.getElementsByClassName('nav-text-link')
+    Array.from(elements).forEach(child => {
+      if (child.href == path) {
+          child.classList.add('active')
+      }
+    });

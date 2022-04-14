@@ -30,3 +30,9 @@
         margin-right: 0;
     }
 }
+
+// Skeleton
+
+.skeleton .horizontal-scroller::-webkit-scrollbar-thumb, .skeleton .horizontal-scroller::-webkit-scrollbar-thumb:hover {
+    background-color: $c-bg-main;
+}

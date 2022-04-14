@@ -14,6 +14,12 @@ class MovieBackdropSet < ApplicationRecord
         end
     end
 
+    def self.create_or_update_several(tmdb_ids)
+        tmdb_ids.each do |tmdb_id|
+            MovieBackdropSet.create_or_update(tmdb_id)
+        end
+    end
+
     def self.tmdb_map(tmdb_id)
         tmdb_map = Tmdb::Movie.images(tmdb_id)
         if tmdb_map["status_code"] == 34

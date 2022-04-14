@@ -2,8 +2,8 @@
 
 = turbo_stream_from "movie"
 
-= render "trailer", resource: @movie_details
-= render "images", resource: @movie_backdrop_set
+= render "movies/details_partials/trailer", resource: @movie_details
+= render "movies/details_partials/images", resource: @movie_backdrop_set
 
 .container.movie
     .row
@@ -92,9 +92,9 @@
                 .component.cast
                     %h2= "Besetzung"
                     = turbo_frame_tag "casts_#{@movie.id}_#{@movie_details.language_code}" do
-                        = render 'cast', cast_set: @movie.cast_sets.find_by(language_code: @movie_details.language_code)
+                        = render 'movies/details_partials/cast', cast_set: @movie.cast_sets.find_by(language_code: @movie_details.language_code)
                 %hr
                 .component.recommendations 
                     %h2= "Empfohlene Filme"
                     = turbo_frame_tag "recommendations_#{@movie.id}_#{@movie_details.language_code}" do
-                        = render 'recommendations', recommendation_set: @movie.recommendation_sets.find_by(language_code: @movie_details.language_code)
+                        = render 'movies/details_partials/recommendations', recommendation_set: @movie.recommendation_sets.find_by(language_code: @movie_details.language_code)

@@ -10,6 +10,7 @@
 .c-card-img {
     height: 255px;
     position: relative;
+    border-radius: 12px;
 }
 
 .c-card-img img, .c-card-img svg.img {
@@ -17,39 +18,7 @@
     height: 100%;
     object-fit: cover;
     box-sizing: border-box;
-    border-radius: 12px 12px 0px 0px;
-}
-
-.c-card .detail-box {
-    width: 100%;
-    flex-grow: 1;
-    display: flex;
-    justify-content: space-between;
-    padding: 5px 8px 8px 8px;
-    box-sizing: border-box;
-    background-color: $c-bg-secondary;
-    border-radius: 0px 0px 12px 12px;
-}
-
-.c-card .detail-box .content {
-    display: flex;
-    width: inherit;
-    flex-direction: column;
-}
-
-.c-card .detail-box .content p.main-text {
-    color: $c-text-main;
-    font-size: 0.95rem;
-    margin: 2px 0px;
-    font-weight: 600;
-    text-align: left;
-    white-space: normal;
-}
-
-.c-card .detail-box .content span.secondary-text {
-    color: $c-text-muted;
-    font-size: 0.9rem;
-    white-space: normal;
+    border-radius: 12px;
 }
 
 .overlay {
@@ -73,8 +42,14 @@
 }
 
 .show-label span {
-    margin-left: 10px;
     font-weight: 600;
+    white-space: normal;
+    text-align: center;
+
+}
+
+.show-label svg {
+    margin-right: 10px;
 }
 
 .overlay {
@@ -93,4 +68,14 @@ a:hover .overlay {
     100%{
         opacity: 1;
     }
+}
+
+// Skeleton
+
+.skeleton .c-card {
+    cursor: progress;
+}
+
+.skeleton .c-card-img {
+    background-color: $c-bg-secondary;
 }

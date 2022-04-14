@@ -1,0 +1,6 @@
+%turbo-frame{id: "#{type}-movies-scroller"}
+    .horizontal-scroller
+        .items
+            - movies.each do |movie|
+                = link_to movie_details_path("#{movie.movie_id}-#{movie.title.parameterize}"), class: 'item', "target": "_top" do
+                    = render "movies/index_partials/index_movie_card", movie: movie

@@ -1,0 +1,23 @@
+update_popular_movies:
+  cron: "0 4 * * *" # At 04:00 everyday
+  class: "UpdatePopularMoviesWorker"
+  queue: default
+  description: 'This worker updates the currently most popular movies on TMDB and fetches their basic details.'
+
+update_upcoming_movies:
+  cron: "0 4 * * *" # At 04:00 everyday
+  class: "UpdateUpcomingMoviesWorker"
+  queue: default
+  description: 'This worker updates the upcoming movies on TMDB and fetches their basic details.'
+
+update_now_playing_movies:
+  cron: "0 4 * * *" # At 04:00 everyday
+  class: "UpdateNowPlayingMoviesWorker"
+  queue: default
+  description: 'This worker updates the movies now playing in cinemas on TMDB and fetches their basic details.'
+
+update_top_rated_movies:
+  cron: "0 4 * * 1" # At 04:00 on Mondays
+  class: "UpdateTopRatedMoviesWorker"
+  queue: default
+  description: 'This worker updates the top rated movies of all time on TMDB and fetches their basic details.'

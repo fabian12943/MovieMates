@@ -2,7 +2,7 @@ class MovieRecommendationSet < ApplicationRecord
     belongs_to :movie
 
     UPDATE_INTERVAL = 1.day
-    RECOMMENDATIONS_PER_FILM = 20
+    RECOMMENDATIONS_PER_FILM = 40
 
     def self.create_or_update(tmdb_id, language_code = I18n.locale)
         movie_recommendation_set = MovieRecommendationSet.find_by(movie_id: tmdb_id, language_code: language_code)
@@ -35,7 +35,7 @@ class MovieRecommendationSet < ApplicationRecord
         self.updated_at < UPDATE_INTERVAL.ago
     end
 
-    after_update_commit { broadcast_update_to("movie", target: "recommendations_#{self.movie_id}_#{self.language_code}", partial: 'movies/recommendations', locals: { recommendation_set: self }) }
-    after_create_commit { broadcast_update_to("movie", target: "recommendations_#{self.movie_id}_#{self.language_code}", partial: 'movies/recommendations', locals: { recommendation_set: self }) }
+    after_update_commit { broadcast_update_to("movie", target: "recommendations_#{self.movie_id}_#{self.language_code}", partial: 'movies/details_partials/recommendations', locals: { recommendation_set: self }) }
+    after_create_commit { broadcast_update_to("movie", target: "recommendations_#{self.movie_id}_#{self.language_code}", partial: 'movies/details_partials/recommendations', locals: { recommendation_set: self }) }
     
 end

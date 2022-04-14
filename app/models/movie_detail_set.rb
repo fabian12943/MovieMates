@@ -4,9 +4,9 @@ class MovieDetailSet < ApplicationRecord
     UPDATE_INTERVAL = 1.day
 
     REQUIRED_ATTRIBUTES = ['id', 'movie_id', 'language_code', 'created_at', 'updated_at']
-    BASIC_ATTRIBUTES = ['title', 'poster_path', 'vote_average', 'vote_count', 'release_date']
+    BASIC_ATTRIBUTES = ['title', 'poster_path', 'vote_average', 'vote_count', 'release_date', 'popularity']
 
-    def self.create_or_update_all_details_of_movie(tmdb_id, language_code, only_basic_details = false) 
+    def self.create_or_update_all_details_of_movie(tmdb_id, language_code, only_basic_details = false)
         movie_detail_set = MovieDetailSet.find_by(movie_id: tmdb_id, language_code: language_code)
         if movie_detail_set.nil? || movie_detail_set.outdated_data? || (movie_detail_set.complete == false && only_basic_details == false)
             movie_detail_set = MovieDetailSet.add_required_attributes(tmdb_id, language_code) if movie_detail_set.nil?

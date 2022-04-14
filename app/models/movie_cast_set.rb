@@ -2,7 +2,7 @@ class MovieCastSet < ApplicationRecord
     belongs_to :movie
 
     UPDATE_INTERVAL = 1.day
-    PERSONS_PER_MOVIE = 20
+    PERSONS_PER_MOVIE = 40
 
     def self.create_or_update(tmdb_id, language_code = I18n.locale)
         movie_cast_set = MovieCastSet.find_by(movie_id: tmdb_id, language_code: language_code)
@@ -41,7 +41,7 @@ class MovieCastSet < ApplicationRecord
         character.gsub!(/\(\w*\)/, '')
     end
 
-    after_update_commit { broadcast_update_to("movie", target: "casts_#{self.movie_id}_#{self.language_code}", partial: 'movies/cast', locals: { cast_set: self }) }
-    after_create_commit { broadcast_update_to("movie", target: "casts_#{self.movie_id}_#{self.language_code}", partial: 'movies/cast', locals: { cast_set: self }) }
+    after_update_commit { broadcast_update_to("movie", target: "casts_#{self.movie_id}_#{self.language_code}", partial: 'movies/details_partials/cast', locals: { cast_set: self }) }
+    after_create_commit { broadcast_update_to("movie", target: "casts_#{self.movie_id}_#{self.language_code}", partial: 'movies/details_partials/cast', locals: { cast_set: self }) }
     
 end

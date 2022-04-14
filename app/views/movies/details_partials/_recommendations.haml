@@ -6,4 +6,4 @@
             - movies = MovieDetailSet.where(movie_id: recommendation_set.recommendation_movie_ids, language_code: recommendation_set.language_code)
             - movies.each do |movie|
                 = link_to movie_details_path("#{movie.movie_id}-#{movie.title.parameterize}"), class: 'item', "target": "_top" do
-                    = render "movies/movie_card", movie: movie
+                    = render "movies/details_partials/details_movie_card", movie: movie
