@@ -1,4 +1,30 @@
+.links-footer
+    .container
+        .row
+            .col
+                .link-block 
+                    %h1= "Beliebte Filme"
+                    - @popular_movies.each do |movie|
+                        .link
+                            = link_to movie.title, movie_details_path(movie.to_param)
+            .col
+                .link-block 
+                    %h1= "Aktuell im Kino"
+                    - @now_playing_movies.each do |movie|
+                        .link
+                            = link_to movie.title, movie_details_path(movie.to_param)
+            .col
+                .link-block 
+                    %h1= "Demnächst verfügbar"
+                    - @upcoming_movies.each do |movie|
+                        .link
+                            = link_to movie.title, movie_details_path(movie.to_param)
+            .col
+                .link-block 
+                    %h1= "Bestbewerte Filme"
+                    - @top_rated_movies.each do |movie|
+                        .link
+                            = link_to movie.title, movie_details_path(movie.to_param)
 .copyright-footer
     .container
-        .content
-            %span= "Copyright © #{Time.now.year} #{link_to "Fabian Schwarz", "https://github.com/fabian12943"}.".html_safe + " All Rights Reserved."
+        %span= "Copyright © #{Time.now.year} #{link_to "Fabian Schwarz", "https://github.com/fabian12943"}.".html_safe + " All Rights Reserved."

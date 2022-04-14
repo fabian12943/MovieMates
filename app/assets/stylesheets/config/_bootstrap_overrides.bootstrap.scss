@@ -40,6 +40,23 @@ $h4-font-size: $font-size-base * 1;
 $h5-font-size: $font-size-base * 0.9;
 $h6-font-size: $font-size-base * 0.8;
 
+// Grid breakpoints
+
+$breakpoint-sm: 576px;
+$breakpoint-md: 768px;
+$breakpoint-lg: 992px;
+$breakpoint-xl: 1200px;
+$breakpoint-xxl: 1400px;
+
+$grid-breakpoints: (
+  xs: 0,
+  sm: $breakpoint-sm,
+  md: $breakpoint-md,
+  lg: $breakpoint-lg,
+  xl: $breakpoint-xl,
+  xxl: $breakpoint-xxl
+);
+
 // Grid containers
 //
 // Define the maximum width of `.container` for different screen sizes.

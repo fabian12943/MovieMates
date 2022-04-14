@@ -5,7 +5,7 @@
                 %button{"aria-current": "true", "aria-label": "Slide #{index+1}", "data-bs-slide-to": "#{index}", "data-bs-target": "#movieCarousel", type: "button"}
         .carousel-inner
             - movie_details.each do |movie|
-                = link_to movie_details_path("#{movie.movie_id}-#{movie.title.parameterize}"), class: "carousel-item", target: "_top" do
+                = link_to movie_details_path(movie.to_param), class: "carousel-item", target: "_top" do
                     - unless movie_backdrops.find_by(movie_id: movie.movie_id).file_paths.empty?
                         = image_tag tmdb_image_url(movie_backdrops.find_by(movie_id: movie.movie_id).file_paths[0], "w1280")
                     .carousel-caption.movie-carousel-caption

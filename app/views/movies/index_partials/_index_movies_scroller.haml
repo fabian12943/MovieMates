@@ -2,5 +2,5 @@
     .horizontal-scroller
         .items
             - movies.each do |movie|
-                = link_to movie_details_path("#{movie.movie_id}-#{movie.title.parameterize}"), class: 'item', "target": "_top" do
+                = link_to movie_details_path(movie.to_param), class: 'item', "target": "_top" do
                     = render "movies/index_partials/index_movie_card", movie: movie

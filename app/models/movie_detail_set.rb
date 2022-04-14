@@ -43,6 +43,11 @@ class MovieDetailSet < ApplicationRecord
         I18n.locale = language_code # TODO: Temporary Fix: Locale get lost after threads are finished
     end
 
+    def to_param
+        return nil unless persisted?
+        [movie_id, title].join('-').parameterize
+    end
+
     def rating_classification
         return "no-votes" if self.vote_count == 0
         case self.vote_average
