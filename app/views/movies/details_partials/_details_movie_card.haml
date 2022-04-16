@@ -11,4 +11,5 @@
     .detail-box
         .content
             %p.main-text= movie.title
-            %span.secondary-text= movie.release_date.year
+            - if movie.release_date
+                %span.secondary-text= movie.release_date.year
