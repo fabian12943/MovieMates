@@ -1,100 +1,96 @@
-= content_for(:html_title) { @movie_details.title }
+= content_for(:html_title) { @movie.title }
 
-= turbo_stream_from "movie"
-
-= render "movies/details_partials/trailer", resource: @movie_details
-= render "movies/details_partials/images", resource: @movie_backdrop_set
+= render "movies/details_partials/trailer", movie: @movie if @movie.videos.youtube_trailer.present?
+= render "movies/details_partials/images", movie: @movie if @movie.backdrops.present?
 
 .container.movie
     .row
         .col-5.col-md-4.col-lg-3
             .sidebar
                 .component.cover.movie-cover
-                    = picture(@movie_details, "w400")
+                    = picture(@movie, "w400")
                 .component.details
-                    - if @movie_details.original_title?
+                    - if @movie.original_title?
                         .detail
                             %h3= "Originaltitel"
-                            %p= @movie_details.original_title
-                    - if @movie_details.original_language?
+                            %p= @movie.original_title
+                    - if @movie.original_language?
                         .detail
                             %h3= "Originalsprache"
-                            %p= full_language_name_in_locale(@movie_details.original_language)
-                    - if @movie_details.release_date?
+                            %p= full_language_name_in_locale(@movie.original_language)
+                    - if @movie.release_date?
                         .detail
                             %h3= "Veröffentlichung"
-                            %p= date_in_locale_format(@movie_details.release_date)
-                    - unless @movie_details.runtime == 0
+                            %p= date_in_locale_format(@movie.release_date)
+                    - if @movie.runtime.present? && @movie.runtime > 0
                         .detail
                             %h3= "Laufzeit"
-                            %p= duration_hours_minutes_format(@movie_details.runtime)
-                    - if @movie_details.genres?
+                            %p= duration_hours_minutes_format(@movie.runtime)
+                    - if @movie.genres?
                         .detail
                             %h3= "Genres"
-                            %p= @movie_details.genres.map { |genre| genre["name"] }.join(", ")
-                    - if @movie_releases.certification?
+                            %p= @movie.genres.map { |genre| genre["name"] }.join(", ")
+                    - if @movie.releases(@country_code).certification.present?
                         .detail
                             %h3= "Altersfreigabe"
-                            %p= @movie_releases.certification
-                    - unless @movie_details.budget == 0
+                            %p= "#{@movie.releases(@country_code).certification} (#{@country_code})"
+                    - unless @movie.budget == 0
                         .detail 
                             %h3= "Budget"
-                            %p= number_to_currency(@movie_details.budget, locale: :en)
-                    - unless @movie_details.revenue == 0
+                            %p= number_to_currency(@movie.budget, locale: :en)
+                    - unless @movie.revenue == 0
                         .detail
                             %h3= "Einspielergebnis"
-                            %p= number_to_currency(@movie_details.revenue, locale: :en)
-                    - if @movie_keyword_set.keywords?
+                            %p= number_to_currency(@movie.revenue, locale: :en)
+                    - if @movie.keywords.present?
                         .detail
                             %h3= "Schlüsselwörter"
                             .keywords
-                                - @movie_keyword_set.keywords.each do |keyword|
-                                    %span.keyword= keyword
+                                - @movie.keywords.each do |keyword|
+                                    %span.keyword= keyword.name
         .col-7.col-md-8.col-lg-9
             .main-content
                 .title-block
                     %h1
-                        = @movie_details.title
-                        - if @movie_details.release_date?
-                            %span.release= "(#{@movie_details.release_date.year})"
-                - if @movie_details.tagline?
+                        = @movie.title
+                        - if @movie.release_date?
+                            %span.release= "(#{@movie.release_year})"
+                - if @movie.tagline?
                     .component.tagline
                         %i.fa-solid.fa-quote-left.fa-pull-left
-                        = @movie_details.tagline
+                        = @movie.tagline
                 .inline-components
                     .row
                         .col-6.col-lg-3
                             .component.imdb-rating
                                 %h2= "IMDb Rating"
                                 .content.rating-block
-                                    .rating= "#{@movie_details.vote_average.round(1)} / 10"
-                                    .caption.vote-count= "#{@movie_details.vote_count} Stimmen"
-                        - unless @movie_details.youtube_trailer_keys.empty?
+                                    .rating= "#{@movie.vote_average.round(1)} / 10"
+                                    .caption.vote-count= "#{@movie.vote_count} Stimmen"
+                        - if @movie.videos.youtube_trailer.present?
                             .col-6.col-lg-3
                                 .component.trailer
                                     %h2= "Trailer"
                                     %a.content.trailer-link{"data-bs-target" => "#trailerModal", "data-bs-toggle" => "modal"}
                                         %i.bi.bi-play-circle.trailer-play-button
-                        - unless @movie_backdrop_set.file_paths.empty?
+                        - if @movie.backdrops.present?
                             .col-6.col-lg-3
                                 .component.images
                                     %h2= "Bilder"
                                     .photo-stack-wrapper
                                         %a.photo-stack{"data-bs-target" => "#imagesModal", "data-bs-toggle" => "modal"}
-                                            - ([@movie_backdrop_set.file_paths.size, 5].min).times do |i|
-                                                = image_tag(tmdb_image_url(@movie_backdrop_set.file_paths[i], "w300"))
+                                            - @movie.backdrops.first(5).each do |backdrop|
+                                                = image_tag(tmdb_image_url(backdrop.file_path, "w185"))
                 .component.plot
                     %h2= "Handlung"
-                    - if @movie_details.overview?
-                        %p= @movie_details.overview
+                    - if @movie.overview?
+                        %p= @movie.overview
                     - else
                         %p.empty= "Leider liegt uns bei diesem Film keine Handlung in deiner gewählten Sprache vor."
                 .component.cast
                     %h2= "Besetzung"
-                    = turbo_frame_tag "casts_#{@movie.id}_#{@movie_details.language_code}" do
-                        = render 'movies/details_partials/cast', cast_set: @movie.cast_sets.find_by(language_code: @movie_details.language_code)
+                    = render 'movies/details_partials/cast', movie: @movie
                 %hr
                 .component.recommendations 
                     %h2= "Empfohlene Filme"
-                    = turbo_frame_tag "recommendations_#{@movie.id}_#{@movie_details.language_code}" do
-                        = render 'movies/details_partials/recommendations', recommendation_set: @movie.recommendation_sets.find_by(language_code: @movie_details.language_code)
+                    = render 'movies/details_partials/recommendations', movie: @movie

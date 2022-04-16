@@ -1,13 +1,15 @@
-class CreateCastDetailSets < ActiveRecord::Migration[7.0]
+class CreatePeople < ActiveRecord::Migration[7.0]
   def change
-    create_table :cast_detail_sets do |t|
-      t.references :cast, foreign_key: true, null: false
-      t.string :language_code, null: false
+    create_table :people do |t|
+      t.integer :tmdb_id, null: false, index: true
+      t.string :language_iso_639_1, null: false
+      t.boolean :complete, default: false
 
+      # TMDB fields
       t.string :name, null: false
+      t.text :biography
       t.boolean :adult
       t.string :also_known_as, array: true
-      t.text :biography
       t.date :birthday
       t.date :deathday
       t.integer :gender
@@ -18,11 +20,9 @@ class CreateCastDetailSets < ActiveRecord::Migration[7.0]
       t.float :popularity
       t.string :profile_path
 
-      t.boolean :complete, default: false
-
       t.timestamps
 
-      t.index [:cast_id, :language_code], unique: true
+      t.index [:tmdb_id, :language_iso_639_1], unique: true
     end
   end
 end

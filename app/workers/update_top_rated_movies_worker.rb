@@ -2,7 +2,7 @@ class UpdateTopRatedMoviesWorker
     include Sidekiq::Worker
 
     def perform
-        TopRatedMovie.update_movies_for_all_languages
+        Movies::TopRated.update
     end
 
 end

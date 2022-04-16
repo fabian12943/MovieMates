@@ -6,4 +6,5 @@
         %a.float-end#pause-button{"aria-label" => "Close", "data-bs-dismiss" => "modal", :type => "button"}
           %span.close-icon.fa-solid.fa-xmark.close-modal
       .modal-body
-        %iframe.yt-trailer{id: "video", src: "//www.youtube.com/embed/#{resource.youtube_trailer_keys[0]}?enablejsapi=1", width: "100%", height: "100%", frameborder: "0", allowfullscreen: "true"}
+        - youtube_trailer_key = movie.videos.youtube_trailer.key
+        %iframe.yt-trailer{id: "video", src: "//www.youtube.com/embed/#{youtube_trailer_key}?enablejsapi=1", width: "100%", height: "100%", frameborder: "0", allowfullscreen: "true"}

@@ -10,58 +10,75 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_04_12_132642) do
+ActiveRecord::Schema[7.0].define(version: 2022_04_16_203646) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "cast_detail_sets", force: :cascade do |t|
-    t.bigint "cast_id", null: false
-    t.string "language_code", null: false
-    t.string "name", null: false
-    t.boolean "adult"
-    t.string "also_known_as", array: true
-    t.text "biography"
-    t.date "birthday"
-    t.date "deathday"
-    t.integer "gender"
-    t.string "homepage"
-    t.string "imdb_id"
-    t.string "known_for_department"
-    t.string "place_of_birth"
-    t.float "popularity"
-    t.string "profile_path"
+  create_table "movie_backdrops", force: :cascade do |t|
+    t.integer "movie_tmdb_id", null: false
+    t.float "aspect_ratio"
+    t.integer "height"
+    t.string "iso_639_1"
+    t.string "file_path", null: false
+    t.float "vote_average"
+    t.integer "vote_count"
+    t.integer "width"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "movie_casts", force: :cascade do |t|
+    t.integer "movie_tmdb_id", null: false
+    t.integer "person_tmdb_id", null: false
+    t.string "character"
+    t.integer "order"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "movie_keywords", force: :cascade do |t|
+    t.integer "movie_tmdb_id", null: false
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "movie_recommendations", force: :cascade do |t|
+    t.integer "movie_tmdb_id", null: false
+    t.integer "recommendation_tmdb_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "movie_releases", force: :cascade do |t|
+    t.integer "movie_tmdb_id", null: false
+    t.string "country_iso_3166_1", null: false
+    t.string "certification"
+    t.string "note"
+    t.date "release_date"
+    t.string "release_type"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "movie_videos", force: :cascade do |t|
+    t.bigint "movie_id", null: false
+    t.string "name"
+    t.string "key"
+    t.string "site"
+    t.integer "size"
+    t.string "video_type"
+    t.boolean "offical"
+    t.date "published_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["movie_id"], name: "index_movie_videos_on_movie_id"
+  end
+
+  create_table "movies", force: :cascade do |t|
+    t.integer "tmdb_id", null: false
+    t.string "language_iso_639_1", null: false
     t.boolean "complete", default: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["cast_id", "language_code"], name: "index_cast_detail_sets_on_cast_id_and_language_code", unique: true
-    t.index ["cast_id"], name: "index_cast_detail_sets_on_cast_id"
-  end
-
-  create_table "casts", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "movie_backdrop_sets", force: :cascade do |t|
-    t.bigint "movie_id", null: false
-    t.string "file_paths", array: true
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["movie_id"], name: "index_movie_backdrop_sets_on_movie_id"
-  end
-
-  create_table "movie_cast_sets", force: :cascade do |t|
-    t.bigint "movie_id", null: false
-    t.string "language_code", null: false
-    t.jsonb "cast"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["movie_id"], name: "index_movie_cast_sets_on_movie_id"
-  end
-
-  create_table "movie_detail_sets", force: :cascade do |t|
-    t.bigint "movie_id", null: false
-    t.string "language_code", null: false
     t.text "title", null: false
     t.text "overview"
     t.boolean "adult"
@@ -83,86 +100,60 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_12_132642) do
     t.jsonb "spoken_languages"
     t.string "status"
     t.text "tagline"
-    t.string "youtube_trailer_keys", array: true
     t.boolean "video"
     t.float "vote_average"
     t.integer "vote_count"
-    t.boolean "complete", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["movie_id", "language_code"], name: "index_movie_detail_sets_on_movie_id_and_language_code", unique: true
-    t.index ["movie_id"], name: "index_movie_detail_sets_on_movie_id"
-  end
-
-  create_table "movie_keyword_sets", force: :cascade do |t|
-    t.bigint "movie_id", null: false
-    t.string "keywords", array: true
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["movie_id"], name: "index_movie_keyword_sets_on_movie_id"
-  end
-
-  create_table "movie_recommendation_sets", force: :cascade do |t|
-    t.bigint "movie_id", null: false
-    t.string "language_code", null: false
-    t.integer "recommendation_movie_ids", array: true
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["movie_id"], name: "index_movie_recommendation_sets_on_movie_id"
-  end
-
-  create_table "movie_releases", force: :cascade do |t|
-    t.bigint "movie_id", null: false
-    t.string "iso_3166_1"
-    t.string "certification"
-    t.datetime "release_date", precision: nil
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["movie_id"], name: "index_movie_releases_on_movie_id"
-  end
-
-  create_table "movies", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.index ["tmdb_id", "language_iso_639_1"], name: "index_movies_on_tmdb_id_and_language_iso_639_1", unique: true
+    t.index ["tmdb_id"], name: "index_movies_on_tmdb_id"
   end
 
   create_table "now_playing_movies", force: :cascade do |t|
-    t.bigint "movie_id", null: false
+    t.integer "movie_tmdb_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["movie_id"], name: "index_now_playing_movies_on_movie_id"
+  end
+
+  create_table "people", force: :cascade do |t|
+    t.integer "tmdb_id", null: false
+    t.string "language_iso_639_1", null: false
+    t.boolean "complete", default: false
+    t.string "name", null: false
+    t.text "biography"
+    t.boolean "adult"
+    t.string "also_known_as", array: true
+    t.date "birthday"
+    t.date "deathday"
+    t.integer "gender"
+    t.string "homepage"
+    t.string "imdb_id"
+    t.string "known_for_department"
+    t.string "place_of_birth"
+    t.float "popularity"
+    t.string "profile_path"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["tmdb_id", "language_iso_639_1"], name: "index_people_on_tmdb_id_and_language_iso_639_1", unique: true
+    t.index ["tmdb_id"], name: "index_people_on_tmdb_id"
   end
 
   create_table "popular_movies", force: :cascade do |t|
-    t.bigint "movie_id", null: false
+    t.integer "movie_tmdb_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["movie_id"], name: "index_popular_movies_on_movie_id"
   end
 
   create_table "top_rated_movies", force: :cascade do |t|
-    t.bigint "movie_id", null: false
+    t.integer "movie_tmdb_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["movie_id"], name: "index_top_rated_movies_on_movie_id"
   end
 
   create_table "upcoming_movies", force: :cascade do |t|
-    t.bigint "movie_id", null: false
+    t.integer "movie_tmdb_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["movie_id"], name: "index_upcoming_movies_on_movie_id"
   end
 
-  add_foreign_key "cast_detail_sets", "casts"
-  add_foreign_key "movie_backdrop_sets", "movies"
-  add_foreign_key "movie_cast_sets", "movies"
-  add_foreign_key "movie_detail_sets", "movies"
-  add_foreign_key "movie_keyword_sets", "movies"
-  add_foreign_key "movie_recommendation_sets", "movies"
-  add_foreign_key "movie_releases", "movies"
-  add_foreign_key "now_playing_movies", "movies"
-  add_foreign_key "popular_movies", "movies"
-  add_foreign_key "top_rated_movies", "movies"
-  add_foreign_key "upcoming_movies", "movies"
 end

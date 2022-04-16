@@ -3,51 +3,34 @@ class MoviesController < ApplicationController
     before_action :set_movie, only: [:details]
 
     def details
-        country_code = "DE"
-        begin
-            @movie.create_or_update_movie_information_if_necessary_for_language(I18n.locale, country_code)
-        rescue TmdbErrors::ResourceNotFoundError => e
-            @movie.destroy
-            not_found
-        end
-
-        @movie_details = @movie.details.find_by(language_code: I18n.locale)
-        @movie_releases = @movie.releases.find_by(country_code: country_code)
-        @movie_keyword_set = @movie.keyword_set
-        @movie_backdrop_set = @movie.backdrop_set
-    end
-
-    def create
-        movie = Movie.new(movie_params)
-        movie.save
+        @country_code = "DE"
     end
 
     def popular_movies_carousel
-        movie_ids = PopularMovie.pluck(:movie_id)
-        MovieDetailSet.create_or_update_all_details_of_movies(tmdb_ids = movie_ids, language_code = I18n.locale)
-        MovieBackdropSet.create_or_update_several(tmdb_ids = movie_ids)
-        movie_details = MovieDetailSet.where(movie_id: movie_ids, language_code: I18n.locale).order(popularity: :desc).first(5)
-        movie_backdrops = MovieBackdropSet.where(movie_id: movie_ids)
-        render partial: "movies/index_partials/movie_carousel", locals: { movie_details: movie_details, movie_backdrops: movie_backdrops }
+        number_of_movies = 5
+        movie_tmdb_ids = Movies::Popular.first(number_of_movies).pluck(:movie_tmdb_id)
+        Movies::Movie.create_or_update_movies(movie_tmdb_ids, I18n.locale, true)
+        movies = Movies::Popular.movies.where(language: I18n.locale).order(popularity: :desc).first(number_of_movies)
+        render partial: "movies/index_partials/movie_carousel", locals: { movies: movies }
     end
 
     def popular_movies_scroller
-        movies = MovieDetailSet.where(movie_id: PopularMovie.pluck(:movie_id), language_code: I18n.locale).order(popularity: :desc)
+        movies = Movies::Popular.movies.where(language: I18n.locale).order(popularity: :desc).first(20)
         render partial: "movies/index_partials/index_movies_scroller", locals: { movies: movies, type: "popular" }
     end
 
     def now_playing_movies_scroller
-        movies = MovieDetailSet.where(movie_id: NowPlayingMovie.pluck(:movie_id), language_code: I18n.locale).order(release_date: :desc)
+        movies = Movies::NowPlaying.movies.where(language: I18n.locale).order(release_date: :desc).first(20)
         render partial: "movies/index_partials/index_movies_scroller", locals: { movies: movies, type: "now-playing" }
     end
 
     def upcoming_movies_scroller
-        movies = MovieDetailSet.where(movie_id: UpcomingMovie.pluck(:movie_id), language_code: I18n.locale).order(:release_date)
+        movies = Movies::Upcoming.movies.where(language: I18n.locale).order(:release_date).first(20)
         render partial: "movies/index_partials/index_movies_scroller", locals: { movies: movies, type: "upcoming" }
     end
 
     def top_rated_movies_scroller
-        movies =  MovieDetailSet.where(movie_id: TopRatedMovie.pluck(:movie_id), language_code: I18n.locale).order(vote_average: :desc)
+        movies = Movies::TopRated.movies.where(language: I18n.locale).order(vote_average: :desc).first(20)
         render partial: "movies/index_partials/index_movies_scroller", locals: { movies: movies, type: "top-rated" }
     end
 
@@ -61,8 +44,12 @@ class MoviesController < ApplicationController
         if params[:id].to_i == 0
             not_found
         end
-        create unless Movie.exists?(params[:id])
-        @movie = Movie.find(params[:id])
+        begin
+            Movies::Movie.create_or_update_movie(params[:id], I18n.locale)
+            @movie = Movies::Movie.find_by(tmdb_id: params[:id], language: I18n.locale)
+        rescue TmdbErrors::ResourceNotFoundError => e
+            not_found
+        end
     end
 
 end

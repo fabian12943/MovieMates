@@ -1,13 +1,13 @@
 %turbo-frame{id: "movie-carousel"}
     #movieCarousel.carousel.movie-carousel.slide{"data-bs-ride": "carousel"}
         .carousel-indicators
-            - movie_details.size.times do |index|
+            - movies.count.times do |index|
                 %button{"aria-current": "true", "aria-label": "Slide #{index+1}", "data-bs-slide-to": "#{index}", "data-bs-target": "#movieCarousel", type: "button"}
         .carousel-inner
-            - movie_details.each do |movie|
+            - movies.each do |movie|
                 = link_to movie_details_path(movie.to_param), class: "carousel-item", target: "_top" do
-                    - unless movie_backdrops.find_by(movie_id: movie.movie_id).file_paths.empty?
-                        = image_tag tmdb_image_url(movie_backdrops.find_by(movie_id: movie.movie_id).file_paths[0], "w1280")
+                    - if movie.backdrops.present?
+                        = image_tag tmdb_image_url(movie.backdrops.first.file_path, "w1280")
                     .carousel-caption.movie-carousel-caption
                         %h1= movie.title
                         %p= movie.overview unless movie.overview.blank?

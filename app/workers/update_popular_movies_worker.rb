@@ -2,7 +2,7 @@ class UpdatePopularMoviesWorker
     include Sidekiq::Worker
 
     def perform
-        PopularMovie.update_movies_for_all_languages
+        Movies::Popular.update
     end
 
 end

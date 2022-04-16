@@ -1,9 +1,11 @@
-class CreateMovieDetailSets < ActiveRecord::Migration[7.0]
+class CreateMovies < ActiveRecord::Migration[7.0]
   def change
-    create_table :movie_detail_sets do |t|
-      t.references :movie, foreign_key: true, null: false
-      t.string :language_code, null: false
+    create_table :movies do |t|
+      t.integer :tmdb_id, null: false, index: true
+      t.string :language_iso_639_1, null: false
+      t.boolean :complete, default: false
 
+      # TMDB fields
       t.text :title, null: false
       t.text :overview
       t.boolean :adult
@@ -25,16 +27,13 @@ class CreateMovieDetailSets < ActiveRecord::Migration[7.0]
       t.jsonb :spoken_languages
       t.string :status
       t.text :tagline
-      t.string :youtube_trailer_keys, array: true 
       t.boolean :video
       t.float :vote_average
       t.integer :vote_count
 
-      t.boolean :complete, default: false
-
       t.timestamps
-
-      t.index [:movie_id, :language_code], unique: true
+      
+      t.index [:tmdb_id, :language_iso_639_1], unique: true
     end
   end
 end
