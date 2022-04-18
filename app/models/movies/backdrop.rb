@@ -37,4 +37,8 @@ class Movies::Backdrop < ApplicationRecord
         Tmdb::Movie.images(tmdb_id)["backdrops"]
     end
 
+    def self.of_language(language)
+        all.where(language: [language, nil])
+    end
+
 end

@@ -7,14 +7,14 @@
           %a.float-end{"aria-label" => "Close", "data-bs-dismiss" => "modal", :type => "button"}
             %span.close-icon.fa-solid.fa-xmark.close-modal
         .modal-body
-          - backdrops = movie.backdrops
+          - backdrops = movie.backdrops.of_language(movie.language)
           .expanded-img-container
-            = image_tag tmdb_image_url(backdrops.first.file_path, "original"), id: "expanded-img", class: "image image-expanded"
+            = image_tag tmdb_image_url(backdrops.first.file_path, "w1280"), id: "expanded-img", class: "image image-expanded"
           %hr
           .horizontal-scroller
             .items
               - backdrops.each do |backdrop|
-                = image_tag tmdb_image_url(backdrop.file_path, "w300"), class: "image item", onclick: "replaceExpandedImg('#{tmdb_image_url(backdrop.file_path, "original")}');"
+                = image_tag tmdb_image_url(backdrop.file_path, "w300"), class: "image item", onclick: "replaceExpandedImg('#{tmdb_image_url(backdrop.file_path, "w1280")}');"
 
         :javascript
           function replaceExpandedImg(img) {
