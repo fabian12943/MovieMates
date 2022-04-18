@@ -1,6 +1,10 @@
 class People::Person < ApplicationRecord
+    after_destroy :destroy_associated_records_if_possible, prepend: true
+
     validates :tmdb_id, uniqueness: { scope: :language_iso_639_1 }
     alias_attribute :language, :language_iso_639_1
+
+    has_one :external_ids, class_name: "People::ExternalIdsSet", primary_key: :tmdb_id, foreign_key: :person_tmdb_id
 
     VALIDITY_PERIOD = 1.day
 
@@ -39,6 +43,11 @@ class People::Person < ApplicationRecord
         self.updated_at < VALIDITY_PERIOD.ago || (completion_required && self.complete? == false)
     end
 
+    def external_ids
+        People::ExternalIdsSet.create_or_update_for_person(self)
+        super
+    end
+
     def update_from_tmdb_request(complete)
         tmdb_map = People::Person.tmdb_map(self.tmdb_id, self.language)
         self.update_from_tmdb_json(tmdb_map, complete)
@@ -74,13 +83,44 @@ class People::Person < ApplicationRecord
     end
 
     def picture_placeholder
-        case self.gender
+        case gender
         when 0 # unspecified
             return "no_cast_image_unspecified_placeholder.svg"
         when 1 # female
             return "no_cast_image_female_placeholder.svg"
         when 2 # male
             return "no_cast_image_male_placeholder.svg"
+        end
+    end
+
+    def to_param
+        return nil unless persisted?
+        [tmdb_id, name].join('-').parameterize
+    end
+
+    def age
+        return nil if birthday.blank?
+        date_from = birthday
+        date_to = deathday.present? ? deathday : Time.now.utc.to_date
+        date_to.year - date_from.year - ((date_to.month > date_from.month || (date_to.month == date_from.month && date_to.day >= date_from.day)) ? 0 : 1)
+    end
+
+    def gender_description
+        case gender
+        when 0
+            "Keine Angabe"
+        when 1
+            "Weiblich"
+        when 2
+            "Männlich"
+        end
+    end
+
+    private
+
+    def destroy_associated_records_if_possible
+        if People::Person.where(tmdb_id: tmdb_id).count == 0
+            People::ExternalIdsSet.where(person_tmdb_id: tmdb_id).destroy_all
         end
     end
 

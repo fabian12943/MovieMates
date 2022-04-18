@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_04_16_203646) do
+ActiveRecord::Schema[7.0].define(version: 2022_04_18_171036) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -138,8 +138,24 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_16_203646) do
     t.index ["tmdb_id"], name: "index_people_on_tmdb_id"
   end
 
+  create_table "person_external_ids_sets", force: :cascade do |t|
+    t.integer "person_tmdb_id", null: false
+    t.string "imdb_id"
+    t.string "facebook_id"
+    t.string "instagram_id"
+    t.string "twitter_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "popular_movies", force: :cascade do |t|
     t.integer "movie_tmdb_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "popular_people", force: :cascade do |t|
+    t.integer "person_tmdb_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

@@ -1,0 +1,30 @@
+.component.biography p:not(:last-child) {
+    margin-bottom: 0.5rem;
+}
+
+.component.image-box.image-actions-box .actions {
+    height: fit-content;
+}
+
+.component.image-box.image-actions-box .actions .external-links {
+    display: flex;
+    justify-content: space-around;
+    padding: 10px 10px;
+}
+
+.component.image-box.image-actions-box .actions .external-links a {
+    margin: 3px;
+    padding: 2px;
+}
+
+.component.image-box.image-actions-box .actions .external-links svg.link{
+    width: 100%;
+    max-width: 40px;
+    align-items: center;
+    height: auto;
+    color: $c-text-muted;
+
+    &:hover {
+        color: $c-highlight;
+    }
+}

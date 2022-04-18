@@ -1,16 +1,17 @@
 %turbo-frame{id: "detailed-movie-card"}
-    .c-card.c-details-card.movie-card
-        .c-card-img
-            = picture(movie, "w185")
-            .overlay
-                .show-label
-                    %i.fa-solid.fa-film
-                    %span= "Anzeigen"
-            - if movie.vote_count > 0
-                .rating{ class: "#{movie.rating_classification}-rating" }
-                    = "#{movie.vote_average.round(1)}"
-        .detail-box
-            .content
-                %p.main-text= movie.title
-                - if movie.release_date
-                    %span.secondary-text= movie.release_year
+    = link_to movie_details_path(movie.to_param), "target": "_top" do
+        .c-card.c-details-card.movie-card
+            .c-card-img
+                = picture(movie, "w185")
+                .overlay
+                    .show-label
+                        %i.fa-solid.fa-film
+                        %span= "Anzeigen"
+                - if movie.vote_count > 0
+                    .rating{ class: "#{movie.rating_classification}-rating" }
+                        = "#{movie.vote_average.round(1)}"
+            .detail-box
+                .content
+                    %p.main-text= movie.title
+                    - if movie.release_date
+                        %span.secondary-text= movie.release_year

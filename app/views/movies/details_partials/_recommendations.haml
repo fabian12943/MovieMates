@@ -7,6 +7,6 @@
             .items
                 - recommendations.each do |recommendation|
                     - movie = recommendation.recommended_movies.find_by(language: movie.language)
-                    = link_to movie_details_path(movie.to_param), class: 'item', "target": "_top" do
+                    .item
                         %turbo-frame#detailed-movie-card{src: detailed_movie_card_path(movie), loading: "lazy"}
                             = render "movies/details_partials/skeletons/detailed_movie_card"

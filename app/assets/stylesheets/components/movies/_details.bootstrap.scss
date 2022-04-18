@@ -1,27 +1,6 @@
 //// Sidebar
 
-// Cover
-
-.movie-cover > * {
-    border-radius: 0.5rem;
-}
-
 // Details
-
-.movie .sidebar .component.cover {
-    margin-bottom: 1.5rem;
-}
-
-.movie .component .detail {
-    margin-bottom: 0.8rem;
-}
-
-.movie .sidebar .component.details p{
-    font-size: $font-size-base * 0.95;
-    font-weight: 600;
-    line-height: 100%;
-    text-align: start;
-}
 
 .keywords span.keyword {
     font-size: $font-size-base * 0.8;

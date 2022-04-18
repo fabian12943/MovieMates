@@ -34,6 +34,7 @@ if defined?(Sidekiq)
             UpdateNowPlayingMoviesWorker.perform_async
             UpdateTopRatedMoviesWorker.perform_async
             UpdatePopularMoviesWorker.perform_async
+            UpdatePopularPeopleWorker.perform_async
         end
     end
   

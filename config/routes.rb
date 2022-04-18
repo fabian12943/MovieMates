@@ -19,6 +19,10 @@ Rails.application.routes.draw do
             get '/:id', to: 'movies#details', as: 'movie_details'
         end
 
+        scope :people do
+            get '/:id', to: 'people#details', as: 'person_details'
+        end
+
         get '/watchlists', to: 'watchlists#index'
 
     end

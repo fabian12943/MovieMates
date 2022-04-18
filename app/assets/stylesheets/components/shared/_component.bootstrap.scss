@@ -15,8 +15,36 @@
     text-align: justify;
 }
 
-.component:not(:last-child) {
+.component {
+    margin-bottom: 1.5rem;
+}
+
+.component.image-box {
+    margin-bottom: 1.5rem;
+}
+
+.component.component.image-box.image-actions-box .actions {
+    border-radius: 0px 0px 12px 12px;
+    background-color: $c-bg-secondary;
+}
+
+.component.image-box.image-actions-box .image > * {
+    border-radius: 12px 12px 0px 0px;
+}
+
+.component.image-box .image > * {
+    border-radius: 12px;
+}
+
+.component.details .detail:not(:last-child) {
     margin-bottom: 0.8rem;
+}
+
+.component.details p{
+    font-size: $font-size-base * 0.95;
+    font-weight: 600;
+    line-height: 100%;
+    text-align: start;
 }
 
 .inline-components .component {

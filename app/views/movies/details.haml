@@ -6,15 +6,13 @@
 - if @movie.backdrops.present?
     %turbo-frame#movie-images{src: movie_images_path(@movie)}
 
--# = render "movies/details_partials/trailer", movie: @movie if @movie.videos.youtube_trailer.present?
--# = render "movies/details_partials/images", movie: @movie if @movie.backdrops.present?
-
 .container.movie
     .row
         .col-5.col-md-4.col-lg-3
             .sidebar
-                .component.cover.movie-cover
-                    = picture(@movie, "w400")
+                .component.image-box
+                    .image
+                        = picture(@movie, "w400")
                 .component.details
                     - if @movie.original_title?
                         .detail

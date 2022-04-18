@@ -21,3 +21,10 @@ update_top_rated_movies:
   class: "UpdateTopRatedMoviesWorker"
   queue: default
   description: 'This worker updates the top rated movies of all time on TMDB and fetches their basic details.'
+
+update_popular_people:
+  cron: "0 4 * * * Europe/Berlin" # At 04:00 everyday
+  class: "UpdatePopularPeopleWorker"
+  queue: default
+  description: 'This worker updates the currently most popular people on TMDB and fetches their basic details.'
+  
