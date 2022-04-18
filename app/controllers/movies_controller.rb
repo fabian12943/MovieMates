@@ -45,22 +45,22 @@ class MoviesController < ApplicationController
     end
 
     def popular_movies_scroller
-        movies = Movies::Popular.movies.where(language: I18n.locale).order(popularity: :desc).first(20)
+        movies = Movies::Popular.movies.where(language: I18n.locale).order(popularity: :desc).first(40)
         render partial: "movies/index_partials/index_movies_scroller", locals: { movies: movies, type: "popular" }
     end
 
     def now_playing_movies_scroller
-        movies = Movies::NowPlaying.movies.where(language: I18n.locale).order(release_date: :desc).first(20)
+        movies = Movies::NowPlaying.movies.where(language: I18n.locale).order(release_date: :desc).first(40)
         render partial: "movies/index_partials/index_movies_scroller", locals: { movies: movies, type: "now-playing" }
     end
 
     def upcoming_movies_scroller
-        movies = Movies::Upcoming.movies.where(language: I18n.locale).order(:release_date).first(20)
+        movies = Movies::Upcoming.movies.where(language: I18n.locale).order(:release_date).first(40)
         render partial: "movies/index_partials/index_movies_scroller", locals: { movies: movies, type: "upcoming" }
     end
 
     def top_rated_movies_scroller
-        movies = Movies::TopRated.movies.where(language: I18n.locale).order(vote_average: :desc).first(20)
+        movies = Movies::TopRated.movies.where(language: I18n.locale).order(vote_average: :desc).first(40)
         render partial: "movies/index_partials/index_movies_scroller", locals: { movies: movies, type: "top-rated" }
     end
 

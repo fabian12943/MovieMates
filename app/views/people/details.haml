@@ -61,4 +61,9 @@
                     - if @person.biography?
                         = simple_format(@person.biography)
                     - else
-                        %p.empty= "Leider liegt uns keine Biografie in deiner gewählten Sprache vor."
+                        %p.empty= "Leider liegt keine Biografie in deiner gewählten Sprache vor."
+                %hr
+                .component.popular-people
+                    %h2= "Angesagte Persönlichkeiten"
+                    %turbo-frame#popular-people-scroller{src: popular_people_scroller_path()}
+                        = render "people/details_partials/skeletons/people_scroller", people_amount: 8

@@ -1,8 +1,17 @@
 class PeopleController < ApplicationController
 
-    before_action :set_person, only: [:details]
+    before_action :set_person, only: [:details, :card]
 
     def details
+    end
+
+    def popular_people_scroller
+        people = People::Popular.people.where(language: I18n.locale).order(popularity: :desc).first(40)
+        render partial: "people/details_partials/people_scroller", locals: { people: people, type: "popular" }
+    end
+
+    def card
+        render partial: "people/details_partials/person_card", locals: { person: @person }
     end
 
     private

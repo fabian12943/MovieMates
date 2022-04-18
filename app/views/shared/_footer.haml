@@ -21,10 +21,10 @@
                             = link_to movie.title, movie_details_path(movie.to_param)
             .col
                 .link-block 
-                    %h1= "Bestbewerte Filme"
-                    - @top_rated_movies.each do |movie|
+                    %h1= "Angesagte Persönlichkeiten"
+                    - @popular_people.each do |person|
                         .link
-                            = link_to movie.title, movie_details_path(movie.to_param)
+                            = link_to person.name, person_details_path(person.to_param)
 .copyright-footer
     .container
         %span= "Copyright © #{Time.now.year} #{link_to "Fabian Schwarz", "https://github.com/fabian12943"}.".html_safe + " All Rights Reserved."

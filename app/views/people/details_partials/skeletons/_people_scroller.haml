@@ -1,0 +1,6 @@
+.skeleton
+    .horizontal-scroller
+        .items
+            - people_amount.times do
+                = link_to '#', class: 'item', "target": "_top" do
+                    = render "people/details_partials/skeletons/person_card"

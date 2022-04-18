@@ -21,7 +21,7 @@ class ApplicationController < ActionController::Base
         @popular_movies = Movies::Popular.movies.where(language: I18n.locale).order(popularity: :desc).first(amount_links)
         @now_playing_movies = Movies::NowPlaying.movies.where(language: I18n.locale).order(release_date: :desc).first(amount_links)
         @upcoming_movies = Movies::Upcoming.movies.where(language: I18n.locale).order(:release_date).first(amount_links)
-        @top_rated_movies = Movies::TopRated.movies.where(language: I18n.locale).order(vote_average: :desc).first(amount_links)
+        @popular_people = People::Popular.people.where(language: I18n.locale).order(popularity: :desc).first(amount_links)
     end
 
 end

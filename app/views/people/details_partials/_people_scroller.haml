@@ -1,0 +1,7 @@
+%turbo-frame{id: "#{type}-people-scroller"}
+    .horizontal-scroller
+        .items
+            - people.each do |person|
+                = link_to person_details_path(person.to_param), class: 'item', "target": "_top" do
+                    %turbo-frame#person-card{src: person_card_path(person), loading: "lazy"}
+                        = render "people/details_partials/skeletons/person_card"

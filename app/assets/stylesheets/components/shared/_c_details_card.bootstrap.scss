@@ -6,6 +6,7 @@
 
 .c-card.c-details-card .detail-box {
     width: 100%;
+    min-height: 60px;
     flex-grow: 1;
     display: flex;
     justify-content: space-between;
