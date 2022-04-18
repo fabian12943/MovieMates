@@ -11,6 +11,7 @@
     height: 255px;
     position: relative;
     border-radius: 12px;
+    background-color: $c-bg-secondary;
 }
 
 .c-card-img img, .c-card-img svg.img {
@@ -76,6 +77,14 @@ a:hover .overlay {
     cursor: progress;
 }
 
-.skeleton .c-card-img {
-    background-color: $c-bg-secondary;
+.skeleton .c-card .c-card-img {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.skeleton .c-card .c-card-img svg {
+    color: $c-text-muted;
+    width: 50%;
+    height: 50%;
 }

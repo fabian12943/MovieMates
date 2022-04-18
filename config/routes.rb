@@ -9,6 +9,13 @@ Rails.application.routes.draw do
             get '/now-playing/scroller', to: 'movies#now_playing_movies_scroller', as: 'now_playing_movies_scroller'
             get '/upcoming/scroller', to: 'movies#upcoming_movies_scroller', as: 'upcoming_movies_scroller'
             get '/top-rated/scroller', to: 'movies#top_rated_movies_scroller', as: 'top_rated_movies_scroller'
+            get '/:id/trailer', to: 'movies#trailer', as: 'movie_trailer'
+            get '/:id/images', to: 'movies#images', as: 'movie_images'
+            get '/:id/casts', to: 'movies#casts', as: 'movie_casts'
+            get '/:id/casts/:person_id/detailed_card', to: 'movies#detailed_cast_card', as: 'detailed_cast_card'
+            get '/:id/recommendations', to: 'movies#recommendations', as: 'movie_recommendations'
+            get '/:id/index_card', to: 'movies#index_movie_card', as: 'index_movie_card'
+            get '/:id/detailed_card', to: 'movies#detailed_movie_card', as: 'detailed_movie_card'
             get '/:id', to: 'movies#details', as: 'movie_details'
         end
 

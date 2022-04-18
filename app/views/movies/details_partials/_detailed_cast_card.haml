@@ -1,0 +1,13 @@
+%turbo-frame{id: "detailed-cast-card"}
+    - person = cast.persons.find_by(language: movie.language)
+    .c-card.c-details-card.cast-card
+        .c-card-img
+            = picture(person, "w185")
+            .overlay
+                .show-label
+                    %i.fa-solid.fa-user
+                    %span= "Anzeigen"
+        .detail-box
+            .content
+                %p.main-text= person.name
+                %span.secondary-text= cast.character_prettyfied

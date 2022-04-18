@@ -1,10 +1,11 @@
-#trailerModal.modal-trailer.modal.c-modal.fade{"aria-hidden" => "true", "aria-labelledby" => "trailerModalLabel", "data-bs-backdrop" => "static", "data-bs-keyboard" => "false", :tabindex => "-1"}
-  .modal-dialog.modal-dialog-centered.modal-xl
-    .modal-content
-      .modal-header
-        %h1= "Trailer"
-        %a.float-end#pause-button{"aria-label" => "Close", "data-bs-dismiss" => "modal", :type => "button"}
-          %span.close-icon.fa-solid.fa-xmark.close-modal
-      .modal-body
-        - youtube_trailer_key = movie.videos.youtube_trailer.key
-        %iframe.yt-trailer{id: "video", src: "//www.youtube.com/embed/#{youtube_trailer_key}?enablejsapi=1", width: "100%", height: "100%", frameborder: "0", allowfullscreen: "true"}
+%turbo-frame{id: "movie-trailer"}
+  #trailerModal.modal-trailer.modal.c-modal.fade{"aria-hidden" => "true", "aria-labelledby" => "trailerModalLabel", "data-bs-backdrop" => "static", "data-bs-keyboard" => "false", :tabindex => "-1"}
+    .modal-dialog.modal-dialog-centered.modal-xl
+      .modal-content{"data-controller": "youtube-player"}
+        .modal-header
+          %h1= "Trailer"
+          %a.float-end#pause-button{"aria-label" => "Close", "data-bs-dismiss" => "modal", :type => "button"}
+            %span.close-icon.fa-solid.fa-xmark.close-modal
+        .modal-body
+          - youtube_trailer_key = movie.videos.youtube_trailer.key
+          %iframe.yt-trailer{id: "video", src: "//www.youtube.com/embed/#{youtube_trailer_key}?enablejsapi=1", width: "100%", height: "100%", frameborder: "0", allowfullscreen: "true"}

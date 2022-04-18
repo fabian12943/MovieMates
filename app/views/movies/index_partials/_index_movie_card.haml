@@ -1,9 +1,10 @@
-.c-card.movie-card
-    .c-card-img
-        = picture(movie, "w185")
-        .overlay
-            .show-label
-                %span= movie.title
-        - if movie.vote_count > 0
-            .rating{ class: "#{movie.rating_classification}-rating" }
-                = "#{movie.vote_average.round(1)}"
+%turbo-frame{id: "index-movie-card"}
+    .c-card.movie-card
+        .c-card-img
+            = picture(movie, "w185")
+            .overlay
+                .show-label
+                    %span= movie.title
+            - if movie.vote_count > 0
+                .rating{ class: "#{movie.rating_classification}-rating" }
+                    = "#{movie.vote_average.round(1)}"

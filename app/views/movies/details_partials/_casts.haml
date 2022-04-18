@@ -1,0 +1,11 @@
+%turbo-frame{id: "movie-casts"}
+    - casts = movie.casts
+    - if casts.empty?
+        %p.empty= "Zu diesem Film sind uns keine Darsteller bekannt."
+    - else
+        .horizontal-scroller
+            .items
+                - casts.order(:order).first(25).each do |cast|
+                    = link_to '#', class: 'item', "data-turbo-frame": "_top" do
+                        %turbo-frame#detailed-cast-card{src: detailed_cast_card_path(movie, cast.person_tmdb_id), loading: "lazy"}
+                            = render "movies/details_partials/skeletons/detailed_cast_card"

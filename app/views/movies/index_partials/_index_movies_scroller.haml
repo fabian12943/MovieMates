@@ -3,4 +3,6 @@
         .items
             - movies.each do |movie|
                 = link_to movie_details_path(movie.to_param), class: 'item', "target": "_top" do
-                    = render "movies/index_partials/index_movie_card", movie: movie
+                    %turbo-frame#index-movie-card{src: index_movie_card_path(movie), loading: "lazy"}
+                        = render "movies/index_partials/skeletons/index_movie_card"
+

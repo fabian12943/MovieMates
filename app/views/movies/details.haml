@@ -1,7 +1,13 @@
 = content_for(:html_title) { @movie.title }
 
-= render "movies/details_partials/trailer", movie: @movie if @movie.videos.youtube_trailer.present?
-= render "movies/details_partials/images", movie: @movie if @movie.backdrops.present?
+- if @movie.videos.youtube_trailer.present?
+    %turbo-frame#movie-trailer{src: movie_trailer_path(@movie)}
+
+- if @movie.backdrops.present?
+    %turbo-frame#movie-images{src: movie_images_path(@movie)}
+
+-# = render "movies/details_partials/trailer", movie: @movie if @movie.videos.youtube_trailer.present?
+-# = render "movies/details_partials/images", movie: @movie if @movie.backdrops.present?
 
 .container.movie
     .row
@@ -89,8 +95,10 @@
                         %p.empty= "Leider liegt uns bei diesem Film keine Handlung in deiner gewählten Sprache vor."
                 .component.cast
                     %h2= "Besetzung"
-                    = render 'movies/details_partials/cast', movie: @movie
+                    %turbo-frame#movie-casts{src: movie_casts_path(@movie)}
+                        = render "movies/details_partials/skeletons/detailed_cast_scroller", movies_amount: 8
                 %hr
                 .component.recommendations 
                     %h2= "Empfohlene Filme"
-                    = render 'movies/details_partials/recommendations', movie: @movie
+                    %turbo-frame#movie-recommendations{src: movie_recommendations_path(@movie)}
+                        = render "movies/details_partials/skeletons/detailed_movies_scroller", movies_amount: 8

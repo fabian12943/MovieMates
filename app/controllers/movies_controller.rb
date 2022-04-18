@@ -1,9 +1,39 @@
 class MoviesController < ApplicationController
 
-    before_action :set_movie, only: [:details]
+    before_action :set_movie, only: [:details, :trailer, :images, :casts, :recommendations, :detailed_movie_card, :index_movie_card, :detailed_cast_card]
 
     def details
         @country_code = "DE"
+    end
+
+    def trailer
+        render partial: "movies/details_partials/trailer", locals: { movie: @movie }
+    end
+
+    def images
+        render partial: "movies/details_partials/images", locals: { movie: @movie }
+    end
+
+    def casts
+        render partial: "movies/details_partials/casts", locals: { movie: @movie }
+    end
+
+    def detailed_cast_card
+        cast = Movies::Cast.find_by(movie_tmdb_id: movie_params[:id], person_tmdb_id: movie_params[:person_id])
+        not_found if cast.nil?
+        render partial: "movies/details_partials/detailed_cast_card", locals: { movie: @movie, cast: cast }
+    end
+
+    def recommendations
+        render partial: "movies/details_partials/recommendations", locals: { movie: @movie }
+    end
+
+    def detailed_movie_card
+        render partial: "movies/details_partials/detailed_movie_card", locals: { movie: @movie }
+    end
+
+    def index_movie_card
+        render partial: "movies/index_partials/index_movie_card", locals: { movie: @movie }
     end
 
     def popular_movies_carousel
@@ -37,16 +67,17 @@ class MoviesController < ApplicationController
     private
     
     def movie_params
-        params.permit(:id)
+        params.permit(:id, :person_id, :locale)
     end
 
     def set_movie
-        if params[:id].to_i == 0
+        tmdb_id = movie_params[:id]
+        if tmdb_id.to_i == 0
             not_found
         end
         begin
-            Movies::Movie.create_or_update_movie(params[:id], I18n.locale)
-            @movie = Movies::Movie.find_by(tmdb_id: params[:id], language: I18n.locale)
+            Movies::Movie.create_or_update_movie(tmdb_id, I18n.locale)
+            @movie = Movies::Movie.find_by(tmdb_id: tmdb_id, language: I18n.locale)
         rescue TmdbErrors::ResourceNotFoundError => e
             not_found
         end
