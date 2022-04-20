@@ -1,8 +1,10 @@
 class PeopleController < ApplicationController
 
-    before_action :set_person, only: [:details, :card, :filmography]
+    before_action :set_person, only: [:details, :card, :most_famous_movies, :filmography]
 
     def details
+        People::MovieCredit.create_or_update_for_person(@person)
+        People::ExternalIdsSet.create_or_update_for_person(@person)
     end
 
     def popular_people_scroller
@@ -12,6 +14,11 @@ class PeopleController < ApplicationController
 
     def card
         render partial: "people/details_partials/person_card", locals: { person: @person }
+    end
+
+    def most_famous_movies
+        movie_credits = @person.movie_credits.order(:order)
+        render partial: "people/details_partials/movies_scroller", locals: { movie_credits: movie_credits }
     end
 
     def filmography

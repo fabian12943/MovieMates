@@ -47,6 +47,7 @@ class Movies::Cast < ApplicationRecord
         self[:character].gsub(/\(voice\)/, '(Stimme)')
                         .gsub(/\(uncredited\)/, '')
                         .gsub(/\(archive footage\)/, '')
+                        .gsub(/\(Encore\)/, '(Zugabe)')
                         .gsub(/Himself|Herself|Self/, 'Sich selbst')
     end
 

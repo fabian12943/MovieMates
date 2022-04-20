@@ -85,7 +85,7 @@ test:
 #
 production:
   <<: *default
-  url: <%= ENV['DATABASE_URL'] %>
+  url: <%= ENV['HEROKU_POSTGRESQL_RED_URL'] %>
   database: movie_mates_production
   username: movie_mates
   password: <%= ENV["MOVIE_MATES_DATABASE_PASSWORD"] %>

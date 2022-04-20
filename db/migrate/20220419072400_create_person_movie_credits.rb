@@ -11,6 +11,8 @@ class CreatePersonMovieCredits < ActiveRecord::Migration[7.0]
       t.date :release_date
 
       t.timestamps
+
+      t.index [:person_tmdb_id, :movie_tmdb_id], unique: true
     end
   end
 end

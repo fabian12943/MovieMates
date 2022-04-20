@@ -46,21 +46,6 @@ class People::Person < ApplicationRecord
         self.updated_at < VALIDITY_PERIOD.ago || (completion_required && self.complete? == false)
     end
 
-    def movie_credits
-        People::MovieCredit.create_or_update_for_person(self)
-        super
-    end
-
-    def movies
-        People::MovieCredit.create_or_update_for_person(self)
-        super
-    end
-
-    def external_ids
-        People::ExternalIdsSet.create_or_update_for_person(self)
-        super
-    end
-
     def update_from_tmdb_request(complete)
         tmdb_map = People::Person.tmdb_map(self.tmdb_id, self.language)
         self.update_from_tmdb_json(tmdb_map, complete)

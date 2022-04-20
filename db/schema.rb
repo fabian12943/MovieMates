@@ -157,6 +157,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_19_072400) do
     t.date "release_date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["person_tmdb_id", "movie_tmdb_id"], name: "index_person_movie_credits_on_person_tmdb_id_and_movie_tmdb_id", unique: true
   end
 
   create_table "popular_movies", force: :cascade do |t|

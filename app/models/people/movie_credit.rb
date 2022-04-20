@@ -1,6 +1,8 @@
 class People::MovieCredit < ApplicationRecord
     self.table_name = "person_movie_credits"
 
+    validates :person_tmdb_id, uniqueness: { scope: :movie_tmdb_id }
+
     has_one :person, class_name: "People::Person", primary_key: :person_tmdb_id, foreign_key: :tmdb_id
     has_many :movies, class_name: "Movies::Movie", primary_key: :movie_tmdb_id, foreign_key: :tmdb_id
 
@@ -20,13 +22,15 @@ class People::MovieCredit < ApplicationRecord
 
     def self.create_from_tmdb_request(person)
         tmdb_map = tmdb_map(person.tmdb_id, person.language)
-        tmdb_map.each do |tmdb_movie_credit|
-            movie_credit = People::MovieCredit.new(person_tmdb_id: person.tmdb_id, movie_tmdb_id: tmdb_movie_credit["id"])
-            (valid_tmdb_fields).each do |valid_tmdb_field|
-                movie_credit.send("#{valid_tmdb_field}=", tmdb_movie_credit[valid_tmdb_field])
+        transaction do
+            tmdb_map.each do |tmdb_movie_credit|
+                movie_credit = People::MovieCredit.new(person_tmdb_id: person.tmdb_id, movie_tmdb_id: tmdb_movie_credit["id"])
+                (valid_tmdb_fields).each do |valid_tmdb_field|
+                    movie_credit.send("#{valid_tmdb_field}=", tmdb_movie_credit[valid_tmdb_field])
+                end
+                movie_credit.voice = true if movie_credit.character.present? && movie_credit.character.include?("voice")
+                movie_credit.save if movie_credit.release_date.present?
             end
-            movie_credit.voice = true if movie_credit.character.present? && movie_credit.character.include?("voice")
-            movie_credit.save if movie_credit.release_date.present?
         end
     end
 
@@ -61,10 +65,8 @@ class People::MovieCredit < ApplicationRecord
         self[:character].gsub(/\(voice\)/, '(Stimme)')
                         .gsub(/\(uncredited\)/, '')
                         .gsub(/\(archive footage\)/, '')
+                        .gsub(/\(Encore\)/, '(Zugabe)')
                         .gsub(/Himself|Herself|Self/, 'Sich selbst')
-                        
-        # "#{self[:character]}#{" (Stimme)" if self[:voice]}"
-        # movie_credit.character.gsub(/\([^()]*\)/, '') # Remove parenthesis and its content
     end
 
 end

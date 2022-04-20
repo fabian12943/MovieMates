@@ -16,12 +16,14 @@ Rails.application.routes.draw do
             get '/:id/recommendations', to: 'movies#recommendations', as: 'movie_recommendations'
             get '/:id/index_card', to: 'movies#index_movie_card', as: 'index_movie_card'
             get '/:id/detailed_card', to: 'movies#detailed_movie_card', as: 'detailed_movie_card'
+            get '/:id/detailed_card_with_subtext', to: 'movies#detailed_movie_card_with_subtext', as: 'detailed_movie_card_with_subtext'
             get '/:id', to: 'movies#details', as: 'movie_details'
         end
 
         scope :people do
             get '/popular/scroller', to: 'people#popular_people_scroller', as: 'popular_people_scroller'
             get '/:id/card', to: 'people#card', as: 'person_card'
+            get '/:id/most-famous-movies', to: 'people#most_famous_movies', as: 'person_most_famous_movies_scroller'
             get '/:id/filmography', to: 'people#filmography', as: 'person_filmography'
             get '/:id', to: 'people#details', as: 'person_details'
         end

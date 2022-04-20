@@ -1,6 +1,6 @@
 class MoviesController < ApplicationController
 
-    before_action :set_movie, only: [:details, :trailer, :images, :casts, :recommendations, :detailed_movie_card, :index_movie_card, :detailed_cast_card]
+    before_action :set_movie, only: [:details, :trailer, :images, :casts, :recommendations, :detailed_movie_card, :detailed_movie_card_with_subtext, :index_movie_card, :detailed_cast_card]
 
     def details
         @country_code = "DE"
@@ -30,6 +30,11 @@ class MoviesController < ApplicationController
 
     def detailed_movie_card
         render partial: "movies/details_partials/detailed_movie_card", locals: { movie: @movie }
+    end
+
+    def detailed_movie_card_with_subtext
+        subtext = movie_params[:subtext]
+        render partial: "movies/details_partials/detailed_movie_card", locals: { movie: @movie, subtext: subtext }
     end
 
     def index_movie_card
@@ -67,7 +72,7 @@ class MoviesController < ApplicationController
     private
     
     def movie_params
-        params.permit(:id, :person_id, :locale)
+        params.permit(:id, :person_id, :locale, :subtext)
     end
 
     def set_movie

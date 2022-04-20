@@ -14,4 +14,4 @@
                 .content
                     %p.main-text= movie.title
                     - if movie.release_date
-                        %span.secondary-text= movie.release_year
+                        %span.secondary-text= defined?(subtext) ? subtext : movie.release_year
