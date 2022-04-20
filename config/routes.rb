@@ -22,6 +22,7 @@ Rails.application.routes.draw do
         scope :people do
             get '/popular/scroller', to: 'people#popular_people_scroller', as: 'popular_people_scroller'
             get '/:id/card', to: 'people#card', as: 'person_card'
+            get '/:id/filmography', to: 'people#filmography', as: 'person_filmography'
             get '/:id', to: 'people#details', as: 'person_details'
         end
 

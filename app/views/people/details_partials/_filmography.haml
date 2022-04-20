@@ -1,0 +1,32 @@
+%turbo-frame{id: "filmography"}
+    - movie_credits = person.movie_credits.by_years
+    - if movie_credits.present?
+        - years_with_movies = @person.movie_credits.years_with_movies
+        .filmography-box
+            .filmography-content{"data-controller": "collapse filmography", 
+                                "data-collapse-collapse-when-height-value": "500", 
+                                "data-collapse-collapse-to-height-value": "350"}
+                .form-group.small-select-form
+                    %select.form-control#sortByYear{"data-filmography-target": "selectedYear", "data-action": "filmography#selectYear"}
+                        %option{selected: "selected", value: "0"}= "Alle Jahre"
+                        - years_with_movies.each do |year|
+                            %option= year
+                - years_with_movies.each do |year|
+                    .filmography-list{id: "filmography-#{year}"}
+                        %h3= year
+                        %ul.filmography-items
+                            - movie_credits[year].each do |movie_credit|
+                                %li.filmography-item
+                                    - movie = movie_credit.movies.find_by(language: person.language)
+                                    = link_to movie_details_path(movie.to_param), target: "_top" do
+                                        %span.title= movie.title
+                                    - if movie_credit.character_translated.present?
+                                        .character-text
+                                            %span= " als "
+                                            %span.character= movie_credit.character_translated
+                .show-more.d-none{"data-collapse-target": "unfoldMessage"}
+                    %button.no-styling{"data-action": "collapse#unfold"}= "Alle anzeigen"
+                .show-less.d-none{"data-collapse-target": "collapseMessage"}
+                    %button.no-styling{"data-action": "collapse#collapse"}= "Weniger anzeigen"
+    - else
+        %p.empty= "Bei dieser Person ist keine Filmografie vorhanden. Vermutlich hat die Person bisher nur in Serien mitgewirkt."

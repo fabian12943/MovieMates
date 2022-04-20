@@ -22,6 +22,7 @@
 @import 'components/casts/cast_card.bootstrap.scss';
 
 @import 'components/people/details.bootstrap.scss';
+@import 'components/people/filmography.scss';
 
 @import 'bootstrap/scss/bootstrap';
 @import 'bootstrap-icons/font/bootstrap-icons';
@@ -60,4 +61,15 @@ p.empty {
 
 .input-focused {
     box-shadow: 0 0 0 9999px #000000b0;
+}
+
+button.no-styling {
+    background-color: transparent;
+    border: none;
+    color: inherit;
+    font: inherit;
+    line-height: normal;
+    overflow: visible;
+    padding: 0;
+    -webkit-appearance: button;
 }

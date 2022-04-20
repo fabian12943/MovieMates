@@ -1,0 +1,128 @@
+.filmography-box {
+    background-color: $c-bg-secondary;
+    border-radius: 12px;
+    position: relative;
+}
+
+.show-more {
+    position: absolute; 
+    bottom: 0; 
+    left: 0;
+    width: 100%; 
+    text-align: center;
+    padding: 100px 0 35px 0;
+    background-image: linear-gradient(to bottom, transparent, $c-bg-main);
+}
+
+.show-less {
+    width: 100%; 
+    text-align: center;
+    padding: 35px 0 35px 0;
+}
+
+.filmography-box .show-more button, .filmography .filmography-box .show-less button {
+    font-weight: 600;
+    &:hover {
+        color: $c-highlight;
+    }
+}
+
+.filmography-box .filmography-list {
+    padding: 10px 10px 10px 15px;
+}
+
+.filmography-box .filmography-list .filmography-items {
+    margin: 0px;
+    margin-left: 10px;
+}
+
+.filmography-box .filmography-list .filmography-items li{
+    list-style-type: circle;
+}
+
+.filmography-box .filmography-list .filmography-items .filmography-item{
+    margin-bottom: 0.25rem;
+}
+
+.filmography-box .filmography-list .filmography-items .filmography-item .title{
+    font-weight: 600;
+
+    &:hover {
+        color: $c-highlight;
+    }
+}
+
+.filmography-box .filmography-list .filmography-items .filmography-item .character-text{
+    font-weight: 200;
+    font-size: 0.9em;
+    display: inline-block;
+    color: $c-text-muted;
+}
+
+.filmography-box .filmography-list .filmography-items .filmography-item .character-text .character {
+    font-weight: 400;
+}
+
+.small-select-form {
+    width: fit-content;
+}
+
+.small-select-form .form-control {
+    font-size: 1em;
+    padding: 0px;
+    color: $c-text-muted;
+    background-color: transparent;
+    border: none;
+    appearance: auto;
+    text-align: end;
+}
+
+.small-select-form .form-control:focus {
+    color: $c-text-muted;
+    background-color: transparent;
+    box-shadow: none;
+}
+
+.small-select-form .form-control:hover {
+    cursor: pointer;
+}
+
+.small-select-form .form-control option {
+    padding-right: 10px;
+}
+
+.filmography-box .small-select-form {
+    position: absolute;
+    top: 8px;
+    right: 10px;
+}
+
+// Skeleton
+
+.skeleton .filmography-box {
+    height: 350px;
+    overflow: hidden;
+    position: relative;
+}
+
+.skeleton .filmography-box .show-more {
+    height: 135px;
+}
+
+.skeleton .skeleton-item {
+    background-color: $c-text-muted;
+    border-radius: 12px;
+}
+
+.skeleton .skeleton-item.year {
+    height: 16px;
+    width: 80px;
+}
+
+.skeleton li.filmography-item {
+    height: 14px;
+    width: 200px;
+    margin-top: 4px;
+    list-style-type: none !important;
+}
+

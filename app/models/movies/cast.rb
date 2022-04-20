@@ -43,8 +43,11 @@ class Movies::Cast < ApplicationRecord
         @@valid_tmdb_fields
     end
 
-    def character_prettyfied
-        self.character.gsub(/\([^()]*\)/, '') # Remove parenthesis and its content
+    def character_translated
+        self[:character].gsub(/\(voice\)/, '(Stimme)')
+                        .gsub(/\(uncredited\)/, '')
+                        .gsub(/\(archive footage\)/, '')
+                        .gsub(/Himself|Herself|Self/, 'Sich selbst')
     end
 
 end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_04_18_171036) do
+ActiveRecord::Schema[7.0].define(version: 2022_04_19_072400) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -144,6 +144,17 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_18_171036) do
     t.string "facebook_id"
     t.string "instagram_id"
     t.string "twitter_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "person_movie_credits", force: :cascade do |t|
+    t.integer "person_tmdb_id", null: false
+    t.integer "movie_tmdb_id", null: false
+    t.string "character"
+    t.boolean "voice", default: false
+    t.integer "order"
+    t.date "release_date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

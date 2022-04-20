@@ -62,6 +62,10 @@
                         = simple_format(@person.biography)
                     - else
                         %p.empty= "Leider liegt keine Biografie in deiner gewählten Sprache vor."
+                .component.filmography 
+                    %h2= "Filmografie"
+                    %turbo-frame#filmography{src: person_filmography_path(@person)}
+                        = render "people/details_partials/skeletons/filmography"
                 %hr
                 .component.popular-people
                     %h2= "Angesagte Persönlichkeiten"

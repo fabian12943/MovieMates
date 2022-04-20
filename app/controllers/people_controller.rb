@@ -1,6 +1,6 @@
 class PeopleController < ApplicationController
 
-    before_action :set_person, only: [:details, :card]
+    before_action :set_person, only: [:details, :card, :filmography]
 
     def details
     end
@@ -12,6 +12,10 @@ class PeopleController < ApplicationController
 
     def card
         render partial: "people/details_partials/person_card", locals: { person: @person }
+    end
+
+    def filmography
+        render partial: "people/details_partials/filmography", locals: { person: @person }
     end
 
     private

@@ -4,7 +4,10 @@ class People::Person < ApplicationRecord
     validates :tmdb_id, uniqueness: { scope: :language_iso_639_1 }
     alias_attribute :language, :language_iso_639_1
 
+    # Dependant on tmdb_id only
     has_one :external_ids, class_name: "People::ExternalIdsSet", primary_key: :tmdb_id, foreign_key: :person_tmdb_id
+    has_many :movie_credits, class_name: "People::MovieCredit", primary_key: :tmdb_id, foreign_key: :person_tmdb_id
+    has_many :movies, class_name: "Movies::Movie", primary_key: :tmdb_id, foreign_key: :tmdb_id, through: :movie_credits
 
     VALIDITY_PERIOD = 1.day
 
@@ -41,6 +44,16 @@ class People::Person < ApplicationRecord
 
     def needs_update?(completion_required)
         self.updated_at < VALIDITY_PERIOD.ago || (completion_required && self.complete? == false)
+    end
+
+    def movie_credits
+        People::MovieCredit.create_or_update_for_person(self)
+        super
+    end
+
+    def movies
+        People::MovieCredit.create_or_update_for_person(self)
+        super
     end
 
     def external_ids
@@ -121,6 +134,7 @@ class People::Person < ApplicationRecord
     def destroy_associated_records_if_possible
         if People::Person.where(tmdb_id: tmdb_id).count == 0
             People::ExternalIdsSet.where(person_tmdb_id: tmdb_id).destroy_all
+            People::MovieCredit.where(person_tmdb_id: tmdb_id).destroy_all
         end
     end
 

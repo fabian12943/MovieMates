@@ -1,0 +1,17 @@
+.skeleton
+    .filmography-box
+        .show-more
+        .filmography-content
+            - 6.times do
+                .filmography-list
+                    %h3.skeleton-item.year
+                    %ul.filmography-items
+                        - rand(1..5).times do
+                            %li.skeleton-item.filmography-item
+
+    :javascript
+        var filmographyItems = document.querySelectorAll('.filmography-item');
+        for (var filmographyItem of filmographyItems) {
+            randomWidth = Math.floor(Math.random() * 150) + 150;
+            filmographyItem.style.width = randomWidth + 'px';
+        }

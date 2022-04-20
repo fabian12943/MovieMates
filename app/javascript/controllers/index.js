@@ -4,5 +4,11 @@
 
 import { application } from "./application"
 
+import CollapseController from "./collapse_controller.js"
+application.register("collapse", CollapseController)
+
+import FilmographyController from "./filmography_controller.js"
+application.register("filmography", FilmographyController)
+
 import YoutubePlayerController from "./youtube_player_controller.js"
 application.register("youtube-player", YoutubePlayerController)
