@@ -2,10 +2,6 @@ class MoviesController < ApplicationController
 
     before_action :set_movie, only: [:details, :trailer, :images, :casts, :recommendations, :detailed_movie_card, :detailed_movie_card_with_subtext, :index_movie_card, :detailed_cast_card]
 
-    def details
-        @country_code = "DE"
-    end
-
     def trailer
         render partial: "movies/details_partials/trailer", locals: { movie: @movie }
     end

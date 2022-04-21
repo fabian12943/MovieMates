@@ -34,10 +34,10 @@
                         .detail
                             %h3= t '.genres'
                             %p= @movie.genres.map { |genre| genre["name"] }.join(", ")
-                    - if @movie.releases(@country_code).certification.present?
+                    - if @movie.releases(session[:country]).certification.present?
                         .detail
                             %h3= t '.age_rating'
-                            %p= "#{@movie.releases(@country_code).certification} (#{@country_code})"
+                            %p= "#{@movie.releases(session[:country]).certification} (#{session[:country]})"
                     - unless @movie.budget == 0
                         .detail 
                             %h3= t '.budget'

@@ -69,6 +69,9 @@ gem "sidekiq", "~> 6.4"
 # Sidekiq-Cron runs a thread alongside Sidekiq workers to schedule jobs at specified times
 gem "sidekiq-cron", "~> 1.3"
 
+# Detect the users preferred language, as sent by the "Accept-Language" HTTP header
+gem 'http_accept_language'
+
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
 
