@@ -1,0 +1,26 @@
+.person-nav {
+    margin-bottom: 0.5rem;
+}
+
+.person-nav-link {
+    margin-right: 1rem;
+    &:last-child {
+        margin-right: 0;
+    }
+}
+
+.person-nav-link > h2{
+    color: $c-text-muted;
+    border-bottom: 3px solid $c-bg-main;
+    border-top: 3px solid transparent;
+
+    &:hover {
+        border-bottom-color: $c-text-muted;
+    }
+}
+
+.person-nav-link.active > h2{
+    color: $c-text-main;
+    font-weight: 600;
+    border-bottom-color: $c-highlight;
+}

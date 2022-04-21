@@ -3,75 +3,31 @@
 .container.person
     .row
         .col-5.col-md-4.col-lg-3
-            .sidebar
-                .component.image-box.image-actions-box#imageBox
-                    .image
-                        = picture(@person, "w400")
-                    - if @person.external_ids.any_ids?
-                        .actions
-                            .external-links
-                                - external_ids = @person.external_ids
-                                - if external_ids.instagram_id?
-                                    = link_to "#{external_ids.instagram_url}", target: "_blank" do
-                                        %i.fa-brands.fa-instagram-square.link
-                                - if external_ids.twitter_id?
-                                    = link_to "#{external_ids.twitter_url}", target: "_blank" do
-                                        %i.fa-brands.fa-twitter-square.link
-                                - if external_ids.facebook_id?
-                                    = link_to "#{external_ids.facebook_url}", target: "_blank" do
-                                        %i.fa-brands.fa-facebook-square.link
-                                - if external_ids.imdb_id?
-                                    = link_to "#{external_ids.imdb_url}", target: "_blank" do
-                                        %i.fa-brands.fa-imdb.link
-                    :javascript
-                        var imageBox = document.getElementById("imageBox");
-                        if (imageBox.querySelectorAll(".actions").length == 0) {
-                            imageBox.classList.remove("image-actions-box");
-                        }
-                .component.details
-                    - if @person.known_for_department?
-                        .detail
-                            %h3= "Bekannt für"
-                            %p= @person.known_for_department
-                    - if @person.birthday?
-                        .detail
-                            %h3= "Alter"
-                            %p= "#{@person.age}#{" (†)" if @person.deathday?}"
-                        .detail
-                            %h3= "Geburtstag"
-                            %p= date_in_locale_format(@person.birthday)
-                    - if @person.place_of_birth?
-                        .detail
-                            %h3= "Geburtsort"
-                            %p= @person.place_of_birth
-                    - if @person.deathday?
-                        .detail
-                            %h3= "Todestag"
-                            %p= date_in_locale_format(@person.deathday)
-                    - if @person.gender != 0
-                        .detail
-                            %h3= "Geschlecht"
-                            %p= @person.gender_description
+            = render "people/details_partials/sidebar", person: @person
         .col-7.col-md-8.col-lg-9
             .main-content
                 .title-block
                     %h1= @person.name
-                .component.biography
-                    %h2= "Biografie"
-                    - if @person.biography?
-                        = simple_format(@person.biography)
-                    - else
-                        %p.empty= "Leider liegt keine Biografie in deiner gewählten Sprache vor."
-                .component.most-famous-movies
-                    %h2= "Bekannteste Filme"
-                    %turbo-frame#movies-scroller{src: person_most_famous_movies_scroller_path(@person)}
-                        = render "movies/details_partials/skeletons/detailed_movies_scroller", movies_amount: 8
-                .component.filmography 
-                    %h2= "Filmografie"
-                    %turbo-frame#filmography{src: person_filmography_path(@person)}
-                        = render "people/details_partials/skeletons/filmography"
-                %hr
-                .component.popular-people
-                    %h2= "Angesagte Persönlichkeiten"
-                    %turbo-frame#popular-people-scroller{src: popular_people_scroller_path()}
-                        = render "people/details_partials/skeletons/people_scroller", people_amount: 8
+                %nav.person-nav
+                    %button.person-nav-link.no-styling.active{onclick: "displayComponent(this, 'overview')"}
+                        %h2= "Übersicht"
+                    - if @person.external_ids.twitter_id?
+                        %button.person-nav-link.no-styling{onclick: "displayComponent(this, 'twitter-feed')"}
+                            %h2= "Twitter-Feed"
+                    :javascript
+                        function displayComponent(button, component) {
+                            var buttons = document.querySelectorAll(".person-nav-link");
+                            for (var i = 0; i < buttons.length; i++) {
+                                buttons[i].classList.remove("active");
+                            }
+                            button.classList.add("active");
+                            var components = document.getElementsByClassName("switchable-content")
+                            for (var i = 0; i < components.length; i++) {
+                                components[i].style.display = "none";
+                            }
+                            document.getElementById(component).style.display = "block";
+                        }
+                #overview.switchable-content
+                    = render "people/details_partials/overview", person: @person
+                #twitter-feed.switchable-content{style: "display: none"}
+                    = render "people/details_partials/twitter_feed", person: @person

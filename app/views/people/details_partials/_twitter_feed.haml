@@ -1,0 +1,30 @@
+- if person.external_ids.twitter_id?
+    .twitter-block
+        = link_to "", "#{@person.external_ids.twitter_url}", class: "twitter-timeline", "data-lang": "#{@person.language}", "data-theme": "dark"
+        %script{src:"https://platform.twitter.com/widgets.js", charset:"utf-8", async: true}
+
+        :javascript
+            var waitForJQuery = setInterval(function () {
+                if (typeof $ != 'undefined') {
+                    $('.twitter-block').on('DOMSubtreeModified propertychange', "iframe[id^='twitter-widget-']", function() {
+                        customizeTweetMedia();
+                    });
+                    clearInterval(waitForJQuery);
+                }
+            }, 10);
+
+            var customizeTweetMedia = function() {
+
+                var twitterTimeline = $('.twitter-block').find('.twitter-timeline')
+
+                twitterTimeline.css('width', '100%');
+                twitterTimeline.contents().find('.timeline-Header').css('display', 'none');
+                twitterTimeline.contents().find('.timeline-Footer').css('display', 'none');
+                twitterTimeline.contents().find('.timeline-Body').css({'border-top': 'none', 'border-bottom': 'none'});
+                twitterTimeline.contents().find('.timeline-Widget').css({'background-color': '#1C232F', 'border-radius': '12px'});
+                twitterTimeline.contents().find('.timeline-Tweet-text').css({'font-size': '16', 'max-width': 'none', 'line-height': '130%', 'padding-top': '10'});
+                twitterTimeline.contents().find('.timeline-Tweet-text').find('a').css('color', '#CBAA00');
+                twitterTimeline.contents().find('.MediaCard').css('max-width', '400px');
+                twitterTimeline.contents().find('.PrerenderedCard').css('max-width', '400px');
+                twitterTimeline.contents().find('.timeline-LoadMore').css('display', 'none');
+            }

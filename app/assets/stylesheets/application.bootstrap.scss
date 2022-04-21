@@ -23,6 +23,8 @@
 
 @import 'components/people/details.bootstrap.scss';
 @import 'components/people/filmography.scss';
+@import 'components/people/person_navbar.scss';
+@import 'components/people/twitter_feed.scss';
 
 @import 'bootstrap/scss/bootstrap';
 @import 'bootstrap-icons/font/bootstrap-icons';
@@ -73,3 +75,24 @@ button.no-styling {
     padding: 0;
     -webkit-appearance: button;
 }
+
+::-webkit-scrollbar {
+    width: 12px;
+    height: 12px;
+    background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background: $c-bg-secondary;
+    border-radius: 20px;
+
+    &:hover {
+        background: $c-highlight;
+    }
+}
+
+.main ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+
