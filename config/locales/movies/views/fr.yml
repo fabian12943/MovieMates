@@ -1,0 +1,45 @@
+fr:
+  movies:
+
+    details:
+      original_title: "Titre original"
+      original_language: "Langue originale"
+      release: "Publication"
+      runtime: "Durée"
+      genres: "Genres"
+      age_rating: "Classification par âge"
+      budget: "Budget"
+      revenue: "Résultats des recettes"
+      keywords: "Mots clés"
+
+      imdb_rating: "IMDb Rating"
+      vote: 
+        zero: "Pas de votes"
+        one: "1 vote"
+        other: "%{count} votes"
+      trailer: "Trailer"
+      images: "Images"
+      plot: "Acte"
+      no_plot_message: "Il n'y a pas d'intrigue dans la langue que tu as choisie pour ce film."
+      cast: "Distribution"
+      movie_recommendations: "Films recommandés"
+
+    details_partials:
+
+      trailer:
+        trailer: "Trailer"
+
+      images:
+        images: "Images"
+
+      detailed_cast_card:
+        show: "Afficher"
+
+      detailed_movie_card:
+        show: "Afficher"
+
+    index:
+      popular: "Populaire"
+      currently_in_theaters: "Actuel au cinéma"
+      coming_soon: "Bientôt disponible"
+      best_rated_movies_of_all_time: "Les films les mieux notés de tous les temps"

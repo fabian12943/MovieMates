@@ -1,0 +1,45 @@
+de:
+  movies:
+
+    details:
+      original_title: "Originaltitel"
+      original_language: "Originalsprache"
+      release: "Veröffentlichung"
+      runtime: "Laufzeit"
+      genres: "Genres"
+      age_rating: "Altersfreigabe"
+      budget: "Budget"
+      revenue: "Einspielergebnis"
+      keywords: "Schlüsselwörter"
+
+      imdb_rating: "IMDb Rating"
+      vote: 
+        zero: "Keine Stimmen"
+        one: "1 Stimme"
+        other: "%{count} Stimmen"
+      trailer: "Trailer"
+      images: "Bilder"
+      plot: "Handlung"
+      no_plot_message: "Es liegt bei diesem Film keine Handlung in deiner gewählten Sprache vor."
+      cast: "Besetzung"
+      movie_recommendations: "Empfohlene Filme"
+
+    details_partials:
+
+      trailer:
+        trailer: "Trailer"
+
+      images:
+        images: "Bilder"
+
+      detailed_cast_card:
+        show: "Anzeigen"
+
+      detailed_movie_card:
+        show: "Anzeigen"
+
+    index:
+      popular: "Beliebt"
+      currently_in_theaters: "Aktuell im Kino"
+      coming_soon: "Demnächst verfügbar"
+      best_rated_movies_of_all_time: "Bestbewertete Filme aller Zeiten"

@@ -3,19 +3,19 @@
         .row
             .col
                 .link-block 
-                    %h1= "Beliebte Filme"
+                    %h1= t 'movies.index.popular'
                     - @popular_movies.each do |movie|
                         .link
                             = link_to movie.title, movie_details_path(movie.to_param)
             .col
                 .link-block 
-                    %h1= "Aktuell im Kino"
+                    %h1= t 'movies.index.currently_in_theaters'
                     - @now_playing_movies.each do |movie|
                         .link
                             = link_to movie.title, movie_details_path(movie.to_param)
             .col
                 .link-block 
-                    %h1= "Demnächst verfügbar"
+                    %h1= t 'movies.index.coming_soon'
                     - @upcoming_movies.each do |movie|
                         .link
                             = link_to movie.title, movie_details_path(movie.to_param)

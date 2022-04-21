@@ -1,0 +1,8 @@
+de:
+  shared:
+
+    navbar:
+      movies: "Filme"
+      watchlists: "Watchlists"
+      seen_movies: "Gesehene Filme"
+      change_language: "Sprache ändern"

@@ -1,0 +1,8 @@
+en:
+  movies:
+    cast:
+      voice: "Voice"
+      encore: "Encore"
+      himself: "Himself"
+      herself: "Herself"
+      self: "Self"

@@ -4,20 +4,20 @@
       %ul.navbar-nav.me-auto.mb-2.mb-lg-0
         %li.nav-item
           = link_to movies_path, class: 'nav-link nav-text-link', target: "_top" do
-            = "Filme"
+            = t '.movies'
         %li.nav-item
           = link_to watchlists_path, class: 'nav-link nav-text-link', target: "_top" do
-            = "Watchlists"
+            = t '.watchlists'
         %li.nav-item
           = link_to '#', class: 'nav-link nav-text-link' do
-            = "Gesehene Filme"
+            = t '.seen_movies'
       %form.d-flex
         %li.nav-item.dropdown
           .language-selection
             %a#languageDropdown.nav-link{"aria-expanded": "false", "data-bs-toggle": "dropdown", href: "#", role: "button"}
               = image_tag "flags/#{I18n.locale}.png", class: "img-flag"
             %ul.dropdown-menu.dropdown-menu-end.input-focused{"aria-labelledby": "languageDropdown"}
-              %h3= "Sprache ändern"
+              %h3= t '.change_language'
               %li
                 = link_to '#', target: '_top' do
                   .language-item.active

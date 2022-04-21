@@ -17,6 +17,9 @@ module MovieMates
     # Include custom errors
     config.autoload_paths << Rails.root.join('app/errors')
 
+    # Load all YAML and Ruby files from the locales directory and all nested directories
+    config.i18n.load_path += Dir[Rails.root.join('config', 'locales', '**', '*.{rb,yml}')]
+
     # Configuration for the application, engines, and railties goes here.
     #
     # These settings can be overridden in specific environments using the files

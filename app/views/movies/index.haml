@@ -4,18 +4,18 @@
             %turbo-frame#movie-carousel{src: movie_carousel_path}
                 .movie-carousel
         .component
-            %h2= "Beliebt"
+            %h2= t '.popular'
             %turbo-frame#popular-movies-scroller{src: popular_movies_scroller_path}
                 = render "movies/index_partials/skeletons/index_movies_scroller", movies_amount: 8
         .component
-            %h2= "Aktuell im Kino"
+            %h2= t '.currently_in_theaters'
             %turbo-frame#now-playing-movies-scroller{src: now_playing_movies_scroller_path}
                 = render "movies/index_partials/skeletons/index_movies_scroller", movies_amount: 8
         .component
-            %h2= "Demnächst verfügbar"
+            %h2= t '.coming_soon'
             %turbo-frame#upcoming-movies-scroller{src: upcoming_movies_scroller_path}
                 = render "movies/index_partials/skeletons/index_movies_scroller", movies_amount: 8
         .component
-            %h2= "Bestbewertete Filme aller Zeiten"
+            %h2= t '.best_rated_movies_of_all_time'
             %turbo-frame#top-rated-movies-scroller{src: top_rated_movies_scroller_path}
                 = render "movies/index_partials/skeletons/index_movies_scroller", movies_amount: 8

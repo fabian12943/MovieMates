@@ -1,0 +1,46 @@
+en:
+  movies:
+
+    details:
+      original_title: "Original Title"
+      original_language: "Original Language"
+      release: "Release"
+      runtime: "Runtime"
+      genres: "Genres"
+      age_rating: "Age Rating"
+      budget: "Budget"
+      revenue: "Revenue"
+      keywords: "Keywords"
+
+      imdb_rating: "IMDb Rating"
+      vote: 
+        zero: "No votes"
+        one: "1 vote"
+        other: "%{count} votes"
+      trailer: "Trailer"
+      images: "Images"
+      plot: "Plot"
+      no_plot_message: "There is no plot available for this movie in your chosen language."
+      cast: "Cast"
+      movie_recommendations: "Recommended Movies"
+
+    details_partials:
+
+      trailer:
+        trailer: "Trailer"
+
+      images:
+        images: "Images"
+
+      detailed_cast_card:
+        show: "Show"
+
+      detailed_movie_card:
+        show: "Show"
+
+    index:
+      popular: "Popular"
+      currently_in_theaters: "Currently in Theaters"
+      coming_soon: "Coming soon"
+      best_rated_movies_of_all_time: "Best Rated Movies of all Time"
+        

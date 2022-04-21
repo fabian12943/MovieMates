@@ -1,0 +1,8 @@
+fr:
+  shared:
+
+    navbar:
+      movies: "Films"
+      watchlists: "Listes de Veille"
+      seen_movies: "Films Vus"
+      change_language: "Changer de langue"

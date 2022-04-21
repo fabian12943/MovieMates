@@ -44,11 +44,13 @@ class Movies::Cast < ApplicationRecord
     end
 
     def character_translated
-        self[:character].gsub(/\(voice\)/, '(Stimme)')
+        self[:character].gsub(/\(voice\)/, "(#{I18n.t('movies.cast.voice')})")
+                        .gsub(/\(Encore\)/, "(#{I18n.t('movies.cast.encore')})")
+                        .gsub(/Himself/, "#{I18n.t('movies.cast.himself')}")
+                        .gsub(/Herself/, "#{I18n.t('movies.cast.herself')}")
+                        .gsub(/Self/, "#{I18n.t('movies.cast.self')}")
                         .gsub(/\(uncredited\)/, '')
                         .gsub(/\(archive footage\)/, '')
-                        .gsub(/\(Encore\)/, '(Zugabe)')
-                        .gsub(/Himself|Herself|Self/, 'Sich selbst')
     end
 
 end

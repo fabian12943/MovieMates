@@ -16,39 +16,39 @@
                 .component.details
                     - if @movie.original_title?
                         .detail
-                            %h3= "Originaltitel"
+                            %h3= t '.original_title'
                             %p= @movie.original_title
                     - if @movie.original_language?
                         .detail
-                            %h3= "Originalsprache"
+                            %h3= t '.original_language'
                             %p= full_language_name_in_locale(@movie.original_language)
                     - if @movie.release_date?
                         .detail
-                            %h3= "Veröffentlichung"
+                            %h3= t '.release'
                             %p= date_in_locale_format(@movie.release_date)
                     - if @movie.runtime.present? && @movie.runtime > 0
                         .detail
-                            %h3= "Laufzeit"
+                            %h3= t '.runtime'
                             %p= duration_hours_minutes_format(@movie.runtime)
                     - if @movie.genres?
                         .detail
-                            %h3= "Genres"
+                            %h3= t '.genres'
                             %p= @movie.genres.map { |genre| genre["name"] }.join(", ")
                     - if @movie.releases(@country_code).certification.present?
                         .detail
-                            %h3= "Altersfreigabe"
+                            %h3= t '.age_rating'
                             %p= "#{@movie.releases(@country_code).certification} (#{@country_code})"
                     - unless @movie.budget == 0
                         .detail 
-                            %h3= "Budget"
+                            %h3= t '.budget'
                             %p= number_to_currency(@movie.budget, locale: :en)
                     - unless @movie.revenue == 0
                         .detail
-                            %h3= "Einspielergebnis"
+                            %h3= t '.revenue'
                             %p= number_to_currency(@movie.revenue, locale: :en)
                     - if @movie.keywords.present?
                         .detail
-                            %h3= "Schlüsselwörter"
+                            %h3= t '.keywords'
                             .keywords
                                 - @movie.keywords.each do |keyword|
                                     %span.keyword= keyword.name
@@ -67,36 +67,36 @@
                     .row
                         .col-6.col-lg-3
                             .component.imdb-rating
-                                %h2= "IMDb Rating"
+                                %h2= t '.imdb_rating'
                                 .content.rating-block
                                     .rating= "#{@movie.vote_average.round(1)} / 10"
-                                    .caption.vote-count= "#{@movie.vote_count} Stimmen"
+                                    .caption.vote-count= t '.vote' , count: @movie.vote_count
                         - if @movie.videos.youtube_trailer.present?
                             .col-6.col-lg-3
                                 .component.trailer
-                                    %h2= "Trailer"
+                                    %h2= t '.trailer'
                                     %a.content.trailer-link{"data-bs-target" => "#trailerModal", "data-bs-toggle" => "modal"}
                                         %i.bi.bi-play-circle.trailer-play-button
                         - if @movie.backdrops.present?
                             .col-6.col-lg-3
                                 .component.images
-                                    %h2= "Bilder"
+                                    %h2= t '.images'
                                     .photo-stack-wrapper
                                         %a.photo-stack{"data-bs-target" => "#imagesModal", "data-bs-toggle" => "modal"}
                                             - @movie.backdrops.first(5).each do |backdrop|
                                                 = image_tag(tmdb_image_url(backdrop.file_path, "w185"))
                 .component.plot
-                    %h2= "Handlung"
+                    %h2= t '.plot'
                     - if @movie.overview?
                         %p= @movie.overview
                     - else
-                        %p.empty= "Leider liegt uns bei diesem Film keine Handlung in deiner gewählten Sprache vor."
+                        %p.empty= t '.no_plot_message'
                 .component.cast
-                    %h2= "Besetzung"
+                    %h2= t '.cast'
                     %turbo-frame#movie-casts{src: movie_casts_path(@movie)}
                         = render "movies/details_partials/skeletons/detailed_cast_scroller", movies_amount: 8
                 %hr
                 .component.recommendations 
-                    %h2= "Empfohlene Filme"
+                    %h2= t '.movie_recommendations'
                     %turbo-frame#movie-recommendations{src: movie_recommendations_path(@movie)}
                         = render "movies/details_partials/skeletons/detailed_movies_scroller", movies_amount: 8
