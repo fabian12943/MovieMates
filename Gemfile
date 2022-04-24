@@ -72,6 +72,9 @@ gem "sidekiq-cron", "~> 1.3"
 # Detect the users preferred language, as sent by the "Accept-Language" HTTP header
 gem 'http_accept_language'
 
+# Alternative implementation to the URI implementation that is part of Ruby's standard library
+gem "addressable", "~> 2.8"
+
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
 

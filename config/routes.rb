@@ -25,6 +25,7 @@ Rails.application.routes.draw do
             get '/:id/card', to: 'people#card', as: 'person_card'
             get '/:id/most-famous-movies', to: 'people#most_famous_movies', as: 'person_most_famous_movies_scroller'
             get '/:id/filmography', to: 'people#filmography', as: 'person_filmography'
+            get '/:id/news', to: 'people#news_articles', as: 'person_news'
             get '/:id', to: 'people#details', as: 'person_details'
         end
 

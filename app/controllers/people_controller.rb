@@ -1,6 +1,6 @@
 class PeopleController < ApplicationController
 
-    before_action :set_person, only: [:details, :card, :most_famous_movies, :filmography]
+    before_action :set_person, only: [:details, :card, :most_famous_movies, :filmography, :news_articles]
 
     def details
         People::MovieCredit.create_or_update_for_person(@person)
@@ -23,6 +23,11 @@ class PeopleController < ApplicationController
 
     def filmography
         render partial: "people/details_partials/filmography", locals: { person: @person }
+    end
+
+    def news_articles
+        People::NewsArticle.create_or_update_for_person(@person)
+        render partial: "people/details_partials/news", locals: { person: @person }
     end
 
     private

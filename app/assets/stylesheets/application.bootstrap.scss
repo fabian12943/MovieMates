@@ -25,6 +25,7 @@
 @import 'components/people/filmography.scss';
 @import 'components/people/person_navbar.scss';
 @import 'components/people/twitter_feed.scss';
+@import 'components/people/news.scss';
 
 @import 'bootstrap/scss/bootstrap';
 @import 'bootstrap-icons/font/bootstrap-icons';
@@ -59,6 +60,7 @@ a:hover {
 
 p.empty {
     color: $c-text-muted;
+    font-weight: 200;
 }
 
 .input-focused {

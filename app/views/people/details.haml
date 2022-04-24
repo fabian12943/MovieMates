@@ -9,13 +9,17 @@
                 .title-block
                     %h1= @person.name
                 %nav.person-nav
-                    %button.person-nav-link.no-styling.active{onclick: "displayComponent(this, 'overview')"}
+                    %button.person-nav-link.no-styling{ onclick: "displayComponent(this, 'overview')", class: "#{'active' if params[:selection].blank? || params[:selection] == "overview"}"}
                         %h2= "Übersicht"
+                    - if @person.deathday.blank?
+                        %button.person-nav-link.no-styling{onclick: "displayComponent(this, 'news')", class: "#{'active' if params[:selection] == "news"}"}
+                            %h2= "Neuigkeiten"
                     - if @person.external_ids.twitter_id?
-                        %button.person-nav-link.no-styling{onclick: "displayComponent(this, 'twitter-feed')"}
+                        %button.person-nav-link.no-styling{onclick: "displayComponent(this, 'twitter-feed')", class: "#{'active' if params[:selection] == "twitter-feed"}"}
                             %h2= "Twitter-Feed"
                     :javascript
                         function displayComponent(button, component) {
+                            window.history.replaceState(null, null, "?selection=" + component);
                             var buttons = document.querySelectorAll(".person-nav-link");
                             for (var i = 0; i < buttons.length; i++) {
                                 buttons[i].classList.remove("active");
@@ -23,11 +27,13 @@
                             button.classList.add("active");
                             var components = document.getElementsByClassName("switchable-content")
                             for (var i = 0; i < components.length; i++) {
-                                components[i].style.display = "none";
+                                components[i].classList.add("hidden")
                             }
-                            document.getElementById(component).style.display = "block";
+                            document.getElementById(component).classList.remove("hidden")
                         }
-                #overview.switchable-content
+                #overview.switchable-content{class: "#{'hidden' unless params[:selection].blank? || params[:selection] == "overview"}"}
                     = render "people/details_partials/overview", person: @person
-                #twitter-feed.switchable-content{style: "display: none"}
+                #news.switchable-content{class: "#{'hidden' unless params[:selection] == "news"}"}
+                    %turbo-frame#person-news{src: person_news_path(@person)}
+                #twitter-feed.switchable-content{class: "#{'hidden' unless params[:selection] == "twitter-feed"}"}
                     = render "people/details_partials/twitter_feed", person: @person

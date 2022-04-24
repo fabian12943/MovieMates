@@ -1,0 +1,20 @@
+%turbo-frame{id: "person-news"}
+    - news_articles = @person.news_articles.distinct_content
+    - if news_articles.any?
+        - news_articles.each do |article|
+            .article
+                = link_to article.url, target: "_blank" do
+                    .content
+                        .article-img
+                            = image_tag article.image, onerror: 'this.src="https://via.placeholder.com/150?text=No+image"'
+                        .text
+                            %h1.header= article.title
+                            %p.description= article.description
+                            .additional-info
+                                %hr
+                                %span= article.source["name"]
+                                %span.separator= "|"
+                                %span= date_in_locale_format(article.publishedAt)
+    - else
+        %p.empty= "Es liegen keine Neuigkeiten für diese Person in deiner gewählten Sprache vor."
+        %p.empty= "(Oder es wurde die Anzahl der kostenfreien API-Anfragen für diesen Tag ausgeschöpft 😅 )"
