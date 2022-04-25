@@ -8,4 +8,4 @@
                         %turbo-frame#detailed-movie-card{src: detailed_movie_card_with_subtext_path(movie, subtext: movie_credit.character_translated), loading: "lazy"}
                             = render "movies/details_partials/skeletons/detailed_movie_card"
     - else
-        %p.empty= "Für diese Person sind keine bekannten Filme vorhanden. Vermutlich hat die Person bisher nur in Serien mitgewirkt."
+        %p.empty= t '.no_movies_message'

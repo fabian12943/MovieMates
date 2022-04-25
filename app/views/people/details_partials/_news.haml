@@ -16,5 +16,4 @@
                                 %span.separator= "|"
                                 %span= date_in_locale_format(article.publishedAt)
     - else
-        %p.empty= "Es liegen keine Neuigkeiten für diese Person in deiner gewählten Sprache vor."
-        %p.empty= "(Oder es wurde die Anzahl der kostenfreien API-Anfragen für diesen Tag ausgeschöpft 😅 )"
+        %p.empty= t '.no_news_message_html'

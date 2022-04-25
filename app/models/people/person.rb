@@ -109,12 +109,16 @@ class People::Person < ApplicationRecord
     def gender_description
         case gender
         when 0
-            "Keine Angabe"
+            I18n.t('people.person.gender_not_specified')
         when 1
-            "Weiblich"
+            I18n.t('people.person.gender_female')
         when 2
-            "Männlich"
+            I18n.t('people.person.gender_male')
         end
+    end
+
+    def department_translated
+        self[:known_for_department].gsub(/Acting/, I18n.t('people.person.acting'))
     end
 
     private

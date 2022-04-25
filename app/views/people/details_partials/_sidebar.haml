@@ -26,24 +26,24 @@
     .component.details
         - if @person.known_for_department?
             .detail
-                %h3= "Bekannt für"
-                %p= @person.known_for_department
+                %h3= t '.known_for'
+                %p= @person.department_translated
         - if @person.birthday?
             .detail
-                %h3= "Alter"
+                %h3= t '.age'
                 %p= "#{@person.age}#{" (†)" if @person.deathday?}"
             .detail
-                %h3= "Geburtstag"
+                %h3= t '.birthday'
                 %p= date_in_locale_format(@person.birthday)
         - if @person.place_of_birth?
             .detail
-                %h3= "Geburtsort"
+                %h3= t '.place_of_birth'
                 %p= @person.place_of_birth
         - if @person.deathday?
             .detail
-                %h3= "Todestag"
+                %h3= t '.deathday'
                 %p= date_in_locale_format(@person.deathday)
         - if @person.gender != 0
             .detail
-                %h3= "Geschlecht"
+                %h3= t '.gender'
                 %p= @person.gender_description

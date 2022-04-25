@@ -1,0 +1,7 @@
+de:
+  people:
+    person:
+      acting: "Schauspieler"
+      gender_not_specified: "Keine Angabe"
+      gender_male: "Männlich"
+      gender_female: "Weiblich"

@@ -1,0 +1,41 @@
+de:
+  people:
+
+    details:
+      overview: "Übersicht"
+      news: "Neuigkeiten"
+      twitter_feed: "Twitter-Feed"
+    
+    details_partials:
+
+      sidebar:
+        known_for: "Bekannt als"
+        age: "Alter"
+        birthday: "Geburtstag"
+        place_of_birth: "Geburtsort"
+        deathday: "Todestag"
+        gender: "Geschlecht"
+
+      filmography:
+        all_years: "Alle Jahre"
+        as: "als"
+        show_all: "Alle anzeigen"
+        show_less: "Weniger anzeigen"
+        no_filmography_message: "Für diese Person ist keine Filmografie vorhanden. Vermutlich hat die Person bisher nur in Serien mitgewirkt."
+
+      movies_scroller:
+        no_movies_message: "Für diese Person sind keine bekannten Filme vorhanden. Vermutlich hat die Person bisher nur in Serien mitgewirkt."
+
+      person_card:
+        show: "Anzeigen"
+
+      overview:
+        biography: "Biografie"
+        no_biography_message: "Es liegt keine Biografie in deiner gewählten Sprache vor."
+        best_known_roles: "Bekannteste Rollen"
+        filmography: "Filmografie"
+        popular_people: "Angesagte Persönlichkeiten"
+
+      news:
+        no_news_message_html: "Es liegen keine Neuigkeiten für diese Person in deiner gewählten Sprache vor.</br>
+                              ( Oder es wurde die Anzahl der kostenfreien API-Anfragen für diesen Tag ausgeschöpft 😅 )"

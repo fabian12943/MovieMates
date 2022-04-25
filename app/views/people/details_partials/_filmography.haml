@@ -8,7 +8,7 @@
                                 "data-collapse-collapse-to-height-value": "350"}
                 .form-group.small-select-form
                     %select.form-control#sortByYear{"data-filmography-target": "selectedYear", "data-action": "filmography#selectYear"}
-                        %option{selected: "selected", value: "0"}= "Alle Jahre"
+                        %option{selected: "selected", value: "0"}= t '.all_years'
                         - years_with_movies.each do |year|
                             %option= year
                 - years_with_movies.each do |year|
@@ -22,11 +22,11 @@
                                         %span.title= movie.title
                                     - if movie_credit.character_translated.present?
                                         .character-text
-                                            %span= " als "
+                                            %span= " #{t '.as'} "
                                             %span.character= movie_credit.character_translated
                 .show-more.d-none{"data-collapse-target": "unfoldMessage"}
-                    %button.no-styling{"data-action": "collapse#unfold"}= "Alle anzeigen"
+                    %button.no-styling{"data-action": "collapse#unfold"}= t '.show_all'
                 .show-less.d-none{"data-collapse-target": "collapseMessage"}
-                    %button.no-styling{"data-action": "collapse#collapse"}= "Weniger anzeigen"
+                    %button.no-styling{"data-action": "collapse#collapse"}= t '.show_less'
     - else
-        %p.empty= "Für diese Person ist keine Filmografie vorhanden. Vermutlich hat die Person bisher nur in Serien mitgewirkt."
+        %p.empty= t '.no_filmography_message'

@@ -1,0 +1,7 @@
+en:
+  people:
+    person:
+      acting: "Acting"
+      gender_not_specified: "Not specified"
+      gender_male: "Male"
+      gender_female: "Female"

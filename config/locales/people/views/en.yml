@@ -1,0 +1,41 @@
+en:
+  people:
+
+    details:
+      overview: "Overview"
+      news: "News"
+      twitter_feed: "Twitter-Feed"
+    
+    details_partials:
+
+      sidebar:
+        known_for: "Known for"
+        age: "Age"
+        birthday: "Birthday"
+        place_of_birth: "Place of Birth"
+        deathday: "Deathday"
+        gender: "Gender"
+
+      filmography:
+        all_years: "All Years"
+        as: "as"
+        show_all: "Show all"
+        show_less: "Show less"
+        no_filmography_message: "There is no filmography available for this person. Probably the person has only appeared in series before."
+
+      movies_scroller:
+        no_movies_message: "There is no filmography available for this person. Probably the person has only appeared in series before."
+
+      person_card:
+        show: "Show"
+
+      overview:
+        biography: "Biography"
+        no_biography_message: "There is no biography in your selected language."
+        best_known_roles: "Best known roles"
+        filmography: "Filmography"
+        popular_people: "Trending People"
+
+      news:
+        no_news_message_html: "There is no news for this person in your selected language.</br>
+                              ( Or the number of free API requests for that day has been exhausted 😅 )"

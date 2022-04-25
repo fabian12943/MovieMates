@@ -1,0 +1,7 @@
+fr:
+  people:
+    person:
+      acting: "Acteur"
+      gender_not_specified: "Aucune indication"
+      gender_male: "Mâle"
+      gender_female: "Femme"

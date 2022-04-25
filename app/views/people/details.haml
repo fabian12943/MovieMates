@@ -10,13 +10,13 @@
                     %h1= @person.name
                 %nav.person-nav
                     %button.person-nav-link.no-styling{ onclick: "displayComponent(this, 'overview')", class: "#{'active' if params[:selection].blank? || params[:selection] == "overview"}"}
-                        %h2= "Übersicht"
+                        %h2= t '.overview'
                     - if @person.deathday.blank?
                         %button.person-nav-link.no-styling{onclick: "displayComponent(this, 'news')", class: "#{'active' if params[:selection] == "news"}"}
-                            %h2= "Neuigkeiten"
+                            %h2= t '.news'
                     - if @person.external_ids.twitter_id?
                         %button.person-nav-link.no-styling{onclick: "displayComponent(this, 'twitter-feed')", class: "#{'active' if params[:selection] == "twitter-feed"}"}
-                            %h2= "Twitter-Feed"
+                            %h2= t '.twitter_feed'
                     :javascript
                         function displayComponent(button, component) {
                             window.history.replaceState(null, null, "?selection=" + component);
