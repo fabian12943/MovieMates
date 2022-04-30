@@ -12,6 +12,7 @@
 @import 'components/shared/c_details_card.bootstrap.scss';
 @import 'components/shared/horizontal_scroller.bootstrap.scss';
 @import 'components/shared/modal.bootstrap.scss';
+@import 'components/shared/pagination.scss';
 
 @import 'components/movies/details.bootstrap.scss';
 @import 'components/movies/movie_card.bootstrap.scss';
@@ -26,6 +27,8 @@
 @import 'components/people/person_navbar.scss';
 @import 'components/people/twitter_feed.scss';
 @import 'components/people/news.scss';
+
+@import 'components/search/results.scss';
 
 @import 'bootstrap/scss/bootstrap';
 @import 'bootstrap-icons/font/bootstrap-icons';

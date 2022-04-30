@@ -16,7 +16,7 @@
           .language-selection
             %a#languageDropdown.nav-link{"aria-expanded": "false", "data-bs-toggle": "dropdown", href: "#", role: "button"}
               = image_tag "flags/#{I18n.locale}.png", class: "img-flag"
-            %ul.dropdown-menu.dropdown-menu-end.input-focused{"aria-labelledby": "languageDropdown"}
+            %ul.dropdown-menu.dropdown-menu-start.input-focused{"aria-labelledby": "languageDropdown"}
               %h3= t '.change_language'
               %li
                 = link_to '#', target: '_top' do
@@ -26,12 +26,15 @@
                     %i.fa-solid.fa-check
               - (I18n.available_locales - [I18n.locale]).each do |locale|
                 %li
-                  = link_to url_for(locale: locale), params.merge({locale: locale, target: '_top'}) do
+                  = link_to request.params.merge(locale: locale) do
                     .language-item
                       = image_tag "flags/#{locale}.png", class: "img-flag"
                       %span= "#{full_language_name_in_locale(locale.to_s, locale.to_s)} (#{full_language_name_in_locale(locale.to_s)})"
                       %i.fa-solid.fa-check
-
+      .d-flex
+        = form_tag search_path(), method: :get do
+          %input.form-control.searchbar.icon{type: "search", placeholder: "#{t '.searchbar_placeholder'}", name: "query", value: params[:query], minlength: "3"}
+        
   :javascript
     path = window.location.href
     elements = document.getElementsByClassName('nav-text-link')

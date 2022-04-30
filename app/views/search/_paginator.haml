@@ -1,0 +1,5 @@
+%ul.pagination.justify-content-center
+    %li{class: "page-item #{'disabled' if params[:page].to_i == 1}"}
+        = link_to "#{t 'shared.paginator.previous_page'}", url_for( page: params[:page].to_i - 1, query: @query ), class: "page-link"
+    %li{class: "page-item #{'disabled' if params[:page].to_i == search.total_pages}"}
+        = link_to "#{t 'shared.paginator.next_page'}", url_for( page: params[:page].to_i + 1, query: @query ), class: "page-link"

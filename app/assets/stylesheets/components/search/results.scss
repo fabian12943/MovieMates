@@ -1,0 +1,94 @@
+.search-results .sidebar h2 {
+    font-size: 24px;
+}
+
+.search-results .sidebar .query {
+    color: $c-text-muted;
+    margin-left: 0.5rem;
+}
+
+.search-results .sidebar .query span{
+    margin-left: 3px;
+    font-size: 20px;
+}
+
+.search-results .sidebar .query-categories {
+    margin-top: 1.5rem;
+}
+
+.search-results .sidebar .query-categories .category-container{
+    color: white;
+    display: flex;
+    align-items: center;
+}
+
+.search-results .sidebar .query-categories .category-container.active{
+
+    .marker {
+        background-color: $c-highlight;
+    }
+
+    .category {
+        background-color: $c-bg-secondary;
+    }
+}
+
+.search-results .sidebar .query-categories .category-container .marker{
+    width: 8px;
+    height: 30px;
+    border-radius: 5px;
+    margin-right: 2px;
+}
+
+.search-results .sidebar .query-categories .category-container .category {
+    padding: 8px 8px;
+    margin: 5px;
+    width: 100%;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+}
+
+.search-results .sidebar .query-categories .category-container .category svg{
+    margin: 0 5px 0 5px;
+}
+
+.search-results .sidebar .query-categories .category-container .category span.name{
+    margin: 0 5px 0 5px;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+@media (max-width: 768px) {
+    .search-results .sidebar .query-categories .category-container .marker{
+        height: 24px;
+    }
+    .search-results .sidebar .query-categories .category-container .category span.name{
+        font-size: 14px;
+    }
+    .search-results .sidebar .query-categories .category-container .category {
+        padding: 4px 4px;
+    }
+}
+
+.search-results .sidebar .query-categories .category-container .category span.result-count{
+    margin-left: auto;
+    margin-right: 5px;
+    font-size: 0.9rem;
+    color: $c-text-muted;
+}
+
+.search-results .main-content .cards {
+    display: flex;
+    flex-wrap: wrap;
+    row-gap: 15px;
+    margin-bottom: 2.5rem;
+}
+
+.search-results .main-content .cards .c-card{
+    width: 140px;
+}
+
+.search-results .main-content .cards .c-card-img {
+    height: 210px;
+}

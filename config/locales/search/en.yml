@@ -1,0 +1,15 @@
+en:
+  search:
+
+    sidebar:
+      search_results: "Search Results"
+      movies: "Movies"
+      actors: "Actors"
+
+    movie_results:
+      movies: "Movies"
+      no_movies_message: "No movies were found that match your search query."
+
+    person_results:
+      actors: "Actors"
+      no_actors_message: "No actors were found that match your search query."

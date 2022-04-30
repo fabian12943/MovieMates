@@ -44,6 +44,7 @@ class Movies::Cast < ApplicationRecord
     end
 
     def character_translated
+        return "" if character.blank?
         self[:character].gsub(/\(voice\)/, "(#{I18n.t('movies.cast.voice')})")
                         .gsub(/\(Encore\)/, "(#{I18n.t('movies.cast.encore')})")
                         .gsub(/Himself/, "#{I18n.t('movies.cast.himself')}")

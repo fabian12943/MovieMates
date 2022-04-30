@@ -29,6 +29,12 @@ Rails.application.routes.draw do
             get '/:id', to: 'people#details', as: 'person_details'
         end
 
+        scope :search do
+            get '/', to: 'search#results', as: 'search'
+            get '/movie', to: "search#movie_results", as: 'movie_results'
+            get '/person', to: "search#person_results", as: 'person_results'
+        end
+
         get '/watchlists', to: 'watchlists#index'
 
     end

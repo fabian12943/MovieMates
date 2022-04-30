@@ -1,0 +1,5 @@
+en:
+  shared:
+    paginator:
+      previous_page: "Previous Page"
+      next_page: "Next Page"

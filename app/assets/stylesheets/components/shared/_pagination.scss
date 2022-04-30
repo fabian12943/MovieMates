@@ -1,0 +1,22 @@
+.pagination .page-link {
+    background-color: $c-bg-secondary;
+    border: 2px solid $c-bg-main;
+    min-width: 150px;
+    text-align: center;
+
+    &:hover {
+        background-color: $c-highlight;
+        border: 2px solid $c-bg-main;
+    }
+
+    &:focus {
+        background-color: $c-highlight;
+        box-shadow: none;
+    }
+}
+
+.pagination .page-item.disabled > .page-link {
+    color : $c-text-muted;
+    border-color: $c-bg-main;
+    background-color: $c-bg-secondary;
+}

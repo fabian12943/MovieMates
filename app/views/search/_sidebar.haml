@@ -1,0 +1,20 @@
+.sidebar
+    %h2.title-block= t '.search_results'
+    .query
+        %i.fa-solid.fa-quote-left.fa-pull-left
+        %span= @query
+        .query-categories
+            = link_to movie_results_path(query: @query, page: 1) do
+                .category-container{ class: "#{'active' if controller.action_name == "movie_results"}" }
+                    .marker
+                    .category
+                        %i.fa-solid.fa-clapperboard
+                        %span.name= t '.movies'
+                        %span.result-count= @movie_search.total_results
+            = link_to person_results_path(query: @query, page: 1) do
+                .category-container{ class: "#{'active' if controller.action_name == "person_results"}" }
+                    .marker
+                    .category 
+                        %i.fa-solid.fa-user-astronaut
+                        %span.name= t '.actors'
+                        %span.result-count= @person_search.total_results
