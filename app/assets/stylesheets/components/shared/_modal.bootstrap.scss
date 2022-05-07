@@ -11,16 +11,24 @@
     margin: 0 0;
 }
 
-.c-modal .modal-header .close-modal {
+.c-modal .modal-header .close-modal, .c-modal .modal-header .back-modal {
     color: $c-text-main;
     position: absolute;
-    right: 20px;
     top: 15px;
     font-size: 22px;
+
+    &:hover {
+        color: $c-highlight;
+    }
 }
 
-.c-modal .modal-header .close-modal:hover {
-    color: $c-highlight;
+.c-modal .modal-header .close-modal {
+    right: 20px;
+}
+
+.c-modal .modal-header .back-modal {
+    left: 20px;
+    font-size: 18px;
 }
 
 .c-modal .modal-body{

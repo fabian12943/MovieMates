@@ -1,3 +1,5 @@
+= render "shared/authentication/overview"
+
 %nav.navbar.fixed-top.navbar-expand
   .container
     .collapse.navbar-collapse
@@ -31,10 +33,16 @@
                       = image_tag "flags/#{locale}.png", class: "img-flag"
                       %span= "#{full_language_name_in_locale(locale.to_s, locale.to_s)} (#{full_language_name_in_locale(locale.to_s)})"
                       %i.fa-solid.fa-check
-      .d-flex
+      %li.nav-item
         = form_tag search_path(), method: :get do
           %input.form-control.searchbar.icon{type: "search", placeholder: "#{t '.searchbar_placeholder'}", name: "query", value: params[:query], minlength: "3"}
-        
+      %li.nav-item
+        - if user_logged_in?
+          = link_to t('.sign_out'), destroy_user_session_path, class: "btn c-btn sign-out-btn", data: {turbo_method: :delete}
+        - else
+          = link_to "#authentication-overview", class: "btn c-btn sign-in-btn", "data-bs-toggle": "modal", role: "button" do
+            = t '.sign_in'
+
   :javascript
     path = window.location.href
     elements = document.getElementsByClassName('nav-text-link')

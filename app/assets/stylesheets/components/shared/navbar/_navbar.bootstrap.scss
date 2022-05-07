@@ -36,4 +36,10 @@ $navbar-height: 62px;
   border-bottom-color: $c-highlight;
 }
 
+.navbar .sign-in-btn {
+  background-color: $c-highlight;
+}
 
+.navbar .sign-out-btn {
+  background-color: $c-warning;
+}

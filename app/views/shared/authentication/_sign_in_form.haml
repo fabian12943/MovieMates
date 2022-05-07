@@ -1,0 +1,16 @@
+= form_with(model: User.new, url: sign_in_path, scope: :session, id: "login") do |f|
+  .form-group
+    - error ||= false
+    - if error
+      .form-error
+        = t '.sign_in_failed_msg'
+    .form
+      .form-field
+        = f.text_field :email, autocomplete: "off", class: "form-field__input", placeholder: " ", type: "text", id: "email"
+        = f.label :email, class: "form-field__label", for: "email"
+    .form
+      .form-field
+        = f.password_field :password, autocomplete: "off", class: "form-field__input", placeholder: " ", type: "password", id: "password"
+        = f.label :password, class: "form-field__label", for: "password"
+    .actions 
+      = f.submit t('.sign_in'), class: "btn c-btn btn-form"

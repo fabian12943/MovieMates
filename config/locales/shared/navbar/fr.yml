@@ -2,8 +2,10 @@ fr:
   shared:
 
     navbar:
-      movies: "Films"
-      watchlists: "Listes de Veille"
-      seen_movies: "Films Vus"
-      change_language: "Changer de langue"
-      searchbar_placeholder: "Recherche de films ou d'acteurs"
+      movies: Films
+      watchlists: Listes de Veille
+      seen_movies: Films Vus
+      change_language: Changer de langue
+      searchbar_placeholder: Recherche de films ou d'acteurs
+      sign_in: Se connecter
+      sign_out: Se déconnecter

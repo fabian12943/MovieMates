@@ -2,6 +2,10 @@ Rails.application.routes.draw do
     scope "(:locale)", locale: /#{I18n.available_locales.join('|')}/ do
         root to: redirect('/movies')
 
+        post 'sign_up', to: 'users#create'
+        post 'sign_in', to: 'sessions#create'
+        delete 'destroy_user_session', to: 'sessions#destroy'
+
         scope :movies do
             get '/', to: 'movies#index', as: 'movies'
             get '/popular/carousel', to: 'movies#popular_movies_carousel', as: 'movie_carousel'

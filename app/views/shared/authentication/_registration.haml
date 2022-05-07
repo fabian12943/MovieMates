@@ -1,0 +1,12 @@
+#authentication-registration.modal.c-modal.authentication-modal{ "aria-hidden": true, "aria-labelledby": "authentication-registration", tabindex: -1 }
+  .modal-dialog.modal-dialog-centered
+    .modal-content
+      .modal-header
+        %a.float-start{"data-bs-target": "#authentication-overview", "data-bs-toggle": "modal", type: "button"}
+          %span.fa-solid.fa-chevron-left.back-modal
+        %h1= t '.create_account'
+        %a.float-end{"aria-label" => "Close", "data-bs-dismiss" => "modal", :type => "button"}
+          %span.close-icon.fa-solid.fa-xmark.close-modal
+      .modal-body
+        = render partial: "shared/authentication/sign_up_form", locals: { user: User.new}
+        

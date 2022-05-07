@@ -1,0 +1,35 @@
+= render partial: "shared/authentication/registration", locals: {user: User.new}
+= render partial: "shared/authentication/login"
+
+#authentication-overview.modal.c-modal.authentication-modal{ "aria-hidden": true, "aria-labelledby": "authentication-overview", tabindex: -1 }
+  .modal-dialog.modal-dialog-centered
+    .modal-content
+      .modal-header
+        %h1= t '.your_movie_mates_account'
+        %a.float-end{"aria-label" => "Close", "data-bs-dismiss" => "modal", :type => "button"}
+          %span.close-icon.fa-solid.fa-xmark.close-modal
+      .modal-body
+        .options
+          .row.g-2
+            .col-12
+              = link_to "#authentication-login", class: "btn option", "data-bs-target": "#authentication-login", "data-bs-toggle": "modal", role: "button" do
+                %i.fa-solid.fa-user-check.fa-2xl
+                .title-box
+                  %span.title= t '.sign_in'
+                %i.fa-solid.fa-chevron-right
+            .col-12
+              = link_to "#authentication-registration", class: "btn option", "data-bs-target": "#authentication-registration", "data-bs-toggle": "modal", role: "button" do
+                %i.fa-solid.fa-user-plus.fa-2xl
+                .title-box
+                  %span.title= t '.create_account'
+                %i.fa-solid.fa-chevron-right
+            .col-12.col-md-6
+              = link_to "#authentication-forgot-password", class: "btn option muted-option", "data-bs-target": "#authentication-forgot-password", "data-bs-toggle": "modal", role: "button" do
+                %i.fa-solid.fa-user-lock.fa-xl
+                .title-box
+                  %span.title= t '.forgot_password'
+            .col-12.col-md-6
+              = link_to "#authentication-resend-confirmation", class: "btn option muted-option", "data-bs-target": "#authentication-resend-confirmation", "data-bs-toggle": "modal", role: "button" do
+                %i.fa-solid.fa-user-shield.fa-xl
+                .title-box
+                  %span.title= t '.resend_confirmation'

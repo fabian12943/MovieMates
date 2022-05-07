@@ -1,0 +1,25 @@
+de:
+  shared:
+    authentication:
+
+      overview:
+        your_movie_mates_account: Dein MovieMates-Account
+        sign_in: Einloggen
+        create_account: Account anlegen
+        forgot_password: Passwort vergessen
+        resend_confirmation: Aktivierungslink erneut senden
+
+      registration:
+        create_account: Account anlegen
+
+      login:
+        sign_in: Einloggen
+
+      sign_in_form:
+        sign_in_failed_msg: Der Login war nicht erfolgreich. Bitte prüfe deine Eingaben und versuche es erneut.
+        sign_in: Einloggen
+
+      sign_up_form:
+        sign_up_failed_msg: Die Registrierung war nicht erfolgreich. Bitte prüfe deine Eingaben und versuche es erneut.
+        confirm_password: Passwort bestätigen
+        create_account: Account anlegen

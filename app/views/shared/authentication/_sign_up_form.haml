@@ -1,0 +1,38 @@
+= form_with(model: user, url: sign_up_path, id: dom_id(user)) do |f|
+    .form-group
+        - if user.errors.any?
+            .form-error= t '.sign_up_failed_msg'
+        .form
+            .form-field
+                = f.text_field :username, autocomplete: "off", class: "form-field__input", placeholder: " ", type: "text", id: "username"
+                = f.label :username, class: "form-field__label", for: "username"
+            - if user.errors.full_messages_for(:username).any?
+                .form-field__error 
+                    %i.fa-solid.fa-exclamation
+                    = user.errors.full_messages_for(:username).first
+        .form
+            .form-field
+                = f.text_field :email, autocomplete: "off", class: "form-field__input", placeholder: " ", type: "text", id: "email"
+                = f.label :email, class: "form-field__label", for: "email"
+            - if user.errors.full_messages_for(:email).any?
+                .form-field__error 
+                    %i.fa-solid.fa-exclamation
+                    = user.errors.full_messages_for(:email).first
+        .form
+            .form-field
+                = f.password_field :password, autocomplete: "off", class: "form-field__input", placeholder: " ", type: "password", id: "password"
+                = f.label :password, class: "form-field__label", for: "password"
+            - if user.errors.full_messages_for(:password).any?
+                .form-field__error 
+                    %i.fa-solid.fa-exclamation
+                    = user.errors.full_messages_for(:password).first
+        .form
+            .form-field
+                = f.password_field :password_confirmation, autocomplete: "off", class: "form-field__input", placeholder: " ", type: "password", id: "password_confirmation"
+                = f.label :password_confirmation, t('.confirm_password') , class: "form-field__label", for: "password_confirmation"
+            - if user.errors.full_messages_for(:password_confirmation).any?
+                .form-field__error 
+                    %i.fa-solid.fa-exclamation
+                    = user.errors.full_messages_for(:password_confirmation).first
+        .actions
+            = f.submit t('.create_account'), class: "btn c-btn btn-form"

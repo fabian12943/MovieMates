@@ -1,0 +1,8 @@
+fr:
+  activerecord:
+    attributes:
+      user:
+        email: Addresse E-Mail
+        username: Nom d'Utilisateur
+        password: Mot de Passe
+        password_confirmation: Confirmation du Mot de Passe
