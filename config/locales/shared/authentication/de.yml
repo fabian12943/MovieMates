@@ -26,3 +26,13 @@ de:
 
       omniauth_links:
         sign_in_with_github: Mit GitHub anmelden
+
+  authentication:
+    omniauth:
+      errors:
+        sign_in_failed: Anmeldung war nicht erfolgreich.
+        email_taken:  Für die E-Mail-Adresse %{email}, die der Provider %{provider} zur Anmeldung nutzen möchte existiert bereits ein Account. 
+                      Bitte verwende diesen um dich anzumelden. Falls du das Passwort vergessen hast, kannst du dieses jederzeit zurücksetzen.
+    notices:
+      log_out_successful: Du wurdest erfolgreich ausgeloggt.
+      see_you_soon: Bis zum nächsten Mal!

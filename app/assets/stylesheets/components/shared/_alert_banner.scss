@@ -1,0 +1,28 @@
+.alert.alert-banner {
+    margin: 1rem 0;
+    border-radius: 12px;
+
+    &.alert-error {
+        background-color: $c-warning;
+    }
+
+    &.alert-notice {
+        background-color: $c-bg-secondary;
+    }
+}
+
+.alert-banner .alert-message {
+    line-height: 1.2;
+}
+
+.alert-banner .c-btn-close {
+    color: $c-text-main;
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    font-size: 22px;
+
+    &:hover {
+        color: $c-text-muted;
+    }
+}

@@ -26,3 +26,14 @@ fr:
 
       omniauth_links:
         sign_in_with_github: S'identifier via GitHub
+
+  authentication:
+    omniauth:
+      errors:
+        sign_in_failed: L'inscription a échoué
+        email_taken:  Un compte existe déjà pour l'adresse e-mail %{email} que le fournisseur d'accès %{provider} 
+                      souhaite utiliser pour l'inscription. Veuillez l'utiliser pour vous connecter. Si tu as oublié 
+                      ton mot de passe, tu peux le réinitialiser à tout moment.
+    notices:
+      log_out_successful: Tu as été déconnecté avec succès.
+      see_you_soon: A la prochaine fois!

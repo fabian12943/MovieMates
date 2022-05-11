@@ -1,0 +1,6 @@
+.container 
+    .alert.alert-banner.alert-dismissible.fade.show{role: alert, class: "alert-#{msg_type}"}
+        .alert-message
+            = message.html_safe
+        %a.float-end.c-btn-close{"aria-label" => "Close", "data-bs-dismiss": "alert", type: "button"}
+            %span.close-icon.fa-solid.fa-xmark

@@ -5,7 +5,7 @@ class UsersController < ApplicationController
         respond_to do |format|
             if @user.save
                 session[:user_id] = @user.id
-                format.html { redirect_to movies_path(format: :html) }
+                format.html { redirect_to(request.referer + ".html" || movies_path(format: :html)) }
             else
                 format.turbo_stream do 
                     render turbo_stream: turbo_stream.replace("new_user", partial: "shared/authentication/sign_up_form", locals: { user: @user })

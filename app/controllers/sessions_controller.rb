@@ -16,23 +16,25 @@ class SessionsController < ApplicationController
 
     def omniauth
       user_info = request.env['omniauth.auth']
+      I18n.locale = request.env['omniauth.params']['locale']
       user = User.from_omniauth(user_info)
       user.skip_password_validation = true
       if user.valid?
         session[:user_id] = user.id
         redirect_to request.env['omniauth.origin']
       else
-        notice_msg = "Anmeldung war nicht erfolgreich."
+        error_msg = "<strong>#{I18n.t("authentication.omniauth.errors.sign_in_failed")}</strong> "
         if user.errors.added? :email, :taken, value: user.email
-          notice_msg += " Es ist bereits ein Account mit dieser Email-Adresse registriert. Bitte verwende diese um dich anzumelden."
+          error_msg += I18n.t("authentication.omniauth.errors.email_taken", provider: user_info.provider.capitalize, email: user.email)
         end
+        flash[:error] = error_msg
+        redirect_to request.env['omniauth.origin']
       end
-      redirect_to request.env['omniauth.origin'], notice: notice_msg if notice_msg
     end
   
     def destroy
       session[:user_id] = nil
-      redirect_to request.referer || root_path
+      redirect_to request.referer || root_path, notice: "<strong>#{I18n.t("authentication.notices.log_out_successful")}</strong> #{I18n.t("authentication.notices.see_you_soon")}"
     end
   
     private 

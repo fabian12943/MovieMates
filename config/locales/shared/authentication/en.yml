@@ -26,3 +26,14 @@ en:
 
       omniauth_links:
         sign_in_with_github: Sign in with GitHub
+
+  authentication:
+    omniauth:
+      errors:
+        sign_in_failed: The login was not successful.
+        email_taken:  An account already exists for the email address %{email} that the provider %{provider} 
+                      intends to use for registration. Please use this account to log in. If you have forgotten 
+                      your password, you can reset it at any time.
+    notices:
+      log_out_successful: You have been logged out successfully.
+      see_you_soon: Until next time!

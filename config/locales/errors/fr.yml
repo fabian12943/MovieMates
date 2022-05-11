@@ -1,5 +1,0 @@
-fr:
-  activerecord:
-    errors:
-      messages:
-        invalid_email: n'est pas valide

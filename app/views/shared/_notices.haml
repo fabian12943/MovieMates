@@ -1,0 +1,5 @@
+#flash
+    - flash.each do |msg_type, message|
+        - if message.present?
+            = render partial: "shared/alert_banner", locals: { msg_type: msg_type, message: message }
+            - flash[msg_type] = nil # set to nil in case the flash was set without a following redirect
