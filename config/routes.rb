@@ -4,7 +4,7 @@ Rails.application.routes.draw do
 
         post 'sign_up', to: 'users#create'
         post 'sign_in', to: 'sessions#create'
-        delete 'destroy_user_session', to: 'sessions#destroy'
+        delete 'logout', to: 'sessions#destroy'
 
         scope :movies do
             get '/', to: 'movies#index', as: 'movies'
@@ -42,6 +42,8 @@ Rails.application.routes.draw do
         get '/watchlists', to: 'watchlists#index'
 
     end
+    
+    get 'auth/:provider/callback', to: 'sessions#omniauth'
 
     if defined?(Sidekiq) && defined?(Sidekiq::Web)
         mount Sidekiq::Web => '/sidekiq'

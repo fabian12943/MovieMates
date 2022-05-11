@@ -1,0 +1,4 @@
+= form_tag('/auth/github', method: 'post', data: {turbo: false}) do
+  %button.btn.c-btn.btn-form.btn-omniauth-login{type: 'submit'}
+    %i.fa-brands.fa-github.fa-lg
+    %span= t '.sign_in_with_github'

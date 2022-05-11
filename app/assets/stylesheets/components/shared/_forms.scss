@@ -71,7 +71,17 @@
 .btn.c-btn.btn-form {
     margin: auto;
     display: block;
-    background-color: $c-highlight;
     min-width: fit-content;
     width: 50%;
+    display: flex;
+    justify-content: center;
+
+    & svg {
+        display: flex;
+        align-self: center;
+    }
+
+    & svg + span {
+        margin-left: 0.7rem;
+    }
 }

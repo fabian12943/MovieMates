@@ -9,4 +9,5 @@
           %span.close-icon.fa-solid.fa-xmark.close-modal
       .modal-body
         = render partial: "shared/authentication/sign_up_form", locals: { user: User.new}
-        
+        %hr
+        = render partial: "shared/authentication/omniauth_links"

@@ -75,6 +75,16 @@ gem "addressable", "~> 2.8"
 # Use Active Model has_secure_password [https://guides.rubyonrails.org/active_model_basics.html#securepassword]
 gem "bcrypt", "~> 3.1"
 
+# OmniAuth is a flexible authentication system utilizing Rack middleware
+gem 'omniauth'
+gem "omniauth-rails_csrf_protection"
+
+# GitHub strategy for OmniAuth
+gem 'omniauth-github', github: 'omniauth/omniauth-github', branch: 'master'
+
+# Rack middleware to redirect legacy domains
+gem 'rack-host-redirect'
+
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
 

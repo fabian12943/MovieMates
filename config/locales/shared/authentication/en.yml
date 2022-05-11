@@ -23,3 +23,6 @@ en:
         sign_up_failed_msg: The registration was not successful. Please check your input and try again.
         confirm_password: Confirm Password
         create_account: Create Account
+
+      omniauth_links:
+        sign_in_with_github: Sign in with GitHub

@@ -35,4 +35,6 @@
                     %i.fa-solid.fa-exclamation
                     = user.errors.full_messages_for(:password_confirmation).first
         .actions
-            = f.submit t('.create_account'), class: "btn c-btn btn-form"
+            = f.button :submit, class: "btn c-btn btn-form" do
+                %i.fa-solid.fa-user-plus.fa-lg
+                %span= t('.create_account')

@@ -8,7 +8,7 @@
 }
 
 .authentication-modal .modal-body {
-    margin: 0 0.5rem 1rem 0.5rem;
+    margin: 0 2rem 1rem 2rem;
 }
 
 .authentication-modal .modal-body .options .row {
@@ -60,4 +60,16 @@
 
 .authentication-modal .form-group .actions {
     margin-top: 2.5rem;
+}
+
+.authentication-modal .form-group .actions .btn {
+    background-color: $c-highlight;
+}
+
+.authentication-modal hr {
+    margin: 2rem 0;
+}
+
+.authentication-modal .btn-omniauth-login {
+    background-color: $c-bg-secondary;
 }

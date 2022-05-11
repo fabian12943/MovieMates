@@ -13,4 +13,6 @@
         = f.password_field :password, autocomplete: "off", class: "form-field__input", placeholder: " ", type: "password", id: "password"
         = f.label :password, class: "form-field__label", for: "password"
     .actions 
-      = f.submit t('.sign_in'), class: "btn c-btn btn-form"
+      = f.button :submit, class: "btn c-btn btn-form" do
+        %i.fa-solid.fa-user-check.fa-lg
+        %span= t('.sign_in')

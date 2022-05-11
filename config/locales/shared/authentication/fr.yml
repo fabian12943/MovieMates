@@ -23,3 +23,6 @@ fr:
         sign_up_failed_msg: L'enregistrement n'a pas réussi. Veuillez vérifier vos saisies et réessayer.
         confirm_password: Confirmer le mot de passe
         create_account: Créer un compte
+
+      omniauth_links:
+        sign_in_with_github: S'identifier via GitHub

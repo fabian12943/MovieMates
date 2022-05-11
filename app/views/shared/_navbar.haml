@@ -38,10 +38,13 @@
           %input.form-control.searchbar.icon{type: "search", placeholder: "#{t '.searchbar_placeholder'}", name: "query", value: params[:query], minlength: "3"}
       %li.nav-item
         - if user_logged_in?
-          = link_to t('.sign_out'), destroy_user_session_path, class: "btn c-btn sign-out-btn", data: {turbo_method: :delete}
+          = link_to logout_path, class: "btn c-btn sign-out-btn", data: {turbo_method: :delete} do
+            %i.fa-solid.fa-arrow-right-from-bracket
+            %span= t '.sign_out'
         - else
           = link_to "#authentication-overview", class: "btn c-btn sign-in-btn", "data-bs-toggle": "modal", role: "button" do
-            = t '.sign_in'
+            %i.fa-solid.fa-arrow-right-to-bracket
+            %span= t '.sign_in'
 
   :javascript
     path = window.location.href
