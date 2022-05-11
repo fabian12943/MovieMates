@@ -96,4 +96,6 @@ Rails.application.configure do
     'movie-mates-app.herokuapp.com' => 'movie-mates.schwarz-fabian.de'
   }
 
+  config.action_mailer.default_url_options = { host: 'movie-mates.schwarz-fabian.de', protocol: 'https://' }
+
 end

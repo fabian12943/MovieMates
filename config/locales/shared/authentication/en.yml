@@ -37,3 +37,11 @@ en:
     notices:
       log_out_successful: You have been logged out successfully.
       see_you_soon: Until next time!
+      confirm_account: Please confirm your registration!
+      confirm_account_instruction: Within the next 24 hours, click the link in the email you just received to activate your account.
+      confirmation_successful: Confirmation successful!
+      confirmation_successful_msg: You have been automatically logged in and can now use your account. Enjoy!
+
+    errors:
+      confirmation_link_invalid: Confirmation link is expired or invalid.
+      confirmation_link_invalid_reclaim: Please request another one.

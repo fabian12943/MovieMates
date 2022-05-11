@@ -100,6 +100,9 @@ group :development do
   # Solargraph is a language server that provides intellisense, code completion, and inline documentation for Ruby
   gem "solargraph", "~> 0.44.3"
 
+  # Preview email in the browser instead of sending it
+  gem 'letter_opener'
+
   # Add speed badges [https://github.com/MiniProfiler/rack-mini-profiler]
   # gem "rack-mini-profiler"
 

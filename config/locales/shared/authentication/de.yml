@@ -36,3 +36,11 @@ de:
     notices:
       log_out_successful: Du wurdest erfolgreich ausgeloggt.
       see_you_soon: Bis zum nächsten Mal!
+      confirm_account: Bitte bestätige deine Registrierung!
+      confirm_account_instruction: Klicke innerhalb der nächsten 24 Stunden auf den Link in der E-Mail, die dir gerade gesendet wurde, um dein Konto zu aktivieren.
+      confirmation_successful: Bestätigung erfolgreich!
+      confirmation_successful_msg: Du wurdest automatisch eingeloggt und kannst dein Konto nun verwenden. Viel Spaß!
+
+    errors:
+      confirmation_link_invalid: Bestätigungs-Link ist abgelaufen oder ungültig.
+      confirmation_link_invalid_reclaim: Bitte fordere einen neuen an.

@@ -1,0 +1,16 @@
+en:
+  mailer:
+    greeting: Cheers,
+    greeting_sender: the MovieMates-Team
+    reason_for_mail_msg: You are receiving this email because you are a registered user on MovieMates.
+    reply_msg: If you have any questions or problems, please feel free to reply to this email.
+
+  notification_mailer:
+    user_signup_confirmation:
+      subject: Welcome to MovieMates!
+      salutation: Hello %{name},
+      confirm_account_msg:  we are excited to have you on board! Please click on the link below to confirm 
+                            your account and get access to all the cool features of MovieMates.
+      confirm_account_btn: Confirm Account
+      link_expire_msg:  Please note that this link will expire in 24 hours. If your link has expired, you can 
+                        always request a new one.

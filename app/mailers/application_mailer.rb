@@ -1,4 +1,4 @@
 class ApplicationMailer < ActionMailer::Base
-  default from: "from@example.com"
+  default from: "Movie-Mates <#{Rails.application.credentials.sendgrid.email}>"
   layout "mailer"
 end

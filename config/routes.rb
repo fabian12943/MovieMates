@@ -6,6 +6,8 @@ Rails.application.routes.draw do
         post 'sign_in', to: 'sessions#create'
         delete 'logout', to: 'sessions#destroy'
 
+        get 'confirm_user', to: 'users#confirm', as: 'confirm_user'
+
         scope :movies do
             get '/', to: 'movies#index', as: 'movies'
             get '/popular/carousel', to: 'movies#popular_movies_carousel', as: 'movie_carousel'

@@ -2,6 +2,7 @@ class ApplicationController < ActionController::Base
     around_action :set_locale
     before_action :load_footer_resources, :set_country
     helper_method :current_user, :user_logged_in?
+    add_flash_types :error
 
     def current_user
         @current_user ||= User.find_by(id: session[:user_id]) if session[:user_id]

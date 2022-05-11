@@ -37,3 +37,11 @@ fr:
     notices:
       log_out_successful: Tu as été déconnecté avec succès.
       see_you_soon: A la prochaine fois!
+      confirm_account: Confirme ton inscription!
+      confirm_account_instruction: Clique dans les 24 heures sur le lien figurant dans l'e-mail qui vient de t'être envoyé pour activer ton compte.
+      confirmation_successful: Confirmation réussie!
+      confirmation_successful_msg: Tu t'es automatiquement connecté et tu peux maintenant utiliser ton compte. Amuse-toi bien!
+
+    errors:
+      confirmation_link_invalid: Le lien de confirmation a expiré ou n'est pas valide.
+      confirmation_link_invalid_reclaim: Veuillez en demander un nouveau.
