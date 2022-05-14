@@ -15,9 +15,18 @@ class UsersController < ApplicationController
         end
     end
 
+    def resend_confirmation_link
+        @user = User.find_by_email(user_params[:email])
+        if @user.present? && @user.confirmed_at.nil?
+            NotificationMailer.user_resend_confirmation_link(@user).deliver
+        end
+        flash[:notice] = I18n.t('authentication.notices.resend_confirmation_msg')
+        redirect_to(request.referer + ".html" || movies_path(format: :html))
+    end
+
     def confirm
-        @user = User.find_signed(params[:token], purpose: "signup_confirmation")
-        if @user.present?
+        @user = User.find_signed(params[:token], purpose: "account_confirmation")
+        if @user.present? && @user.confirmed_at.nil?
             @user.update_attribute(:confirmed_at, Time.now)
             @user.skip_password_validation = true
             session[:user_id] = @user.id

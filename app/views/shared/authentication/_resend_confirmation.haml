@@ -1,0 +1,24 @@
+#authentication-resend-confirmation.modal.c-modal.authentication-modal{ "aria-hidden": true, "aria-labelledby": "authentication-resend-confirmation", tabindex: -1 }
+  .modal-dialog.modal-dialog-centered
+    .modal-content
+      .modal-header
+        %a.float-start{"data-bs-target": "#authentication-overview", "data-bs-toggle": "modal", type: "button"}
+          %span.fa-solid.fa-chevron-left.back-modal
+        %h1= t '.resend_confirmation'
+        %a.float-end{"aria-label" => "Close", "data-bs-dismiss" => "modal", :type => "button"}
+          %span.close-icon.fa-solid.fa-xmark.close-modal
+      .modal-body
+        = form_with(model: User.new, url: resend_confirmation_link_path) do |f|
+          .form-group
+            .form
+              .form-field
+                = f.text_field :email, autocomplete: "off", class: "form-field__input", placeholder: " ", type: "text", id: "email"
+                = f.label :email, class: "form-field__label", for: "email"
+            .actions 
+              = f.button :submit, class: "btn c-btn btn-form" do
+                %i.fa-solid.fa-user-shield.fa-lg
+                %span= t '.send_link'
+        %hr
+        .instructions
+          %i.fa-solid.fa-envelope
+          %p= t '.instructions_msg'

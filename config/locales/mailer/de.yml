@@ -14,3 +14,13 @@ de:
       confirm_account_btn: Konto bestätigen
       link_expire_msg:  Bitte beachte, dass dieser Link in 24 Stunden abläuft. Wenn dein Link abgelaufen ist, 
                         kannst du jederzeit einen neuen anfordern.
+
+    user_resend_confirmation_link:
+      subject: Dein neuer Aktivierungslink
+      salutation: Hallo %{name},
+      confirm_account_msg: du hast vor kurzem einen neuen Link zur Aktivierung deines Kontos angefordert. Bitte klicke auf
+                           den unten stehenden Link, um dein Konto zu bestätigen und Zugang zu allen coolen Funktionen von 
+                           MovieMates zu erhalten.
+      confirm_account_btn: Konto bestätigen
+      link_expire_msg:  Bitte beachte, dass dieser Link in 24 Stunden abläuft. Wenn dein Link abgelaufen ist, 
+                        kannst du jederzeit einen neuen anfordern.

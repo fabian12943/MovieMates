@@ -7,7 +7,7 @@ en:
         sign_in: Sign in
         create_account: Create Account
         forgot_password: Forgot Password
-        resend_confirmation: Resend Confirmation
+        resend_confirmation: Resend Activation Link
 
       registration:
         create_account: Create Account
@@ -27,6 +27,14 @@ en:
       omniauth_links:
         sign_in_with_github: Sign in with GitHub
 
+      resend_confirmation:
+        resend_confirmation: Resend Activation Link
+        send_link: Send Activation Link
+        instructions_msg: If you have already created a MovieMates account in the past, but have not yet 
+                          activated it, you can request the activation link again here. Just enter the email 
+                          address of your account in the field above and you will receive the activation link 
+                          in a few minutes!
+
   authentication:
     omniauth:
       errors:
@@ -41,6 +49,7 @@ en:
       confirm_account_instruction: Within the next 24 hours, click the link in the email you just received to activate your account.
       confirmation_successful: Confirmation successful!
       confirmation_successful_msg: You have been automatically logged in and can now use your account. Enjoy!
+      resend_confirmation_msg: If an account exists for this email address and it has not been activated yet, you will receive an email with a new activation link shortly.
 
     errors:
       confirmation_link_invalid: Confirmation link is expired or invalid.

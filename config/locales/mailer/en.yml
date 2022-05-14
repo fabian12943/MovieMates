@@ -14,3 +14,12 @@ en:
       confirm_account_btn: Confirm Account
       link_expire_msg:  Please note that this link will expire in 24 hours. If your link has expired, you can 
                         always request a new one.
+
+    user_resend_confirmation_link:
+      subject: Your new activation link
+      salutation: Hello %{name},
+      confirm_account_msg: you recently requested a new link to activate your account. Please click on the link below to confirm 
+                           your account and get access to all the cool features of MovieMates.
+      confirm_account_btn: Confirm Account
+      link_expire_msg:  Please note that this link will expire in 24 hours. If your link has expired, you can 
+                        always request a new one.

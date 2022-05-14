@@ -9,8 +9,17 @@ fr:
     user_signup_confirmation:
       subject: Bienvenue à MovieMates!
       salutation: Bienvenue %{name},
-      confirm_account_msg:  nous sommes ravis de vous compter parmi nous ! Veuillez cliquer sur le lien ci-dessous 
+      confirm_account_msg:  nous sommes ravis de vous compter parmi nous! Veuillez cliquer sur le lien ci-dessous 
                             pour confirmer votre compte et avoir accès à toutes les fonctionnalités de MovieMates.
+      confirm_account_btn: Confirmer le compte
+      link_expire_msg:  Veuillez noter que ce lien expirera dans 24 heures. Si votre lien a expiré, vous pouvez 
+                        toujours demander un nouveau lien.
+
+    user_resend_confirmation_link:
+      subject: Ton nouveau lien d'activation
+      salutation: Bienvenue %{name},
+      confirm_account_msg: tu as récemment demandé un nouveau lien pour activer ton compte. Veuillez cliquer 
+                           sur le lien ci-dessous pour confirmer votre compte et avoir accès à toutes les fonctionnalités de MovieMates.
       confirm_account_btn: Confirmer le compte
       link_expire_msg:  Veuillez noter que ce lien expirera dans 24 heures. Si votre lien a expiré, vous pouvez 
                         toujours demander un nouveau lien.

@@ -7,6 +7,7 @@ Rails.application.routes.draw do
         delete 'logout', to: 'sessions#destroy'
 
         get 'confirm_user', to: 'users#confirm', as: 'confirm_user'
+        post 'resend_confirmation_link', to: 'users#resend_confirmation_link', as: 'resend_confirmation_link'
 
         scope :movies do
             get '/', to: 'movies#index', as: 'movies'

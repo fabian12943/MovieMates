@@ -27,6 +27,14 @@ fr:
       omniauth_links:
         sign_in_with_github: S'identifier via GitHub
 
+      resend_confirmation:
+        resend_confirmation: Envoyer à nouveau le lien d'activation
+        send_link: Envoyer le lien d'activation
+        instructions_msg: Si tu as déjà créé un compte MovieMates dans le passé, mais que tu ne l'as pas encore 
+                          activé, tu peux demander le lien d'activation ici. Il te suffit d'entrer l'adresse e-mail 
+                          de ton compte dans le champ ci-dessus et tu recevras le lien d'activation en quelques 
+                          minutes. dans les minutes qui suivent!
+
   authentication:
     omniauth:
       errors:
@@ -41,6 +49,7 @@ fr:
       confirm_account_instruction: Clique dans les 24 heures sur le lien figurant dans l'e-mail qui vient de t'être envoyé pour activer ton compte.
       confirmation_successful: Confirmation réussie!
       confirmation_successful_msg: Tu t'es automatiquement connecté et tu peux maintenant utiliser ton compte. Amuse-toi bien!
+      resend_confirmation_msg: Si un compte existe pour cette adresse e-mail et qu'il n'a pas encore été activé, tu recevras sous peu un e-mail avec un nouveau lien d'activation.
 
     errors:
       confirmation_link_invalid: Le lien de confirmation a expiré ou n'est pas valide.

@@ -73,3 +73,22 @@
 .authentication-modal .btn-omniauth-login {
     background-color: $c-bg-secondary;
 }
+
+.authentication-modal .instructions {
+    color: $c-text-muted;
+
+    & p {
+        text-align: justify;
+    }
+
+    & svg {
+        display: block;
+        margin: auto;
+        height: 6rem;
+        width: 6rem;
+    }
+
+    & svg + p {
+        margin-top: 1.5rem;
+    }
+}

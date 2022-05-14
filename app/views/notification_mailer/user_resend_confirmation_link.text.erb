@@ -1,0 +1,14 @@
+<%= t('.salutation', name: @user.username) %>
+
+<%= t '.confirm_account_msg' %>
+
+<%= confirm_user_url(token: @token, locale: locale) %>
+
+<%= t '.link_expire_msg' %>
+
+<%= t 'mailer.greeting' %>
+<%= t 'mailer.greeting_sender' %>
+
+
+<%= t 'mailer.reason_for_mail_msg' %>
+<%= t 'mailer.reply_msg' %>
