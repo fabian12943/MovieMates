@@ -1,5 +1,6 @@
 de:
   mailer:
+    salutation: Hallo %{name},
     greeting: Cheers,
     greeting_sender: dein MovieMates-Team
     reason_for_mail_msg: Du erhältst diese E-Mail, weil du ein registrierter Benutzer auf MovieMates bist.
@@ -8,7 +9,6 @@ de:
   notification_mailer:
     user_signup_confirmation:
       subject: Willkommen bei MovieMates!
-      salutation: Hallo %{name},
       confirm_account_msg:  wir freuen uns, dich bei MovieMates begrüßen zu dürfen! Bitte klicke auf den unten stehenden Link, 
                             um dein Konto zu bestätigen und Zugang zu allen coolen Funktionen von MovieMates zu erhalten.
       confirm_account_btn: Konto bestätigen
@@ -17,10 +17,17 @@ de:
 
     user_resend_confirmation_link:
       subject: Dein neuer Aktivierungslink
-      salutation: Hallo %{name},
       confirm_account_msg: du hast vor kurzem einen neuen Link zur Aktivierung deines Kontos angefordert. Bitte klicke auf
                            den unten stehenden Link, um dein Konto zu bestätigen und Zugang zu allen coolen Funktionen von 
                            MovieMates zu erhalten.
       confirm_account_btn: Konto bestätigen
       link_expire_msg:  Bitte beachte, dass dieser Link in 24 Stunden abläuft. Wenn dein Link abgelaufen ist, 
                         kannst du jederzeit einen neuen anfordern.
+
+    user_password_reset:
+      subject: Zurücksetzen deines Passworts
+      reset_password_msg: du hast vor kurzem einen Link zum Zurücksetzen deines aktuellen Passworts angefordert. Bitte klicke
+                          auf den unten stehenden Link, um dein Passwort zurückzusetzen. Falls du diesen Link nicht angefordert
+                          haben solltest, kannst du diese E-Mail ignorieren.
+      reset_password_btn: Passwort zurücksetzen
+      link_expire_msg: Bitte beachte, dass dieser Link in 24 Stunden abläuft.

@@ -13,6 +13,13 @@ class NotificationMailer < ApplicationMailer
         mail( to: @user.email,
               subject: I18n.t('notification_mailer.user_resend_confirmation_link.subject') )
     end
+
+    def user_password_reset(user)
+        @user = user
+        @token = user.signed_id(expires_in: 1.day, purpose: :password_reset)
+        mail( to: @user.email,
+              subject: I18n.t('notification_mailer.user_password_reset.subject') )
+    end
     
   end
   

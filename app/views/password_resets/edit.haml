@@ -1,0 +1,37 @@
+.container
+    .main-content.centered
+        .password-reset-edit
+            .title-block
+                %h1
+                    = t ('.set_new_password')
+                %hr
+            .highlight-banner
+            .password-reset-form
+                = form_with(model: @user, url: password_reset_edit_path(token: params[:token]), data: { turbo: false }) do |f|
+                    .form-group
+                        - if @user.errors.any?
+                            .form-error= t ('.reset_unsuccessful')
+                        .form
+                            .form-field
+                                = f.text_field :email, autocomplete: "off", class: "form-field__input", placeholder: @user.email, type: "text", id: "password-reset-email", disabled: true
+                                = f.label :email, class: "form-field__label", for: "password-reset-email"
+                                %i.fa-solid.fa-lock.form-field__locked_icon
+                        .form
+                            .form-field
+                                = f.text_field :password, autocomplete: "off", class: "form-field__input", placeholder: " ", type: "password", id: "password-reset-new-password"
+                                = f.label :password, t('.new_password'), class: "form-field__label", for: "password-reset-new-password"
+                            - if @user.errors.full_messages_for(:password).any?
+                                .form-field__error 
+                                    %i.fa-solid.fa-exclamation
+                                    = @user.errors.full_messages_for(:password).first
+                        .form
+                            .form-field
+                                = f.text_field :password_confirmation, autocomplete: "off", class: "form-field__input", placeholder: " ", type: "password", id: "password-reset-new-password-confirmation"
+                                = f.label :password_confirmation, t('.confirm_new_password'), class: "form-field__label", for: "password-reset-new-password-confirmation"
+                            - if @user.errors.full_messages_for(:password_confirmation).any?
+                                .form-field__error 
+                                    %i.fa-solid.fa-exclamation
+                                    = @user.errors.full_messages_for(:password_confirmation).first
+                        .actions
+                            = f.button :submit, class: "btn c-btn btn-form" do
+                                %span= t ('.change_password')

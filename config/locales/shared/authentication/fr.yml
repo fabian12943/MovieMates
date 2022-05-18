@@ -35,6 +35,14 @@ fr:
                           de ton compte dans le champ ci-dessus et tu recevras le lien d'activation en quelques 
                           minutes. dans les minutes qui suivent!
 
+      forgot_password:
+        forgot_password: Mot de passe oublié
+        send_instructions: Envoyer des instructions
+        instructions_msg: Si tu as oublié ton mot de passe, tu peux le réinitialiser facilement ici. Veuillez saisir 
+                          dans le champ ci-dessus votre adresse e-mail avec laquelle tu t'es enregistré. Tu recevras 
+                          ensuite un e-mail avec un lien pour réinitialiser ton mot de passe. pour réinitialiser ton 
+                          mot de passe.
+
   authentication:
     omniauth:
       errors:
@@ -50,7 +58,10 @@ fr:
       confirmation_successful: Confirmation réussie!
       confirmation_successful_msg: Tu t'es automatiquement connecté et tu peux maintenant utiliser ton compte. Amuse-toi bien!
       resend_confirmation_msg: Si un compte existe pour cette adresse e-mail et qu'il n'a pas encore été activé, tu recevras sous peu un e-mail avec un nouveau lien d'activation.
+      send_password_reset_msg: Si un compte existe pour cette adresse e-mail, tu recevras sous peu un e-mail contenant un lien pour réinitialiser ton mot de passe.
+      password_reset_successful: Tu as réussi à changer ton mot de passe et tu peux maintenant te connecter avec ton nouveau mot de passe.
 
     errors:
       confirmation_link_invalid: Le lien de confirmation a expiré ou n'est pas valide.
       confirmation_link_invalid_reclaim: Veuillez en demander un nouveau.
+      password_reset_link_invalid: Le lien pour réinitialiser ton mot de passe a expiré ou n'est pas valide.

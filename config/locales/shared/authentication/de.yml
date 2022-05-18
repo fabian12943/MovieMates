@@ -35,6 +35,13 @@ de:
                           einfach die E-Mail-Adresse deines Kontos ein und du erhälst den Aktivierungslink in wenigen 
                           Minuten zugesendet!
 
+      forgot_password:
+        forgot_password: Passwort vergessen
+        send_instructions: Anweisungen senden
+        instructions_msg: Hast du dein Passwort vergessen, kannst du es hier unkompliziert zurücksetzen. Bitte gib in obiges Feld deine 
+                          E-Mail-Adresse ein, mit der du dich registriert hast. Im Anschluss erhältst eine E-Mail mit einem Link, um dein 
+                          Passwort zurückzusetzen.
+
   authentication:
     omniauth:
       errors:
@@ -49,7 +56,10 @@ de:
       confirmation_successful: Bestätigung erfolgreich!
       confirmation_successful_msg: Du wurdest automatisch eingeloggt und kannst dein Konto nun verwenden. Viel Spaß!
       resend_confirmation_msg: Falls zu dieser E-Mail Adresse ein Account existiert und dieser noch nicht aktiviert wurde, erhältst du in Kürze eine E-Mail mit neuem Aktivierungslink zugesandt.
-
+      send_password_reset_msg: Falls zu dieser E-Mail Adresse ein Account existiert, erhältst du in Kürze eine E-Mail mit einem Link zum Zurücksetzen deines Passworts zugesandt.
+      password_reset_successful: Du hast dein Passwort erfolgreich geändert und kannst dich nun mit deinem neuen Passwort einloggen.
+    
     errors:
       confirmation_link_invalid: Bestätigungs-Link ist abgelaufen oder ungültig.
       confirmation_link_invalid_reclaim: Bitte fordere einen neuen an.
+      password_reset_link_invalid: Der Link zum Zurücksetzen deines Passworts ist abgelaufen oder ungültig.

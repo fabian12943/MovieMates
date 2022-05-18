@@ -1,5 +1,6 @@
 fr:
   mailer:
+    salutation: Hello %{name},
     greeting: Cheers,
     greeting_sender: l'équipe MovieMates
     reason_for_mail_msg: Vous recevez cet e-mail parce que vous êtes un utilisateur enregistré sur MovieMates.
@@ -8,7 +9,6 @@ fr:
   notification_mailer:
     user_signup_confirmation:
       subject: Bienvenue à MovieMates!
-      salutation: Bienvenue %{name},
       confirm_account_msg:  nous sommes ravis de vous compter parmi nous! Veuillez cliquer sur le lien ci-dessous 
                             pour confirmer votre compte et avoir accès à toutes les fonctionnalités de MovieMates.
       confirm_account_btn: Confirmer le compte
@@ -17,9 +17,15 @@ fr:
 
     user_resend_confirmation_link:
       subject: Ton nouveau lien d'activation
-      salutation: Bienvenue %{name},
       confirm_account_msg: tu as récemment demandé un nouveau lien pour activer ton compte. Veuillez cliquer 
                            sur le lien ci-dessous pour confirmer votre compte et avoir accès à toutes les fonctionnalités de MovieMates.
       confirm_account_btn: Confirmer le compte
       link_expire_msg:  Veuillez noter que ce lien expirera dans 24 heures. Si votre lien a expiré, vous pouvez 
                         toujours demander un nouveau lien.
+    
+    user_password_reset:
+      subject: Réinitialiser ton mot de passe
+      reset_password_msg: tu as récemment demandé un lien pour réinitialiser ton mot de passe actuel. Veuillez cliquer sur le lien 
+                          ci-dessous pour réinitialiser ton mot de passe. Si tu n'as pas demandé ce lien tu peux ignorer cet e-mail.
+      reset_password_btn: Réinitialiser ton mot de passe
+      link_expire_msg: Veuillez noter que ce lien expire dans 24 heures.

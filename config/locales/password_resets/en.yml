@@ -1,0 +1,9 @@
+en:
+  password_resets:
+
+    edit:
+      set_new_password: Set New Password
+      new_password: New Password
+      confirm_new_password: Confirm New Password
+      reset_unsuccessful: Password change not successful. Please check your inputs and try again.
+      change_password: Change password

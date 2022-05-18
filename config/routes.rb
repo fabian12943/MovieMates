@@ -8,6 +8,10 @@ Rails.application.routes.draw do
 
         get 'confirm_user', to: 'users#confirm', as: 'confirm_user'
         post 'resend_confirmation_link', to: 'users#resend_confirmation_link', as: 'resend_confirmation_link'
+        
+        post 'password/reset', to: 'password_resets#create'
+        get 'password/reset/edit', to: 'password_resets#edit'
+        patch 'password/reset/edit', to: 'password_resets#update'
 
         scope :movies do
             get '/', to: 'movies#index', as: 'movies'

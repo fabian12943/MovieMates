@@ -34,6 +34,13 @@ en:
                           activated it, you can request the activation link again here. Just enter the email 
                           address of your account in the field above and you will receive the activation link 
                           in a few minutes!
+      
+      forgot_password:
+        forgot_password: Forgot Password
+        send_instructions: Send instructions
+        instructions_msg: If you have forgotten your password, you can easily reset it here. Please enter the email 
+                          address you used to register in the field above. You will then receive an email with a link 
+                          to reset your password.
 
   authentication:
     omniauth:
@@ -50,7 +57,10 @@ en:
       confirmation_successful: Confirmation successful!
       confirmation_successful_msg: You have been automatically logged in and can now use your account. Enjoy!
       resend_confirmation_msg: If an account exists for this email address and it has not been activated yet, you will receive an email with a new activation link shortly.
+      send_password_reset_msg: If an account exists for this email address, you will shortly receive an email with a link to reset your password.
+      password_reset_successful: You have successfully changed your password and can now log in with your new password.
 
     errors:
       confirmation_link_invalid: Confirmation link is expired or invalid.
       confirmation_link_invalid_reclaim: Please request another one.
+      password_reset_link_invalid: The link to reset your password has expired or is invalid.

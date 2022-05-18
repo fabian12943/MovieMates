@@ -1,0 +1,9 @@
+fr:
+  password_resets:
+
+    edit:
+      set_new_password: Définir un nouveau mot de passe
+      new_password: Nouveau mot de passe
+      confirm_new_password: Confirmer le nouveau mot de passe
+      reset_unsuccessful: La modification du mot de passe a échoué. Veuillez vérifier vos saisies et réessayer.
+      change_password: Modifier le mot de passe

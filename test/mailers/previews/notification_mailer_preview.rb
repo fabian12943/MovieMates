@@ -9,5 +9,10 @@ class NotificationMailerPreview < ActionMailer::Preview
         user = User.first
         NotificationMailer.user_resend_confirmation_link(user)
     end
+
+    def user_send_reset_password_link
+        user = User.first
+        NotificationMailer.user_send_reset_password_link(user)
+    end
   
   end

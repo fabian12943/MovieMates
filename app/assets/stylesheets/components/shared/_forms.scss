@@ -21,6 +21,10 @@
         &:focus {
             border-color: $c-highlight;
         }
+
+        &:disabled {
+            color: $c-text-muted;
+        }
     }
 
     &__label {
@@ -35,6 +39,13 @@
             left 200ms ease-in,
             font-size 200ms ease-in;
         background-color: $c-bg-main;
+    }
+
+    &__locked_icon {
+        color: $c-text-muted;
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
     }
 
 }
