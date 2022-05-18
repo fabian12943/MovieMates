@@ -1,0 +1,36 @@
+= render "shared/authentication/overview"
+
+%nav.navbar.fixed-top.navbar-expand
+  .container
+    .collapse.navbar-collapse
+      %ul.navbar-nav.me-auto.mb-2.mb-lg-0
+        %li.nav-item
+          = link_to movies_path, class: 'nav-link nav-text-link', target: "_top" do
+            = t '.movies'
+        %li.nav-item
+          = link_to watchlists_path, class: 'nav-link nav-text-link', target: "_top" do
+            = t '.watchlists'
+        %li.nav-item
+          = link_to '#', class: 'nav-link nav-text-link' do
+            = t '.seen_movies'
+      %form.d-flex
+        = render "shared/navbar/language_selection_dropdown"
+      %li.nav-item
+        = form_tag search_path(), method: :get do
+          %input.form-control.searchbar.icon{type: "search", placeholder: "#{t '.searchbar_placeholder'}", name: "query", value: params[:query], minlength: "3"}
+      %li.nav-item
+        - if user_logged_in?
+          = render "shared/navbar/user_profile_dropdown"
+        - else
+          = link_to "#authentication-overview", class: "btn c-btn sign-in-btn", "data-bs-toggle": "modal", role: "button" do
+            %i.fa-solid.fa-arrow-right-to-bracket
+            %span= t '.sign_in'
+
+  :javascript
+    path = window.location.href
+    elements = document.getElementsByClassName('nav-text-link')
+    Array.from(elements).forEach(child => {
+      if (child.href == path) {
+          child.classList.add('active')
+      }
+    });

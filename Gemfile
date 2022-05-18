@@ -85,6 +85,9 @@ gem 'omniauth-github', github: 'omniauth/omniauth-github', branch: 'master'
 # Rack middleware to redirect legacy domains
 gem 'rack-host-redirect'
 
+# Add Gravatars to your Rubies/Rails apps
+gem 'gravtastic'
+
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
 

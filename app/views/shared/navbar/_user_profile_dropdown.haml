@@ -1,0 +1,27 @@
+%li.nav-item.dropdown
+  .user-profile
+    - user = current_user
+    %a#user-profile-dropdown.nav-link{"aria-expanded": "false", "data-bs-toggle": "dropdown", href: "#", role: "button"}
+      = image_tag user.avatar_url, class: "img-avatar"
+    %ul.dropdown-menu.dropdown-menu-end.input-focused{"aria-labelledby": "user-profile-dropdown"}
+      = image_tag user.avatar_url, class: "img-avatar"
+      .title
+        %span.user-name= user.username
+        %span.user-email= user.email
+      = link_to '#', class: 'btn c-btn manage-account-btn', target: '_top' do
+        = t ('.manage_account')
+      %hr
+      .user-links.row 
+        = link_to '#', class: 'user-link col-4', target: '_top' do
+          %i.fa-solid.fa-user
+          %span= t ('.profile')
+        = link_to '#', class: 'user-link col-4', target: '_top' do
+          %i.fa-solid.fa-bookmark
+          %span= t ('.watchlists')
+        = link_to '#', class: 'user-link col-4', target: '_top' do
+          %i.fa-solid.fa-check
+          %span= t ('.seen')
+      %hr
+      = link_to logout_path, class: "btn c-btn sign-out-btn", data: {turbo_method: :delete} do
+        %i.fa-solid.fa-arrow-right-from-bracket
+        %span= t '.sign_out'

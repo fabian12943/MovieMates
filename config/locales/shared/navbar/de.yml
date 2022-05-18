@@ -2,10 +2,20 @@ de:
   shared:
 
     navbar:
-      movies: Filme
-      watchlists: Watchlists
-      seen_movies: Gesehene Filme
-      change_language: Sprache ändern
-      searchbar_placeholder: Suche nach Filmen oder Schauspielern
-      sign_in: Anmelden
-      sign_out: Abmelden
+
+      navbar_strip:
+        movies: Filme
+        watchlists: Watchlists
+        seen_movies: Gesehene Filme
+        searchbar_placeholder: Suche nach Filmen oder Schauspielern
+        sign_in: Anmelden
+
+      language_selection_dropdown:
+        change_language: Sprache ändern
+
+      user_profile_dropdown:
+        manage_account: Konto verwalten
+        profile: Profil
+        watchlists: Watchlists
+        seen: Gesehen
+        sign_out: Abmelden

@@ -1,4 +1,7 @@
 class User < ApplicationRecord
+    include Gravtastic 
+    gravtastic secure: true, filetype: :png, rating: 'pg', default: 'mp', size: 100
+
     has_secure_password
 
     attr_accessor :skip_password_validation
@@ -13,6 +16,7 @@ class User < ApplicationRecord
         User.find_or_create_by(uid: response['uid'], provider: response['provider']) do |user|
             user.username = response['info']['nickname']
             user.email = response['info']['email']
+            user.avatar_url = response['info']['image']
             user.password = SecureRandom.hex(15)
             user.ensure_username_uniqueness
         end
@@ -30,6 +34,10 @@ class User < ApplicationRecord
           self.username = new_username
         end
       end
+
+    def avatar_url
+        self[:avatar_url].present? ? self[:avatar_url] : gravatar_url
+    end
 
     def confirmed?
         self.confirmed_at != nil

@@ -2,10 +2,20 @@ fr:
   shared:
 
     navbar:
-      movies: Films
-      watchlists: Listes de Veille
-      seen_movies: Films Vus
-      change_language: Changer de langue
-      searchbar_placeholder: Recherche de films ou d'acteurs
-      sign_in: Se connecter
-      sign_out: Se déconnecter
+
+      navbar_strip:
+        movies: Films
+        watchlists: Listes de Veille
+        seen_movies: Films Vus
+        searchbar_placeholder: Recherche de films ou d'acteurs
+        sign_in: Se connecter
+      
+      language_selection_dropdown:
+        change_language: Changer de langue
+
+      user_profile_dropdown:
+        manage_account: Gérer son compte
+        profile: Profil
+        watchlists: Listes de Veille
+        seen: Vus
+        sign_out: Se déconnecter

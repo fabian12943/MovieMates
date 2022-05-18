@@ -2,10 +2,20 @@ en:
   shared:
 
     navbar:
-      movies: Movies
-      watchlists: Watchlists
-      seen_movies: Seen Movies
-      change_language: Change language
-      searchbar_placeholder: Search for movies or actors
-      sign_in: Sign in
-      sign_out: Sign out
+
+      navbar_strip:
+        movies: Movies
+        watchlists: Watchlists
+        seen_movies: Seen Movies
+        searchbar_placeholder: Search for movies or actors
+        sign_in: Sign in
+
+      language_selection_dropdown:
+        change_language: Change language
+
+      user_profile_dropdown:
+        manage_account: Manage account
+        profile: Profile
+        watchlists: Watchlists
+        seen: Seen
+        sign_out: Sign out

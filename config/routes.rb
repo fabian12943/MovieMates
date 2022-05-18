@@ -3,13 +3,13 @@ Rails.application.routes.draw do
         root to: redirect('/movies')
 
         post 'sign_up', to: 'users#create'
+
         post 'sign_in', to: 'sessions#create'
         delete 'logout', to: 'sessions#destroy'
 
         post 'users/confirmation', to: 'user_confirmations#create'
         get 'users/confirmation/confirm', to: 'user_confirmations#update'
 
-        
         post 'password/reset', to: 'password_resets#create'
         get 'password/reset/edit', to: 'password_resets#edit'
         patch 'password/reset/edit', to: 'password_resets#update'

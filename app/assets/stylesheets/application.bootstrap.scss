@@ -6,7 +6,7 @@
 @import 'components/shared/component.bootstrap.scss';
 @import 'components/shared/footer.bootstrap.scss';
 @import 'components/shared/image_with_placeholder.bootstrap.scss';
-@import 'components/shared/navbar/navbar.bootstrap.scss';
+@import 'components/shared/navbar/navbar_strip.scss';
 @import 'components/shared/photo_stack.bootstrap.scss';
 @import 'components/shared/c_card.bootstrap.scss';
 @import 'components/shared/c_details_card.bootstrap.scss';
@@ -92,7 +92,6 @@ button.no-styling {
 }
 
 .c-btn {
-    margin-left: 15px;
     color: $c-text-main;
     min-width: 100px;
     border-radius: 12px;

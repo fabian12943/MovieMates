@@ -1,0 +1,60 @@
+.navbar .user-profile .img-avatar {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.navbar .user-profile .dropdown-menu {
+    width: 250px;
+    text-align: center;
+}
+
+.navbar .user-profile .dropdown-menu .img-avatar {
+    width: 100px;
+    height: 100px;
+}
+
+.navbar .user-profile .dropdown-menu .title {
+    margin: 0.5rem 0 1rem 0;
+    padding: 0 1rem;
+}
+
+.navbar .user-profile .dropdown-menu .title span {
+    display: block;
+    margin: 0.2rem;
+}
+
+.navbar .user-profile .dropdown-menu .title .user-name {
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+.navbar .user-profile .dropdown-menu .title .user-email {
+    color: $c-text-muted;
+    font-weight: 300;
+}
+
+.navbar .user-profile .dropdown-menu .manage-account-btn {
+    width: 75%;
+    background: transparent;
+    border: 1px solid $c-text-muted;
+    font-weight: normal;
+}
+
+.navbar .user-profile .dropdown-menu h3 {
+    font-weight: 600;
+    text-align: center;
+    margin: 4px 6px 10px 6px;
+}
+
+.navbar .user-profile .dropdown-menu .sign-out-btn {
+    width: 75%;
+    background-color: $c-warning;
+}
+
+.navbar .user-profile .dropdown-menu .user-link span {
+    margin-top: 4px;
+    display: block;
+    font-weight: normal;
+}

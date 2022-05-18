@@ -1,5 +1,6 @@
-@import 'language_selection.bootstrap.scss';
-@import 'search.scss';
+@import 'language_selection_dropdown.scss';
+@import 'searchbar.scss';
+@import 'user_profile_dropdown.scss';
 
 $navbar-height: 62px;
 
@@ -37,9 +38,7 @@ $navbar-height: 62px;
 }
 
 .navbar .sign-in-btn {
+  margin-left: 15px;
   background-color: $c-highlight;
 }
 
-.navbar .sign-out-btn {
-  background-color: $c-warning;
-}
