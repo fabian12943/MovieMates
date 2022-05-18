@@ -6,8 +6,9 @@ Rails.application.routes.draw do
         post 'sign_in', to: 'sessions#create'
         delete 'logout', to: 'sessions#destroy'
 
-        get 'confirm_user', to: 'users#confirm', as: 'confirm_user'
-        post 'resend_confirmation_link', to: 'users#resend_confirmation_link', as: 'resend_confirmation_link'
+        post 'users/confirmation', to: 'user_confirmations#create'
+        get 'users/confirmation/confirm', to: 'user_confirmations#update'
+
         
         post 'password/reset', to: 'password_resets#create'
         get 'password/reset/edit', to: 'password_resets#edit'

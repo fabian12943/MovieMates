@@ -29,7 +29,7 @@
                   </tr>
                   <tr>
                      <td align="center" bgcolor="#1C252F" style="color: #FFFFFF; font-family: Arial, sans-serif; font-size: 18px; padding: 0 50px;">
-                        <%= link_to t('.confirm_account_btn'), confirm_user_url(token: @token, locale: locale), method: :get, 
+                        <%= link_to t('.confirm_account_btn'), users_confirmation_confirm_url(token: @token, locale: locale), method: :get, 
                             style: "background-color: #CBAA00; border: none; border-radius: 12px; color: white; font-size: 1.2rem; 
                             font-weight: bold; padding: 15px 25px; margin: 1.5rem 0; display: inline-block; text-decoration: none;" %>
                      </td>

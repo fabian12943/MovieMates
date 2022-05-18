@@ -8,7 +8,7 @@
         %a.float-end{"aria-label" => "Close", "data-bs-dismiss" => "modal", :type => "button"}
           %span.close-icon.fa-solid.fa-xmark.close-modal
       .modal-body
-        = form_with(model: User.new, url: resend_confirmation_link_path) do |f|
+        = form_with(model: User.new, url: users_confirmation_path) do |f|
           .form-group
             .form
               .form-field
