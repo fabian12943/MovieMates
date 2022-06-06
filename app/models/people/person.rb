@@ -8,6 +8,7 @@ class People::Person < ApplicationRecord
     has_one :external_ids, class_name: "People::ExternalIdsSet", primary_key: :tmdb_id, foreign_key: :person_tmdb_id
     has_many :movie_credits, class_name: "People::MovieCredit", primary_key: :tmdb_id, foreign_key: :person_tmdb_id
     has_many :movies, class_name: "Movies::Movie", primary_key: :tmdb_id, foreign_key: :tmdb_id, through: :movie_credits
+    has_many :comments, as: :commentable
 
     # Dependant on tmdb_id and language
     has_many :news_articles, class_name: "People::NewsArticle", foreign_key: :person_id, dependent: :destroy

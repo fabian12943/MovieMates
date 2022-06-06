@@ -39,11 +39,14 @@ Rails.application.routes.draw do
 
         scope :people do
             get '/popular/scroller', to: 'people#popular_people_scroller', as: 'popular_people_scroller'
-            get '/:id/card', to: 'people#card', as: 'person_card'
-            get '/:id/most-famous-movies', to: 'people#most_famous_movies', as: 'person_most_famous_movies_scroller'
-            get '/:id/filmography', to: 'people#filmography', as: 'person_filmography'
-            get '/:id/news', to: 'people#news_articles', as: 'person_news'
-            get '/:id', to: 'people#details', as: 'person_details'
+            scope '/:id' do
+                get '/card', to: 'people#card', as: 'person_card'
+                get '/most-famous-movies', to: 'people#most_famous_movies', as: 'person_most_famous_movies_scroller'
+                get '/filmography', to: 'people#filmography', as: 'person_filmography'
+                get '/news', to: 'people#news_articles', as: 'person_news'
+                get '/', to: 'people#details', as: 'person_details'
+                resources :comments, module: :people, as: 'people_person_comments', only: [:create]
+            end
         end
 
         scope :search do

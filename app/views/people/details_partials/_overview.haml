@@ -13,6 +13,13 @@
     %turbo-frame#filmography{src: person_filmography_path(@person)}
         = render "people/details_partials/skeletons/filmography"
 %hr
+.component.comments{ "data-controller": "comment" }
+    %h2= "kommentare"
+    = render partial: "comments/form", locals: { commentable: @person, comment: Comment.new }
+    = turbo_stream_from @person, :comments
+    = tag.div id: "#{dom_id(@person)}_comments" do
+        = render @person.comments.order(created_at: :desc)
+%hr
 .component.popular-people
     %h2= t '.popular_people'
     %turbo-frame#popular-people-scroller{src: popular_people_scroller_path()}
