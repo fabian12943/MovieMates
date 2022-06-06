@@ -7,7 +7,7 @@
             - movies.each do |movie|
                 = link_to movie_details_path(movie.to_param), class: "carousel-item", target: "_top" do
                     - if movie.backdrops.present?
-                        = image_tag tmdb_image_url(movie.backdrops.first.file_path, "w1280")
+                        = image_tag tmdb_image_url(movie.backdrops.first.file_path, "w1280"), loading: "lazy"
                     .carousel-caption.movie-carousel-caption
                         %h1= movie.title
                         %p= movie.overview unless movie.overview.blank?
