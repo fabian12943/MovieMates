@@ -42,4 +42,10 @@ class ApplicationController < ActionController::Base
         @popular_people = People::Popular.people.where(language: I18n.locale).order(popularity: :desc).first(amount_links)
     end
 
+    def require_login
+        if !user_logged_in?
+            redirect_to(request.referer + ".html" || movies_path(format: :html))
+        end
+    end
+
 end

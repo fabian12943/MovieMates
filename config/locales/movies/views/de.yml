@@ -22,6 +22,7 @@ de:
       plot: "Handlung"
       no_plot_message: "Es liegt bei diesem Film keine Handlung in deiner gewählten Sprache vor."
       cast: "Besetzung"
+      comments: "Kommentare"
       movie_recommendations: "Empfohlene Filme"
 
     details_partials:

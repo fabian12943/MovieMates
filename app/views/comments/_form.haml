@@ -1,0 +1,15 @@
+- model = [local_assigns[:commentable], comment].compact
+
+.comments-box{ id: dom_id_for_records(*model) }
+    - if user_logged_in?
+        .comment-user
+            = image_tag current_user.avatar_url, class: "img-avatar img-avatar-form"
+        = form_with model: model, class: "comment-create" do |form|
+            = form.text_area :body, class: 'form-control comment-body', placeholder: t('.add-comment'),  "data-action": "focus->comment#showSubmitButton blur->comment#hideSubmitButton", "data-comment-target": "commentFormBody"
+            .actions
+                = form.submit t('.comment'), class: 'btn c-btn ms-1', "data-comment-target": "submit"
+    - else
+        %span.msg-bubble.mb-3
+            %i.fa-solid.fa-arrow-right-to-bracket.me-2
+            = t '.login_to_comment'
+   

@@ -1,0 +1,11 @@
+fr:
+  comments:
+
+    form:
+      add-comment: Ajouter un commentaire...
+      comment: Commenter
+      login_to_comment: Inscris-toi pour pouvoir rédiger tes propres commentaires!
+    
+    comment:
+      created_at: il y a %{date}
+      delete: Supprimer

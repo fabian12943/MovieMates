@@ -1,0 +1,63 @@
+.comments-box {
+  display: flex;
+}
+
+.comments-box .comment-user {
+  margin-right: 0.8rem;
+}
+
+.comments-box .img-avatar {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  object-fit: cover;
+  
+}
+
+.comments-box .comment-user .rating {
+  width: 80%;
+  font-size: 16px;
+  margin: 6px auto 0 auto;
+  display: flex;
+  align-items: center;
+}
+
+.comments-box .comment-user .rating svg {
+  margin-right: 3px;
+}
+
+.comments-box .comment-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.comments-box .comment-content .header .creation-date {
+  color: $c-text-muted;
+  font-size: 14px;
+  margin-left: 5px;
+}
+
+.comments-box .comment-content .body {
+  margin: 0.2rem 0;
+}
+
+.comments-box .comment-content .actions {
+  color: $c-text-muted;
+  margin-top: auto;
+}
+
+.comments-box .comment-content .actions .delete {
+  font-size: 14px;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.component.comments turbo-frame:last-of-type hr{
+  display: none
+}
+
+.component.comments turbo-frame:first-of-type .comments-box{
+  margin-top: 25px;
+}

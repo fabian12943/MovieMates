@@ -96,6 +96,13 @@
                     %turbo-frame#movie-casts{src: movie_casts_path(@movie)}
                         = render "movies/details_partials/skeletons/detailed_cast_scroller", movies_amount: 8
                 %hr
+                .component.comments{ "data-controller": "comment" }
+                    %h2= t '.comments'
+                    = render partial: "comments/form", locals: { commentable: @movie, comment: Comment.new }
+                    = turbo_stream_from @movie, :comments
+                    = tag.div id: "#{dom_id(@movie)}_comments" do
+                        = render @movie.comments.order(created_at: :desc)
+                %hr
                 .component.recommendations 
                     %h2= t '.movie_recommendations'
                     %turbo-frame#movie-recommendations{src: movie_recommendations_path(@movie)}

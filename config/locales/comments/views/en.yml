@@ -1,0 +1,11 @@
+en:
+  comments:
+
+    form:
+      add-comment: Add comment...
+      comment: Comment
+      login_to_comment: Sign in to post comments yourself!
+    
+    comment:
+      created_at: '%{date} ago'
+      delete: Delete

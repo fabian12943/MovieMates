@@ -22,6 +22,7 @@ fr:
       plot: "Acte"
       no_plot_message: "Il n'y a pas d'intrigue dans la langue que tu as choisie pour ce film."
       cast: "Distribution"
+      comments: "Commentaires"
       movie_recommendations: "Films recommandés"
 
     details_partials:

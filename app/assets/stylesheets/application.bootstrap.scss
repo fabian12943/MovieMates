@@ -35,6 +35,9 @@
 
 @import 'components/password_resets/edit.scss';
 
+@import 'components/comments/form.scss';
+@import 'components/comments/comment.scss';
+
 @import 'bootstrap/scss/bootstrap';
 @import 'bootstrap-icons/font/bootstrap-icons';
 
@@ -111,7 +114,7 @@ button.no-styling {
     & span + svg {
         margin-right: 5px;
     }
-  }
+}
 
 ::-webkit-scrollbar {
     width: 12px;
@@ -136,4 +139,20 @@ button.no-styling {
 .centered {
     display: flex;
     justify-content: center;
+}
+
+.form-control:focus {
+    outline: none;
+    box-shadow: none;
+}
+
+span.msg-bubble {
+    border-radius: 12px;
+    background-color: $c-bg-secondary;
+    padding: 1rem;
+    width: 100%
+}
+
+span.muted-msg {
+    color: $c-text-muted;
 }

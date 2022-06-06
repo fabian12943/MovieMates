@@ -1,0 +1,57 @@
+.comments-box .comment-user .img-avatar-form {
+    margin-top: 0.3rem;
+  }
+  
+
+.comments-box form.comment-create {
+    width: 100%;
+}
+
+.comments-box form.comment-create textarea.comment-body {
+    height: 20px;
+    border-radius: 0;
+    border: none;
+    border-bottom: 1px solid $c-text-muted;
+    background-color: transparent;
+    margin-bottom: 10px;
+    resize: none;
+    padding-left: 0px;
+
+    &:focus {
+        border-color: $c-highlight;
+    }
+}
+
+.comments-box form.comment-create .actions {
+    display: flex;
+    justify-content: flex-end;
+
+    &:visible {
+        margin-bottom: 25px;
+    }
+}
+
+.comments-box form.comment-create .actions .btn {
+    background-color: transparent;
+    text-transform: uppercase;
+    padding: 0.25rem 0.5rem;
+    font-size: 14px;
+}
+
+.comments-box form.comment-create .actions input[type="submit"] {
+    border: 2px solid $c-highlight;
+    color: $c-highlight;
+
+    &:hover {
+        background-color: $c-highlight;
+        color: $c-text-main;
+    }
+}
+
+.comments-box form.comment-create .actions .c-btn-cancel {
+    color: $c-text-muted;
+
+    &:hover {
+        text-decoration: underline;
+    }
+}

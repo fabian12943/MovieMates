@@ -1,0 +1,18 @@
+= turbo_stream_from comment
+= turbo_frame_tag comment do
+  .comments-box{ "data-comment-target": "comment" }
+    .comment-user 
+      = image_tag comment.user.avatar_url, class: "img-avatar"
+      .rating 
+        %i.fa-solid.fa-star.fa-xs
+        %span= 8.5
+    .comment-content
+      .header
+        %span.username= comment.user.username
+        %span.creation-date= t('.created_at', date: time_ago_in_words(comment.created_at))
+      .body
+        %p.comment-body= comment.body
+      .actions
+        - if comment.user == current_user
+          = button_to t('.delete'), comment_path(comment), method: :delete, class: "no-styling delete"
+  %hr

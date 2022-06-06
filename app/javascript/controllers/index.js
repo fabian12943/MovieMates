@@ -7,6 +7,9 @@ import { application } from "./application"
 import CollapseController from "./collapse_controller.js"
 application.register("collapse", CollapseController)
 
+import CommentController from "./comment_controller.js"
+application.register("comment", CommentController)
+
 import FilmographyController from "./filmography_controller.js"
 application.register("filmography", FilmographyController)
 
