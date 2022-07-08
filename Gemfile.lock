@@ -145,6 +145,7 @@ GEM
       activesupport (>= 5.0.0)
     jsbundling-rails (1.0.2)
       railties (>= 6.0.0)
+    json (2.6.2)
     jwt (2.3.0)
     kramdown (2.3.2)
       rexml
@@ -246,6 +247,10 @@ GEM
     rails-i18n (7.0.3)
       i18n (>= 0.7, < 2)
       railties (>= 6.0.0, < 8)
+    rails_real_favicon (0.1.1)
+      json (>= 1.7, < 3)
+      rails
+      rubyzip (~> 2)
     railties (7.0.2.3)
       actionpack (= 7.0.2.3)
       activesupport (= 7.0.2.3)
@@ -380,6 +385,7 @@ DEPENDENCIES
   rack-host-redirect
   rails (~> 7.0.2, >= 7.0.2.3)
   rails-i18n (~> 7.0.0)
+  rails_real_favicon
   redis (~> 4.0)
   sassc-rails
   selenium-webdriver
