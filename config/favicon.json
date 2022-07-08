@@ -37,7 +37,7 @@
           "theme_color": "#ffffff",
           "manifest": {
               "name": "MovieMates",
-              "start_url": "movie-mates.schwarz-fabian.de",
+              "start_url": "/",
               "display": "standalone",
               "orientation": "not_set",
               "on_conflict": "override",

@@ -88,6 +88,7 @@ gem 'rack-host-redirect'
 # Add Gravatars to your Rubies/Rails apps
 gem 'gravtastic'
 
+# Generate and install a favicon for all platforms with RealFaviconGenerator
 gem 'rails_real_favicon'
 
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
