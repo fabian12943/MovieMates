@@ -6,7 +6,7 @@ $navbar-height: 62px;
 
 .navbar {
   background-color: $c-bg-secondary;
-  height: $navbar-height;
+  min-height: $navbar-height;
   box-shadow: 0px 3px 4px rgba(0, 0, 0, 0.55);
 }
 
@@ -38,7 +38,43 @@ $navbar-height: 62px;
 }
 
 .navbar .sign-in-btn {
-  margin-left: 15px;
   background-color: $c-highlight;
 }
+
+@media only screen and (max-width: calc($breakpoint-xl - 1px)) and (min-width: $breakpoint-lg) {
+  .navbar .sign-in-btn {
+    min-width: auto;
+  }
+
+  .navbar .sign-in-btn span.sign-in {
+    display: none;
+  }
+
+  .navbar .nav-item .nav-link {
+    margin: 0px 5px;
+  }
+}
+
+@media only screen and (max-width: calc($breakpoint-lg - 1px)) {
+  .navbar .nav-item {
+    padding: 5px 0px;
+  }
+
+  .navbar .nav-item .nav-link {
+    margin: 0px;
+  }
+
+  .navbar .sign-in-btn {
+    width: 100%;
+  }
+}
+
+.navbar button.navbar-toggler {
+  border-color: transparent;
+
+  &:focus {
+    box-shadow: none;
+  }
+}
+
 

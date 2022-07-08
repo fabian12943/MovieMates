@@ -3,7 +3,7 @@
     - user = current_user
     %a#user-profile-dropdown.nav-link{"aria-expanded": "false", "data-bs-toggle": "dropdown", href: "#", role: "button"}
       = image_tag user.avatar_url, class: "img-avatar"
-    %ul.dropdown-menu.dropdown-menu-end.input-focused{"aria-labelledby": "user-profile-dropdown"}
+    %ul.dropdown-menu.dropdown-menu-lg-end.input-focused{"aria-labelledby": "user-profile-dropdown"}
       = image_tag user.avatar_url, class: "img-avatar"
       .title
         %span.user-name= user.username

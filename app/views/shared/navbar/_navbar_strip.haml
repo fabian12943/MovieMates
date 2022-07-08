@@ -1,9 +1,13 @@
 = render "shared/authentication/overview"
 
-%nav.navbar.fixed-top.navbar-expand
+%nav.navbar.fixed-top.navbar-expand-lg.navbar-dark
   .container
-    .collapse.navbar-collapse
-      %ul.navbar-nav.me-auto.mb-2.mb-lg-0
+    = link_to movies_path, class: 'navbar-brand', target: "_top" do
+      = "MovieMates"
+    %button.navbar-toggler{"aria-controls" => "navbarSupportedContent", "aria-expanded" => "false", "aria-label" => "Toggle navigation", "data-bs-target" => "#navbarSupportedContent", "data-bs-toggle" => "collapse", :type => "button"}
+      %span.navbar-toggler-icon
+    .collapse.navbar-collapse#navbarSupportedContent
+      %ul.navbar-nav.me-auto
         %li.nav-item
           = link_to movies_path, class: 'nav-link nav-text-link', target: "_top" do
             = t '.movies'
@@ -24,7 +28,7 @@
         - else
           = link_to "#authentication-overview", class: "btn c-btn sign-in-btn", "data-bs-toggle": "modal", role: "button" do
             %i.fa-solid.fa-arrow-right-to-bracket
-            %span= t '.sign_in'
+            %span.sign-in= t '.sign_in'
 
   :javascript
     path = window.location.href
