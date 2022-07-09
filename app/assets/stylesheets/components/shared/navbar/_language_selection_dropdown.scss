@@ -15,6 +15,16 @@
     margin: 4px 6px 10px 6px;
 }
 
+.navbar .language-selection a.nav-link {
+    display: flex;
+}
+
+.navbar .language-selection a.nav-link span {
+    align-self: center;
+    margin-left: 10px;
+    color: rgba(255, 255, 255, 0.55)
+}
+
 .language-item {
     margin: 2px 10px;
     padding: 5px 10px;

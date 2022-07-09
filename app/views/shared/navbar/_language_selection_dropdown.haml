@@ -2,6 +2,7 @@
   .language-selection
     %a#languageDropdown.nav-link{"aria-expanded": "false", "data-bs-toggle": "dropdown", href: "#", role: "button"}
       = image_tag "flags/#{I18n.locale}.png", class: "img-flag"
+      %span.d-lg-none= t '.change_language'
     %ul.dropdown-menu.dropdown-menu-start.input-focused{"aria-labelledby": "languageDropdown"}
       %h3= t '.change_language'
       %li

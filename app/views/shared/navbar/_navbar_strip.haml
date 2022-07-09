@@ -23,10 +23,10 @@
       %li.nav-item
         = form_tag search_path(), method: :get do
           %input.form-control.searchbar.icon{type: "search", placeholder: "#{t '.searchbar_placeholder'}", name: "query", value: params[:query], minlength: "3"}
-      %li.nav-item
-        - if user_logged_in?
-          = render "shared/navbar/user_profile_dropdown"
-        - else
+      - if user_logged_in?
+        = render "shared/navbar/user_profile_dropdown"
+      - else
+        %li.nav-item
           = link_to "#authentication-overview", class: "btn c-btn sign-in-btn", "data-bs-toggle": "modal", role: "button" do
             %i.fa-solid.fa-arrow-right-to-bracket
             %span.sign-in= t '.sign_in'

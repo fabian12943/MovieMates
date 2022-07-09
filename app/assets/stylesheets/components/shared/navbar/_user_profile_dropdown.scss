@@ -20,6 +20,16 @@
     padding: 0 1rem;
 }
 
+.navbar .user-profile a.nav-link {
+    display: flex;
+}
+
+.navbar .user-profile a.nav-link span {
+    align-self: center;
+    margin-left: 10px;
+    color: rgba(255, 255, 255, 0.55)
+}
+
 .navbar .user-profile .dropdown-menu .title span {
     display: block;
     margin: 0.2rem;
