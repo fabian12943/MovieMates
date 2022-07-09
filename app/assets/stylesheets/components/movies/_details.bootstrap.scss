@@ -16,7 +16,8 @@
 
 .standalone-movie-backdrop img {
     width: 100%;
-    -webkit-mask-image: linear-gradient(black 45%, transparent);
+    -webkit-mask-image: linear-gradient(to bottom, black 45%, transparent);
+    mask-image: linear-gradient(to bottom, black 45%, transparent);
     border-radius: 12px 12px 0px 0px;
 }
 
