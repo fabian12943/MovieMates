@@ -1,16 +1,15 @@
 .container.search-results
     .row
-        .col-5.col-md-4.col-lg-3
+        .col-12.col-lg-3
             = render "search/sidebar", movie_search: @movie_search, person_search: @person_search
-        .col-7.col-md-8.col-lg-9
+        .col-12.col-lg-9
             .main-content 
-                %h1.tile-block= t '.movies'
                 - if @movies.size == 0
                     %p.empty= t '.no_movies_message'
                 - else
                     .row.cards
                         - @movies.each do |movie|
-                            .col-12.col-sm-6.col-md-4.col-lg-3.col-xxl-2
+                            .col-auto.gx-3.gy-3
                                 = link_to movie_details_path(movie.to_param), class: 'item', "target": "_top" do
                                     %turbo-frame#detailed-movie-card{src: detailed_movie_card_path(movie), loading: "lazy"}
                                         = render "movies/details_partials/skeletons/detailed_movie_card"

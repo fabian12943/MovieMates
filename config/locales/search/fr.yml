@@ -7,11 +7,9 @@ fr:
       actors: "Acteurs"
 
     movie_results:
-      movies: "Films"
       no_movies_message: "Aucun film correspondant à ta recherche n'a été trouvé."
 
     person_results:
-      actors: "Acteurs"
       no_actors_message: "Aucun acteur correspondant à ta recherche n'a été trouvé."
 
     

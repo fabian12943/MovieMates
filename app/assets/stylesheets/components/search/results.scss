@@ -59,18 +59,6 @@
     font-weight: 600;
 }
 
-@media (max-width: 768px) {
-    .search-results .sidebar .query-categories .category-container .marker{
-        height: 24px;
-    }
-    .search-results .sidebar .query-categories .category-container .category span.name{
-        font-size: 14px;
-    }
-    .search-results .sidebar .query-categories .category-container .category {
-        padding: 4px 4px;
-    }
-}
-
 .search-results .sidebar .query-categories .category-container .category span.result-count{
     margin-left: auto;
     margin-right: 5px;
@@ -79,16 +67,11 @@
 }
 
 .search-results .main-content .cards {
-    display: flex;
-    flex-wrap: wrap;
-    row-gap: 15px;
     margin-bottom: 2.5rem;
 }
 
-.search-results .main-content .cards .c-card{
-    width: 140px;
-}
-
-.search-results .main-content .cards .c-card-img {
-    height: 210px;
+@media only screen and (max-width: calc($breakpoint-phone - 1px)) {
+    .search-results .row {
+      justify-content: space-evenly;
+    }
 }

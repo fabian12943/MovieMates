@@ -7,9 +7,7 @@ de:
       actors: "Schauspieler"
 
     movie_results:
-      movies: "Filme"
       no_movies_message: "Es wurden keine Filme gefunden, die deiner Suchanfrage entsprechen."
 
     person_results:
-      actors: "Schauspieler"
       no_actors_message: "Es wurden keine Schauspieler gefunden, die deiner Suchanfrage entsprechen."
