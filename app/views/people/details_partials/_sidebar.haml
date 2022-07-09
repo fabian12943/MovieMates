@@ -2,22 +2,7 @@
     .component.image-box.image-actions-box#imageBox
         .image
             = picture(@person, "w400")
-        - if @person.external_ids.any_ids?
-            .actions
-                .external-links
-                    - external_ids = @person.external_ids
-                    - if external_ids.instagram_id?
-                        = link_to "#{external_ids.instagram_url}", target: "_blank" do
-                            %i.fa-brands.fa-instagram-square.link
-                    - if external_ids.twitter_id?
-                        = link_to "#{external_ids.twitter_url}", target: "_blank" do
-                            %i.fa-brands.fa-twitter-square.link
-                    - if external_ids.facebook_id?
-                        = link_to "#{external_ids.facebook_url}", target: "_blank" do
-                            %i.fa-brands.fa-facebook-square.link
-                    - if external_ids.imdb_id?
-                        = link_to "#{external_ids.imdb_url}", target: "_blank" do
-                            %i.fa-brands.fa-imdb.link
+        = render "people/details_partials/external_links", person: @person
         :javascript
             var imageBox = document.getElementById("imageBox");
             if (imageBox.querySelectorAll(".actions").length == 0) {

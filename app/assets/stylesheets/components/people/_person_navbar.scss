@@ -3,7 +3,7 @@
 }
 
 .person-nav-link {
-    margin-right: 1rem;
+    margin-right: 0.8rem;
     &:last-child {
         margin-right: 0;
     }
@@ -13,6 +13,7 @@
     color: $c-text-muted;
     border-bottom: 3px solid $c-bg-main;
     border-top: 3px solid transparent;
+    font-size: 1.2rem;
 
     &:hover {
         border-bottom-color: $c-text-muted;
