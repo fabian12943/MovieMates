@@ -10,8 +10,20 @@
                 - if movie.vote_count > 0
                     .rating{ class: "#{movie.rating_classification}-rating" }
                         = "#{movie.vote_average.round(1)}"
+                - if current_user && (current_user.seen_movies.find_by(movie_tmdb_id: movie.tmdb_id) || false)
+                    .user-status
+                        - if current_user.seen_movies.find_by(movie_tmdb_id: movie.tmdb_id)
+                            .seen-icon
+                                %i.fa-solid.fa-check
+                        - if false # TODO: Display user rating of movie if any
+                            .user-rating
+                                %i.fa-solid.fa-star.fa-xs
+                                = "10" # TODO: Replace with real user rating
             .detail-box
                 .content
                     %p.main-text= movie.title
-                    - if movie.release_date
-                        %span.secondary-text= defined?(subtext) ? subtext : movie.release_year
+                    - if defined?(subtext)
+                        %span.secondary-text= subtext
+                    - else
+                        - if movie.release_date
+                            %span.secondary-text= movie.release_year

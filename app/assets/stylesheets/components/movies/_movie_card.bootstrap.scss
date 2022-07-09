@@ -32,3 +32,23 @@
 .c-card.movie-card .rating.no-votes-rating {
     background-color: rgba($c-text-muted, 0.8);
 }
+
+.c-card.movie-card .user-status {
+    max-width: 65%;
+    position: absolute;
+    left: 0px;
+    bottom: 6px;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    font-weight: 600;
+    padding: 5px 15px 5px 12px;
+    color: $c-highlight;
+    border-radius: 0 12px 12px 0;
+    font-size: 15px;
+    background-color: rgba($c-bg-main, 0.8);
+}
+
+.c-card.movie-card .user-status .seen-icon + .user-rating {
+   margin-left: 13px;
+}

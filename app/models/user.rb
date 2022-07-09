@@ -11,6 +11,7 @@ class User < ApplicationRecord
     validates :password, presence: true, length: { minimum: 6 }, allow_nil: false, unless: :skip_password_validation
     
     has_many :comments, dependent: :destroy
+    has_many :seen_movies, dependent: :destroy
 
     before_save { self.email.downcase!; self.username.downcase! }
 

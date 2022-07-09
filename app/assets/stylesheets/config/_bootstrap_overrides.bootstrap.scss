@@ -42,6 +42,7 @@ $h6-font-size: $font-size-base * 0.8;
 
 // Grid breakpoints
 
+$breakpoint-phone: 450px;
 $breakpoint-sm: 576px;
 $breakpoint-md: 768px;
 $breakpoint-lg: 992px;
@@ -68,3 +69,8 @@ $container-max-widths: (
   xl: 1140px,
   xxl: 1350px
 );
+
+// Tooltips
+
+$tooltip-color: $c-bg-main;
+$tooltip-bg: $c-text-main;

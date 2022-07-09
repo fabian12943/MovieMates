@@ -14,6 +14,24 @@
     background-color: $c-bg-secondary;
 }
 
+@media only screen and (max-width: calc($breakpoint-lg - 1px)) {
+    .c-card {
+        width: 150px;
+    }
+    .c-card-img {
+        height: 225px;
+    }
+}
+
+@media only screen and (max-width: calc($breakpoint-sm - 1px)) {
+    .c-card {
+        width: 130px;
+    }
+    .c-card-img {
+        height: 195px;
+    }
+}
+
 .c-card-img img, .c-card-img svg.img {
     width: 100%;
     height: 100%;

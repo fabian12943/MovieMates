@@ -1,0 +1,24 @@
+.movie .actions.quick-actions {
+  display: flex;
+  justify-content: space-evenly;
+  text-align: center;
+  padding: 1rem 0;
+}
+
+.movie .actions.quick-actions button.active {
+  color: $c-highlight;
+}
+
+.movie .actions.quick-actions .disabled {
+  color: $c-text-muted;
+}
+
+.movie .actions.quick-actions .user-link {
+  cursor: pointer;
+  line-height: normal;
+}
+
+.movie .actions.quick-actions .user-link span {
+  display: block;
+  margin-top: 5px;
+}

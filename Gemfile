@@ -90,6 +90,8 @@ gem 'gravtastic'
 
 # Generate and install a favicon for all platforms with RealFaviconGenerator
 gem 'rails_real_favicon'
+# Pagination
+gem 'pagy'
 
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"

@@ -14,9 +14,10 @@
         %li.nav-item
           = link_to watchlists_path, class: 'nav-link nav-text-link', target: "_top" do
             = t '.watchlists'
-        %li.nav-item
-          = link_to '#', class: 'nav-link nav-text-link' do
-            = t '.seen_movies'
+        - if current_user
+          %li.nav-item
+            = link_to seen_movies_path(current_user.username), class: 'nav-link nav-text-link' do
+              = t '.seen_movies'
       %form.d-flex
         = render "shared/navbar/language_selection_dropdown"
       %li.nav-item

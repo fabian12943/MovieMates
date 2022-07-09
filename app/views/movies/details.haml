@@ -10,9 +10,10 @@
     .row
         .d-none.d-md-block.col-5.col-md-4.col-lg-3
             .sidebar
-                .component.image-box
+                .component.image-box.image-actions-box#imageBox
                     .image
                         = picture(@movie, "w400")
+                        = render partial: "movies/details_partials/user_actions"
                 .component.details
                     - if @movie.original_title?
                         .detail
@@ -54,6 +55,9 @@
                                     %span.keyword= keyword.name
         .col-sm-12.col-md-8.col-lg-9
             .main-content
+                - if @movie.backdrops.present?
+                    .d-md-none.standalone-movie-backdrop
+                        = image_tag(tmdb_image_url(@movie.backdrops.first.file_path, "w500"))
                 .title-block
                     %h1
                         = @movie.title
@@ -63,6 +67,8 @@
                     .component.tagline
                         %i.fa-solid.fa-quote-left.fa-pull-left
                         = @movie.tagline
+                .d-md-none.component.standalone-user-actions
+                    = render partial: "movies/details_partials/user_actions"
                 .inline-components
                     .row
                         .col-6.col-lg-3

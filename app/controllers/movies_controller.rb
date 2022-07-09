@@ -1,6 +1,7 @@
 class MoviesController < ApplicationController
 
-    before_action :set_movie, only: [:details, :trailer, :images, :casts, :recommendations, :detailed_movie_card, :detailed_movie_card_with_subtext, :index_movie_card, :detailed_cast_card]
+    before_action :set_movie, only: [:details, :trailer, :images, :casts, :recommendations, :detailed_movie_card, :detailed_movie_card_with_subtext, :index_movie_card, :detailed_cast_card, :seen_or_unseen]
+    before_action :require_login, only: [:seen]
 
     def trailer
         render partial: "movies/details_partials/trailer", locals: { movie: @movie }
@@ -63,6 +64,19 @@ class MoviesController < ApplicationController
     def top_rated_movies_scroller
         movies = Movies::TopRated.movies.where(language: I18n.locale).order(vote_average: :desc).first(40)
         render partial: "movies/index_partials/index_movies_scroller", locals: { movies: movies, type: "top-rated" }
+    end
+
+    def seen_or_unseen
+        if SeenMovie.where(user_id: current_user.id, movie_tmdb_id: @movie.tmdb_id).exists?
+            SeenMovie.where(user_id: current_user.id, movie_tmdb_id: @movie.tmdb_id).destroy_all
+        else
+            SeenMovie.create(user_id: current_user.id, movie_tmdb_id: @movie.tmdb_id)
+        end
+        respond_to do |format|
+            format.turbo_stream {
+                render turbo_stream: turbo_stream.replace_all(".user_actions", partial: "movies/details_partials/user_actions");
+            }
+        end
     end
 
     private

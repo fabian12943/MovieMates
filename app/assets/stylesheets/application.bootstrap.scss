@@ -22,6 +22,7 @@
 @import 'components/movies/trailer_modal.bootstrap.scss';
 @import 'components/movies/images_modal.bootstrap.scss';
 @import 'components/movies/movie_carousel.bootstrap.scss';
+@import 'components/movies/user_actions.scss';
 
 @import 'components/casts/cast_card.bootstrap.scss';
 
@@ -37,6 +38,8 @@
 
 @import 'components/comments/form.scss';
 @import 'components/comments/comment.scss';
+
+@import 'components/users/users.scss';
 
 @import 'bootstrap/scss/bootstrap';
 @import 'bootstrap-icons/font/bootstrap-icons';
@@ -155,4 +158,8 @@ span.msg-bubble {
 
 span.muted-msg {
     color: $c-text-muted;
+}
+
+.infinite-scroll-paginator .pagination {
+    display: none;
 }

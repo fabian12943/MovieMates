@@ -2,45 +2,51 @@ de:
   movies:
 
     details:
-      original_title: "Originaltitel"
-      original_language: "Originalsprache"
-      release: "Veröffentlichung"
-      runtime: "Laufzeit"
-      genres: "Genres"
-      age_rating: "Altersfreigabe"
-      budget: "Budget"
-      revenue: "Einspielergebnis"
-      keywords: "Schlüsselwörter"
+      original_title: Originaltitel
+      original_language: Originalsprache
+      release: Veröffentlichung
+      runtime: Laufzeit
+      genres: Genres
+      age_rating: Altersfreigabe
+      budget: Budget
+      revenue: Einspielergebnis
+      keywords: Schlüsselwörter
 
-      imdb_rating: "IMDb Rating"
+      imdb_rating: IMDb Rating
       vote: 
-        zero: "Keine Stimmen"
-        one: "1 Stimme"
+        zero: Keine Stimmen
+        one: 1 Stimme
         other: "%{count} Stimmen"
-      trailer: "Trailer"
-      images: "Bilder"
-      plot: "Handlung"
-      no_plot_message: "Es liegt bei diesem Film keine Handlung in deiner gewählten Sprache vor."
-      cast: "Besetzung"
-      comments: "Kommentare"
-      movie_recommendations: "Empfohlene Filme"
+      trailer: Trailer
+      images: Bilder
+      plot: Handlung
+      no_plot_message: Es liegt bei diesem Film keine Handlung in deiner gewählten Sprache vor.
+      cast: Besetzung
+      comments: Kommentare
+      movie_recommendations: Empfohlene Filme
 
     details_partials:
 
       trailer:
-        trailer: "Trailer"
+        trailer: Trailer
 
       images:
-        images: "Bilder"
+        images: Bilder
 
       detailed_cast_card:
-        show: "Anzeigen"
+        show: Anzeigen
 
       detailed_movie_card:
-        show: "Anzeigen"
+        show: Anzeigen
+        
+      user_actions:
+        watchlist: Watchlist
+        seen: Gesehen
+        sign_in_to_add_movies_to_watchlist_msg: Melde dich an, um Filme zu deinen Watchlists hinzufügen zu können.
+        sign_in_to_mark_movies_as_seen_msg: Melde dich an, um Filme als gesehen markieren zu können.
 
     index:
-      popular: "Beliebt"
-      currently_in_theaters: "Aktuell im Kino"
-      coming_soon: "Demnächst verfügbar"
-      best_rated_movies_of_all_time: "Bestbewertete Filme aller Zeiten"
+      popular: Beliebt
+      currently_in_theaters: Aktuell im Kino
+      coming_soon: Demnächst verfügbar
+      best_rated_movies_of_all_time: Bestbewertete Filme aller Zeiten

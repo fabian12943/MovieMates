@@ -1,0 +1,19 @@
+= turbo_frame_tag "movie_user_actions", class: "user_actions" do
+  .actions.quick-actions
+    - if user_logged_in?
+      = button_to '#', class: 'no-styling user-link' do
+        %i.fa-solid.fa-bookmark.fa-lg
+        %span= t '.watchlist'
+      - seen = current_user.seen_movies.find_by(movie_tmdb_id: @movie.tmdb_id)
+      = button_to movie_seen_unseen_path(), class: "no-styling user-link #{'active' if seen}" do
+        %i.fa-solid.fa-check.fa-lg
+        %span= t '.seen'
+    - else
+      %span.d-inline-block{tabindex: 0, "data-bs-toggle": "tooltip", "data-bs-placement": "bottom", "data-bs-trigger": "hover", title: t('.sign_in_to_add_movies_to_watchlist_msg')}
+        .user-link.disabled
+          %i.fa-solid.fa-bookmark.fa-lg
+          %span=  t '.watchlist'
+      %span.d-inline-block{tabindex: 0, "data-bs-toggle": "tooltip", "data-bs-placement": "bottom", "data-bs-trigger": "hover", title: t('.sign_in_to_mark_movies_as_seen_msg')}
+        .user-link.disabled
+          %i.fa-solid.fa-check.fa-lg
+          %span= t '.seen'

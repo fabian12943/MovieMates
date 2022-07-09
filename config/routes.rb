@@ -16,6 +16,12 @@ Rails.application.routes.draw do
 
         resources :comments, only: [:destroy]
 
+        scope :users do
+            scope '/:username' do
+                resources :seen_movies, module: :users
+            end
+        end
+
         scope :movies do
             get '/', to: 'movies#index', as: 'movies'
             get '/popular/carousel', to: 'movies#popular_movies_carousel', as: 'movie_carousel'
@@ -33,6 +39,7 @@ Rails.application.routes.draw do
                 get '/detailed_card', to: 'movies#detailed_movie_card', as: 'detailed_movie_card'
                 get '/detailed_card_with_subtext', to: 'movies#detailed_movie_card_with_subtext', as: 'detailed_movie_card_with_subtext'
                 get '/', to: 'movies#details', as: 'movie_details'
+                post '/seen_unseen', to: 'movies#seen_or_unseen', as: 'movie_seen_unseen'
                 resources :comments, module: :movies, as: 'movies_movie_comments', only: [:create]
             end
         end

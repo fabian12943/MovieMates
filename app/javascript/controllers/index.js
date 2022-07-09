@@ -13,5 +13,8 @@ application.register("comment", CommentController)
 import FilmographyController from "./filmography_controller.js"
 application.register("filmography", FilmographyController)
 
+import InfiniteScrollController from "./infinite_scroll_controller.js"
+application.register("infinite-scroll", InfiniteScrollController)
+
 import YoutubePlayerController from "./youtube_player_controller.js"
 application.register("youtube-player", YoutubePlayerController)

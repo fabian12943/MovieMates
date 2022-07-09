@@ -1,0 +1,22 @@
+.container.seen-movies
+  .main-content
+    .title-block
+      - if @user == current_user
+        %h1= t '.your_seen_movies'
+      - else
+        %h1= t('.seen_movies_of_user', username: @user.username)
+      %h1.count= "(#{@user.seen_movies.count})"
+    .component.seen-movies-list
+      - if @seen_movies.present?
+        %div{"data-controller": "infinite-scroll", "data-action": "scroll@window->infinite-scroll#scroll"}
+          .row{"data-infinite-scroll-target": "entries"}
+            = render "seen_movies"
+          .infinite-scroll-paginator{"data-infinite-scroll-target": "pagination"}
+            != pagy_nav(@pagy)
+      - else
+        .no-results
+          - if @user == current_user
+            %h2= t '.you_have_not_seen_any_movies_msg'
+            %p= t '.mark_movies_as_seen_instruction'
+          - else
+            %h2= t('.user_has_not_seen_any_movies_msg', username: @user.username)

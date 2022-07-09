@@ -1,4 +1,5 @@
 module ApplicationHelper
+    include Pagy::Frontend
 
     def duration_hours_minutes_format(total_minutes)
         hours = total_minutes / 60

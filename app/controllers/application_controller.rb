@@ -1,4 +1,6 @@
 class ApplicationController < ActionController::Base
+    include Pagy::Backend
+    
     around_action :set_locale
     before_action :load_footer_resources, :set_country
     helper_method :current_user, :user_logged_in?

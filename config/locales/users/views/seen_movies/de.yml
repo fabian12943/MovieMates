@@ -1,0 +1,10 @@
+de:
+  users:
+    seen_movies:
+
+      index:
+        your_seen_movies: Deine gesehenen Filme
+        seen_movies_of_user: Gesehene Filme von %{username}
+        you_have_not_seen_any_movies_msg: Du hast bisher keine Filme als gesehen markiert.
+        mark_movies_as_seen_instruction: Du kannst einen Film als gesehen markieren, indem du ihn aufrufst und auf 'Gesehen' drückst.
+        user_has_not_seen_any_movies_msg: Der Nutzer %{username} hat bisher noch keine Filme als gesehen markiert.

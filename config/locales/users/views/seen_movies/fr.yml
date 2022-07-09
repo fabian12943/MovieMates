@@ -1,0 +1,10 @@
+fr:
+  users:
+    seen_movies:
+
+      index:
+        your_seen_movies: Tes films vus
+        seen_movies_of_user: Films vus par %{username}
+        you_have_not_seen_any_movies_msg: Tu n'as pas encore marqué de films comme vus. 
+        mark_movies_as_seen_instruction: Tu peux marquer un film comme vu en l'affichant et en appuyant sur 'Vu'.
+        user_has_not_seen_any_movies_msg: L'utilisateur %{username} n'a pas encore marqué de films comme vus.
