@@ -14,9 +14,8 @@
           .infinite-scroll-paginator{"data-infinite-scroll-target": "pagination"}
             != pagy_nav(@pagy)
       - else
-        .no-results
-          - if @user == current_user
-            %h2= t '.you_have_not_seen_any_movies_msg'
-            %p= t '.mark_movies_as_seen_instruction'
-          - else
-            %h2= t('.user_has_not_seen_any_movies_msg', username: @user.username)
+        - if @user == current_user
+          %p.no-results= t '.you_have_not_seen_any_movies_msg'
+          %p.no-results= t '.mark_movies_as_seen_instruction'
+        - else
+          %p.no-results= t('.user_has_not_seen_any_movies_msg', username: @user.username)

@@ -1,7 +1,7 @@
 = turbo_frame_tag "movie_user_actions", class: "user_actions" do
   .actions.quick-actions
     - if user_logged_in?
-      = button_to '#', class: 'no-styling user-link' do
+      %a.user-link{"data-bs-target" => "#manage-movie-watchlist", "data-bs-toggle" => "modal", class: "#{'active'}"}
         %i.fa-solid.fa-bookmark.fa-lg
         %span= t '.watchlist'
       - seen = current_user.seen_movies.find_by(movie_tmdb_id: @movie.tmdb_id)

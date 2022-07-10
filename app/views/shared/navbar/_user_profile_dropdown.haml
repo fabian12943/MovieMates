@@ -16,7 +16,7 @@
         = link_to '#', class: 'user-link col-4', target: '_top' do
           %i.fa-solid.fa-user
           %span= t ('.profile')
-        = link_to '#', class: 'user-link col-4', target: '_top' do
+        = link_to watchlists_path(username: current_user.username), class: 'user-link col-4', target: '_top' do
           %i.fa-solid.fa-bookmark
           %span= t ('.watchlists')
         = link_to seen_movies_path(user.username), class: 'user-link col-4', target: '_top' do

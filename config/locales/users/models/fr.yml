@@ -6,3 +6,7 @@ fr:
         username: Nom d'Utilisateur
         password: Mot de Passe
         password_confirmation: Confirmation du Mot de Passe
+
+      watchlist:
+        name: Nom
+        description: Description

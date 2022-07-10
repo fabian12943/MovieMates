@@ -164,3 +164,11 @@ span.muted-msg {
 .infinite-scroll-paginator .pagination {
     display: none;
 }
+
+p.no-results {
+    color: $c-text-muted;
+    font-size: 1.25rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    text-align: initial;
+}

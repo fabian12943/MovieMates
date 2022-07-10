@@ -1,0 +1,11 @@
+= link_to watchlist_path(username: watchlist.user.username, id: watchlist.to_param), "data-turbo-frame": "_top" do
+  .c-card.watchlist-card
+    .c-card-img
+      = picture(watchlist, "w500")
+      .overlay
+        .show-label
+          %i.fa-solid.fa-list
+          %span= t '.show'
+      .c-card-text
+        %span.card-title= watchlist.name
+        %span.card-subtitle.d-block= t '.movie-count' , count: watchlist.movies.pluck(:tmdb_id).uniq.count

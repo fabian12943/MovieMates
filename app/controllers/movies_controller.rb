@@ -1,7 +1,7 @@
 class MoviesController < ApplicationController
 
-    before_action :set_movie, only: [:details, :trailer, :images, :casts, :recommendations, :detailed_movie_card, :detailed_movie_card_with_subtext, :index_movie_card, :detailed_cast_card, :seen_or_unseen]
-    before_action :require_login, only: [:seen]
+    before_action :set_movie, only: [:details, :trailer, :images, :casts, :recommendations, :detailed_movie_card, :detailed_movie_card_with_subtext, :index_movie_card, :detailed_cast_card, :seen_or_unseen, :add_or_remove_from_watchlist]
+    before_action :require_login, only: [:seen, :add_or_remove_from_watchlist]
 
     def trailer
         render partial: "movies/details_partials/trailer", locals: { movie: @movie }
@@ -79,6 +79,19 @@ class MoviesController < ApplicationController
         end
     end
 
+    def add_or_remove_from_watchlist
+        params[:movie_watchlist].each do |watchlist_id, status|
+            if current_user == Watchlist.find_by(id: watchlist_id).user
+                watchlist = Watchlist.find_by(id: watchlist_id)
+                if status == "1" && !watchlist.movies.include?(@movie)
+                    WatchlistedMovie.create(movie_tmdb_id: @movie.tmdb_id, watchlist_id: watchlist_id)
+                elsif status == "0"
+                    WatchlistedMovie.where(movie_tmdb_id: @movie.tmdb_id, watchlist_id: watchlist_id).destroy_all
+                end
+            end
+        end
+    end
+
     private
     
     def movie_params
@@ -87,9 +100,6 @@ class MoviesController < ApplicationController
 
     def set_movie
         tmdb_id = movie_params[:id]
-        if tmdb_id.to_i == 0
-            not_found
-        end
         begin
             Movies::Movie.create_or_update_movie(tmdb_id, I18n.locale)
             @movie = Movies::Movie.find_by(tmdb_id: tmdb_id, language: I18n.locale)

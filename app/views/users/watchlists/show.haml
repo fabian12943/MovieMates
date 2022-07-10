@@ -1,0 +1,23 @@
+.watchlist-header
+  .watchlist-image-banner
+    = picture(@watchlist, "original")
+  .container
+    %h1.watchlist-name= @watchlist.name
+    .author-container
+      = image_tag @user.avatar_url, class: "img-avatar"
+      %span
+        = t '.by'
+        %span.author-name= @user.username
+    .description-container
+      %h1= t '.about-this-watchlist'
+      %p.description= @watchlist.description
+.container.watchlisted_movies
+  - movies = @watchlist.movies.where(language: I18n.locale)
+  - if movies.any?
+    .row
+      - movies.each do |movie|
+        .col-auto.gx-3.gy-3
+          %turbo-frame#detailed-movie-card{src: detailed_movie_card_path(movie)}
+            = render "movies/details_partials/skeletons/detailed_movie_card"
+  - else
+    %p.no-results= @user == current_user ? t('.you-added-no-movies-to-watchlist-msg') : t('.user-added-no-movies-to-watchlist-msg')

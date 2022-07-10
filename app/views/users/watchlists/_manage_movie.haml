@@ -1,0 +1,22 @@
+#manage-movie-watchlist.modal.c-modal.manage-movie-watchlist-modal{ "aria-hidden": true, "aria-labelledby": "manage-movie-watchlist", tabindex: -1 }
+  .modal-dialog.modal-dialog-centered
+    .modal-content
+      .modal-header
+        %h1= t '.select_watchlists'
+        %a.float-end{"aria-label" => "Close", "data-bs-dismiss" => "modal", :type => "button"}
+          %span.close-icon.fa-solid.fa-xmark.close-modal
+      .modal-body
+        - if current_user.watchlists.any?
+          = form_for(:movie_watchlist, url: movie_watchlisted_unwatchlisted_path, id: "movie_watchlist") do |f|
+            .form-group
+              .watchlists
+                - current_user.watchlists.each do |watchlist|
+                  .form.watchlist
+                    = f.label watchlist.name, watchlist.name, for: "movie_watchlist_#{watchlist.id}"
+                    = f.check_box watchlist.id, checked: watchlist.movies.include?(@movie)
+              = f.button :submit, class: "btn c-btn btn-form" do
+                %i.fa-solid.fa-floppy-disk.fa-lg
+                %span= t '.save'
+        
+        - else
+          %p= t '.no_watchlists_msg'

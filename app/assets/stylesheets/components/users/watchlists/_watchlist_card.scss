@@ -1,0 +1,55 @@
+.c-card.watchlist-card {
+  width: 315px;
+}
+
+.c-card.watchlist-card .c-card-img {
+  height: 200px;
+}
+
+.c-card.c-card.watchlist-card .c-card-img img {
+  -webkit-mask-image: linear-gradient(to bottom, black 30%, rgba(0, 0, 0, 0.3));
+  mask-image: linear-gradient(to bottom, black 30%, rgba(0, 0, 0, 0.3));
+}
+
+.c-card.watchlist-card .c-card-text {
+  position: absolute;
+  width: fit-content;
+  max-width: 85%;
+  text-align: center;
+  bottom: 8%;
+  left: 50%;
+  transform: translate(-50%, 0);
+  overflow-wrap: break-word;
+}
+
+.c-card.watchlist-card .c-card-text .card-title {
+  font-size: 1.15rem;
+}
+
+.c-card.watchlist-card .c-card-text .card-subtitle {
+  text-align: center;
+  font-size: 0.95rem;
+  color: rgba($c-text-main, 0.7)
+}
+
+.c-card.watchlist-card .c-card-text .card-title + .card-subtitle {
+  margin-top: 0.2rem;
+}
+
+@media only screen and (max-width: calc($breakpoint-xl - 1px)) {
+  .c-card.watchlist-card {
+    width: 290px;
+  }
+}
+
+@media only screen and (max-width: calc($breakpoint-lg - 1px)) {
+  .c-card.watchlist-card {
+    width: 210px;
+  }
+}
+
+@media only screen and (max-width: calc($breakpoint-phone - 1px)) {
+  .c-card.watchlist-card {
+    width: 150px;
+  }
+}

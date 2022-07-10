@@ -1,0 +1,16 @@
+= form_with(model: watchlist, url: watchlists_path, id: "new_watchlist") do |f|
+  .form-group
+    - if watchlist.errors.any?
+      .form-error= t '.error-on-create-msg'
+    .form
+      .form-field
+        = f.text_field :name, autocomplete: "off", class: "form-field__input", placeholder: " ", type: "text", id: "watchlist-name"
+        = f.label :name, class: "form-field__label", for: "watchlist-name"
+    .form
+      .form-field
+        = f.text_field :description, autocomplete: "off", class: "form-field__input", placeholder: " ", type: "text", id: "watchlist-description", size: "20x30"
+        = f.label :description, class: "form-field__label", for: "watchlist-description"
+    .actions 
+      = f.button :submit, class: "btn c-btn btn-form" do
+        %i.fa-solid.fa-plus.fa-lg
+        %span= t '.create-wachlist-btn'

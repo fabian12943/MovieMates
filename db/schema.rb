@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_07_10_120659) do
+ActiveRecord::Schema[7.0].define(version: 2022_07_23_162212) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -237,6 +237,25 @@ ActiveRecord::Schema[7.0].define(version: 2022_07_10_120659) do
     t.string "avatar_url"
   end
 
+  create_table "watchlisted_movies", force: :cascade do |t|
+    t.integer "movie_tmdb_id", null: false
+    t.bigint "watchlist_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["watchlist_id"], name: "index_watchlisted_movies_on_watchlist_id"
+  end
+
+  create_table "watchlists", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.string "name", null: false
+    t.text "description", null: false
+    t.boolean "private", default: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_watchlists_on_user_id"
+  end
+
   add_foreign_key "comments", "users"
   add_foreign_key "seen_movies", "users"
+  add_foreign_key "watchlists", "users"
 end

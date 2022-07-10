@@ -19,6 +19,7 @@ Rails.application.routes.draw do
         scope :users do
             scope '/:username' do
                 resources :seen_movies, module: :users
+                resources :watchlists, module: :users
             end
         end
 
@@ -40,6 +41,7 @@ Rails.application.routes.draw do
                 get '/detailed_card_with_subtext', to: 'movies#detailed_movie_card_with_subtext', as: 'detailed_movie_card_with_subtext'
                 get '/', to: 'movies#details', as: 'movie_details'
                 post '/seen_unseen', to: 'movies#seen_or_unseen', as: 'movie_seen_unseen'
+                post '/watchlist_add_or_remove', to: 'movies#add_or_remove_from_watchlist', as: 'movie_watchlisted_unwatchlisted'
                 resources :comments, module: :movies, as: 'movies_movie_comments', only: [:create]
                 resources :user_ratings, module: :movies, as: 'movie_rating', only: [:create, :destroy]
             end
@@ -62,8 +64,6 @@ Rails.application.routes.draw do
             get '/movie', to: "search#movie_results", as: 'movie_results'
             get '/person', to: "search#person_results", as: 'person_results'
         end
-
-        get '/watchlists', to: 'watchlists#index'
 
     end
     

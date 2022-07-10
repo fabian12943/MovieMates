@@ -1,0 +1,35 @@
+de:
+  users:
+    watchlists:
+
+      new:
+        create-new-watchlist-modal-heading: Neue Watchlist erstellen
+      
+      create_form:
+        create-wachlist-btn: Watchlist erstellen
+        error-on-create-msg: Watchlist konnte nicht erstellt werden. Bitte überprüfe deine Eingaben und versuche es erneut.
+
+      watchlist_card:
+        show: Anzeigen
+        movie-count: 
+          zero: 0 Filme
+          one: 1 Film
+          other: "%{count} Filme"
+
+      index:
+        your-watchlists: Deine Watchlists
+        user-watchlists: "Watchlists von %{name}"
+        create-new-watchlist-btn: Neue Watchlist erstellen
+        you-have-no-watchlists-msg: Du hast bisher keine Watchlists erstellt
+        user-has-no-watchlists-msg: Der Nutzer hat bisher keine Watchlists erstellt oder teilt diese nicht öffentlich
+
+      show:
+        about-this-watchlist: Über diese Watchlist
+        by: von
+        you-added-no-movies-to-watchlist-msg: Du hast der Watchlist bisher keine Filme hinzugefügt
+        user-added-no-movies-to-watchlist-msg: Der Nutzer hat der Watchlist bisher keine Filme hinzugefügt
+
+      manage_movie:
+        select_watchlists: Watchlist auswählen
+        save: Speichern
+        no_watchlists_msg: Du hast noch keine Watchlists erstellt, zu denen du Filme hinuzufügen kannst.

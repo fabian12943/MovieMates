@@ -12,7 +12,8 @@ class User < ApplicationRecord
     
     has_many :comments, dependent: :destroy
     has_many :seen_movies, dependent: :destroy
-    has_many :movie_ratings, class_name: "Movies::UserRating"
+    has_many :movie_ratings, class_name: "Movies::UserRating", dependent: :destroy
+    has_many :watchlists, dependent: :destroy
 
     before_save { self.email.downcase!; self.username.downcase! }
 

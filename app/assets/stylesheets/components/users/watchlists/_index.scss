@@ -1,0 +1,17 @@
+.watchlists .main-content {
+  position: relative;
+}
+
+.watchlists .create-watchlist-btn {
+  position: absolute;
+  top: 2px;
+  right: 0;
+  min-width: 0;
+}
+
+@media only screen and (max-width: calc($breakpoint-phone - 1px)) {
+  .watchlists-list .row {
+    justify-content: space-evenly;
+  }
+}
+

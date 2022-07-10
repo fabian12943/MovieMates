@@ -1,0 +1,18 @@
+= render partial: "new" if user_logged_in?
+
+.container.watchlists
+  .main-content
+    .title-block
+      %h1= @user == current_user ? t('.your-watchlists') : t(".user-watchlists", name: @user.username)
+    - if @user == current_user 
+      = link_to "#create-watchlist", class: "btn c-btn create-watchlist-btn", "data-bs-toggle": "modal", role: "button" do
+        %i.fa-solid.fa-plus
+        %span.d-none.d-sm-inline= t '.create-new-watchlist-btn'
+    - if @watchlists.any?
+      .component.watchlists-list
+        .row
+          - @watchlists.each do |watchlist|
+            .col-auto.gx-3.gy-3
+              = render partial: "watchlist_card", locals: { watchlist: watchlist }
+    - else
+      %p.no-results= @user == current_user ? t('.you-have-no-watchlists-msg') : t('.user-has-no-watchlists-msg')

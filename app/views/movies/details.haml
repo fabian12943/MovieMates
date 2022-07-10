@@ -1,5 +1,7 @@
 = content_for(:html_title) { @movie.title }
 
+= render partial: "users/watchlists/manage_movie" if user_logged_in?
+
 - if @movie.videos.youtube_trailer.present?
     %turbo-frame#movie-trailer{src: movie_trailer_path(@movie)}
 

@@ -8,10 +8,6 @@
   color: $c-text-muted;
 }
 
-.seen-movies .seen-movies-list .no-results * {
-  color: $c-text-muted;
-}
-
 @media only screen and (max-width: calc($breakpoint-phone - 1px)) {
   .seen-movies .row {
     justify-content: space-evenly;

@@ -6,3 +6,7 @@ en:
         username: Username
         password: Password
         password_confirmation: Password Confirmation
+
+      watchlist:
+        name: Name
+        description: Description
