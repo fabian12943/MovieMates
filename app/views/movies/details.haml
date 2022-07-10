@@ -72,11 +72,14 @@
                 .inline-components
                     .row
                         .col-6.col-lg-3
-                            .component.imdb-rating
-                                %h2= t '.imdb_rating'
+                            .component.movie-rating
+                                %h2= t '.tmdb_rating'
                                 .content.rating-block
                                     .rating= "#{@movie.vote_average.round(1)} / 10"
                                     .caption.vote-count= t '.vote' , count: @movie.vote_count
+                        .col-6.col-lg-3
+                            .component.movie-rating
+                                = render partial: 'movies/details_partials/user_rating'
                         - if @movie.videos.youtube_trailer.present?
                             .col-6.col-lg-3
                                 .component.trailer

@@ -15,8 +15,8 @@ module ApplicationHelper
         I18nData.languages(locale)[language_code.upcase].titleize  
     end
 
-    def date_in_locale_format(date, locale = I18n.locale)
-        I18n.l(date, format: :long, locale: locale)
+    def date_in_locale_format(date, locale = I18n.locale, format = :long)
+        I18n.l(date, format: format, locale: locale)
     end
 
     def picture(resource, image_size)

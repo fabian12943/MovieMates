@@ -41,25 +41,31 @@
     border-radius: 12px;
 }
 
-// Inline components
-.movie .inline-components .component .content{
-    padding-left: 0.65rem;
-}
-
 // Rating
 .rating-block {
-    text-align: center;
     width: fit-content;
 }
 
 .rating-block .rating {
     font-size: 20px;
+    margin-bottom: 3px;
 }
 
 .rating-block .caption {
-    margin-top: 0.2rem;
+    margin-right: 25px;
     font-size: 14px;
     color: $c-text-muted;
+}
+
+.movie-rating .rate-movie-btn {
+    width: 130px;
+    background-color: transparent;
+    border: 2px solid $c-text-main;
+
+    &:hover {
+        border-color: $c-highlight;
+        color: $c-highlight;
+    }
 }
 
 // Trailer-Button

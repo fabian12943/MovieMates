@@ -1,0 +1,40 @@
+= turbo_frame_tag "user-rating" do
+  %h2= t '.your_rating'
+  .content.rating-wrap.rating-block
+    - user_rating = current_user ? current_user.movie_ratings.find_by(movie_tmdb_id: @movie.tmdb_id) : nil
+    .center
+      :javascript
+        window.FontAwesomeConfig = {
+          searchPseudoElements: true
+        }
+      %span.d-inline-block{tabindex: 0, "data-bs-toggle": "tooltip", "data-bs-placement": "bottom", "data-bs-trigger": "#{current_user ? 'manual' : 'hover'}", title: "Melde dich an um Filme bewerten zu können."}
+        = form_with url: movie_rating_index_path, data: { turbo: true } do |form|
+          %fieldset.rating{disabled: user_rating || !current_user}
+            %input{type: "radio", name: "rating", value: "5", id: "star5", onclick: "this.form.requestSubmit()", checked: user_rating ? user_rating.rating == 10 : false}
+            %label.full-star{for: "star5"}
+            %input{type: "radio", name: "rating", value: "4.5", id: "star4.5", onclick: "this.form.requestSubmit()", checked: user_rating ? user_rating.rating == 9 : false}
+            %label.half-star{for: "star4.5"}
+            %input{type: "radio", name: "rating", value: "4", id: "star4", onclick: "this.form.requestSubmit()", checked: user_rating ? user_rating.rating == 8 : false}
+            %label.full-star{for: "star4"}
+            %input{type: "radio", name: "rating", value: "3.5", id: "star3.5", onclick: "this.form.requestSubmit()", checked: user_rating ? user_rating.rating == 7 : false}
+            %label.half-star{for: "star3.5"}
+            %input{type: "radio", name: "rating", value: "3", id: "star3", onclick: "this.form.requestSubmit()", checked: user_rating ? user_rating.rating == 6 : false}
+            %label.full-star{for: "star3"}
+            %input{type: "radio", name: "rating", value: "2.5", id: "star2.5", onclick: "this.form.requestSubmit()", checked: user_rating ? user_rating.rating == 5 : false}
+            %label.half-star{for: "star2.5"}
+            %input{type: "radio", name: "rating", value: "2", id: "star2", onclick: "this.form.requestSubmit()", checked: user_rating ? user_rating.rating == 4 : false}
+            %label.full-star{for: "star2"}
+            %input{type: "radio", name: "rating", value: "1.5", id: "star1.5", onclick: "this.form.requestSubmit()", checked: user_rating ? user_rating.rating == 3 : false}
+            %label.half-star{for: "star1.5"}
+            %input{type: "radio", name: "rating", value: "1", id: "star1", onclick: "this.form.requestSubmit()", checked: user_rating ? user_rating.rating == 2 : false}
+            %label.full-star{for: "star1"}
+            %input{type: "radio", name: "rating", value: "0.5", id: "star0.5", onclick: "this.form.requestSubmit()", checked: user_rating ? user_rating.rating == 1 : false}
+            %label.half-star{for: "star0.5"}
+      - if user_rating
+        .delete-rating-btn
+          = button_to movie_rating_path(user_rating_id: user_rating.id), method: :delete, class: "no-styling user-link" do
+            %i.fa-solid.fa-trash-can.fa-xs
+    -if user_rating
+      .caption= "#{I18n.l(user_rating.created_at.to_date, format: :long)}"
+    - else
+      .caption= t '.not_rated'

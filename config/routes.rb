@@ -41,6 +41,7 @@ Rails.application.routes.draw do
                 get '/', to: 'movies#details', as: 'movie_details'
                 post '/seen_unseen', to: 'movies#seen_or_unseen', as: 'movie_seen_unseen'
                 resources :comments, module: :movies, as: 'movies_movie_comments', only: [:create]
+                resources :user_ratings, module: :movies, as: 'movie_rating', only: [:create, :destroy]
             end
         end
 

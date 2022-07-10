@@ -12,7 +12,7 @@ en:
       revenue: Revenue
       keywords: Keywords
 
-      imdb_rating: IMDb Rating
+      tmdb_rating: TMDb Rating
       vote: 
         zero: No votes
         one: 1 vote
@@ -44,6 +44,10 @@ en:
         seen: Seen
         sign_in_to_add_movies_to_watchlist_msg: Sign in to add movies to your watchlists.
         sign_in_to_mark_movies_as_seen_msg: Sign in to mark movies as seen.
+      
+      user_rating:
+        your_rating: Your Rating
+        not_rated: No rating yet
 
     index:
       popular: Popular

@@ -13,6 +13,7 @@ class Movies::Movie < ApplicationRecord
     has_many :casts, class_name: "Movies::Cast", primary_key: :tmdb_id, foreign_key: :movie_tmdb_id
     has_many :casted_people, class_name: "People::Person", primary_key: :tmdb_id, foreign_key: :tmdb_id, through: :casts, source: :person
     has_many :comments, as: :commentable
+    has_many :user_ratings, class_name: "Movies::UserRating", primary_key: :tmdb_id, foreign_key: :movie_tmdb_id
 
     # Dependant on tmdb_id and language
     has_many :videos, class_name: "Movies::Video", foreign_key: :movie_id, dependent: :destroy

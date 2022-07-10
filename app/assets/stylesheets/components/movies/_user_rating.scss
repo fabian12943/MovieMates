@@ -1,0 +1,73 @@
+.rating-wrap {
+  display: flex;
+  flex-direction: column;
+  max-width: 100%;
+  box-shadow: 0 0 3px 0 rgba(0,0,0,0.2);
+}
+
+.rating-block .delete-rating-btn {
+  display: inline-block; 
+  vertical-align: top; 
+  margin-left: 5px;
+  color: $c-text-muted;
+
+  :hover {
+    color: $c-warning;
+  }
+}
+
+.rating {
+  border: none;
+  float: left;
+}
+
+.rating > input {
+  display: none;
+}
+
+.rating label svg {
+  margin: 0;
+  font-size: 1.1rem;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.rating > label:before {
+  font-family: 'Font Awesome 5 Free'; 
+  font-weight: 900;
+  content: '\f005';
+  display: none;
+}
+
+.rating > .half-star:before {
+  content: '\f089';
+  font-family: 'Font Awesome 5 Free';
+}
+
+.rating .half-star svg {
+  position: absolute;
+  clip-path: inset(0 50% 0 0)
+}
+
+.rating > label {
+  color: $c-text-muted;
+  float: right;
+  cursor: pointer;
+}
+
+.rating > input:checked ~ label,
+.rating:not(:checked) > label:hover,
+.rating:not(:checked) > label:hover ~ label {
+  color: $c-highlight;
+}
+
+.rating > input:checked + label:hover,
+.rating > input:checked ~ label:hover,
+.rating > label:hover ~ input:checked ~ label,
+.rating > input:checked ~ label:hover ~ label {
+  color: $c-highlight;
+}
+
+.rating:disabled {
+  pointer-events: none;
+}

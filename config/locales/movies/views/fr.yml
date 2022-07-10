@@ -12,7 +12,7 @@ fr:
       revenue: Résultats des recettes
       keywords: Mots clés
 
-      imdb_rating: IMDb Rating
+      tmdb_rating: TMDb Rating
       vote: 
         zero: Pas de votes
         one: 1 vote
@@ -44,6 +44,10 @@ fr:
         seen: Vu
         sign_in_to_add_movies_to_watchlist_msg: Connectez-vous pour ajouter des films à vos listes de veille.
         sign_in_to_mark_movies_as_seen_msg: Connectez-vous pour marquer les films comme vus.
+
+      user_rating:
+        your_rating: Votre note
+        not_rated: Pas encore d'évaluation
 
     index:
       popular: Populaire

@@ -1,5 +1,5 @@
 - @seen_movies.each do |seen_movie|
   - movie = seen_movie.movies.find_by(language: I18n.locale)
   .col-auto.gx-3.gy-3
-    %turbo-frame#detailed-movie-card{src: detailed_movie_card_with_subtext_path(movie, subtext: I18n.l(seen_movie.created_at, format: :short, locale: I18n.locale))}
+    %turbo-frame#detailed-movie-card{src: detailed_movie_card_with_subtext_path(movie, subtext: I18n.l(seen_movie.created_at.to_date, format: :long, locale: I18n.locale))}
       = render "movies/details_partials/skeletons/detailed_movie_card"

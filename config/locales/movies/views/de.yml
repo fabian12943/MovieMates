@@ -12,7 +12,7 @@ de:
       revenue: Einspielergebnis
       keywords: Schlüsselwörter
 
-      imdb_rating: IMDb Rating
+      tmdb_rating: TMDb Rating
       vote: 
         zero: Keine Stimmen
         one: 1 Stimme
@@ -44,6 +44,10 @@ de:
         seen: Gesehen
         sign_in_to_add_movies_to_watchlist_msg: Melde dich an, um Filme zu deinen Watchlists hinzufügen zu können.
         sign_in_to_mark_movies_as_seen_msg: Melde dich an, um Filme als gesehen markieren zu können.
+
+      user_rating:
+        your_rating: Dein Rating
+        not_rated: Bisher keine Bewertung
 
     index:
       popular: Beliebt
