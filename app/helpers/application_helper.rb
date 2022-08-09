@@ -21,7 +21,7 @@ module ApplicationHelper
 
     def picture(resource, image_size)
         if resource.respond_to?(:picture_path) == false || resource.picture_path.nil?
-            inline_svg_tag resource.respond_to?(:picture_placeholder) ? resource.picture_placeholder : "no_image_placeholder", class: "img no-image-placeholder img-fluid", loading: "lazy"
+            inline_svg_tag resource.respond_to?(:picture_placeholder) ? resource.picture_placeholder : "no_image_placeholder.svg", class: "img no-image-placeholder img-fluid", loading: "lazy"
         else
             image_tag resource.picture_path(image_size), class: "img-fluid", loading: "lazy"
         end
