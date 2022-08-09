@@ -1,7 +1,7 @@
 class SessionsController < ApplicationController
 
     def create
-      user = User.find_by(email: login_params[:email].downcase)
+      user = User.find_by(email: login_params[:email].downcase.strip)
       respond_to do |format|
         if user && user.authenticate(login_params[:password]) && user.confirmed?
           session[:user_id] = user.id

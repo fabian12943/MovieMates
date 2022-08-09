@@ -1,7 +1,7 @@
 class UserConfirmationsController < ApplicationController
 
   def create
-    user = User.find_by_email(user_params[:email].downcase)
+    user = User.find_by_email(user_params[:email].downcase.strip)
 
     if user.present? && user.confirmed_at.nil?
       NotificationMailer.user_resend_confirmation_link(user).deliver

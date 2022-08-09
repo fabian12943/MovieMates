@@ -1,7 +1,7 @@
 class PasswordResetsController < ApplicationController
 
   def create
-    user = User.find_by_email(user_params[:email].downcase)
+    user = User.find_by_email(user_params[:email].downcase.strip)
 
     if user.present?
       NotificationMailer.user_password_reset(user).deliver
