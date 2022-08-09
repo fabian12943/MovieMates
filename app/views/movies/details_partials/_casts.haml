@@ -1,7 +1,7 @@
 %turbo-frame{id: "movie-casts"}
     - casts = movie.casts
     - if casts.empty?
-        %p.empty= "Zu diesem Film sind uns keine Darsteller bekannt."
+        %p.empty= t '.no_known_actors_found_msg'
     - else
         .horizontal-scroller
             .items

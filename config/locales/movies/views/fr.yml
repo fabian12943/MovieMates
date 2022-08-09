@@ -54,4 +54,11 @@ fr:
       currently_in_theaters: Actuel au cinéma
       coming_soon: Bientôt disponible
       best_rated_movies_of_all_time: Les films les mieux notés de tous les temps
+
+    casts:
+      no_known_actors_found_msg: Nous ne connaissons pas d'acteurs pour ce film.
+
+    recommendations:
+      no_movie_recommendations_found_msg: Malheureusement, nous n'avons pas de recommandations à faire sur la base de ce film.
+
       
