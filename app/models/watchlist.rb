@@ -24,7 +24,6 @@ class Watchlist < ApplicationRecord
         end
       end
     end
-    return nil
   end
 
 end
