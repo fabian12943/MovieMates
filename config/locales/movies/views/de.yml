@@ -48,15 +48,15 @@ de:
       user_rating:
         your_rating: Dein Rating
         not_rated: Bisher keine Bewertung
+      
+      casts:
+        no_known_actors_found_msg: Zu diesem Film sind uns keine Darsteller bekannt.
+
+      recommendations:
+        no_movie_recommendations_found_msg: Basierend auf diesem Film liegen uns leider keine Empfehlungen vor.
 
     index:
       popular: Beliebt
       currently_in_theaters: Aktuell im Kino
       coming_soon: Demnächst verfügbar
       best_rated_movies_of_all_time: Bestbewertete Filme aller Zeiten
-
-    casts:
-      no_known_actors_found_msg: Zu diesem Film sind uns keine Darsteller bekannt.
-
-    recommendations:
-      no_movie_recommendations_found_msg: Basierend auf diesem Film liegen uns leider keine Empfehlungen vor.

@@ -49,14 +49,14 @@ en:
         your_rating: Your Rating
         not_rated: No rating yet
 
+      casts:
+        no_known_actors_found_msg: There are no actors found for this movie.
+
+      recommendations:
+        no_movie_recommendations_found_msg: Unfortunately, there are no recommendations based on this movie.
+
     index:
       popular: Popular
       currently_in_theaters: Currently in Theaters
       coming_soon: Coming soon
       best_rated_movies_of_all_time: Best Rated Movies of all Time
-        
-    casts:
-      no_known_actors_found_msg: There are no actors found for this movie.
-
-    recommendations:
-      no_movie_recommendations_found_msg: Unfortunately, there are no recommendations based on this movie.

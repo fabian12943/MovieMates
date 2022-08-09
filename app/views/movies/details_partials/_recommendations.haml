@@ -1,7 +1,7 @@
 %turbo-frame{id: "movie-recommendations"}
     - recommendations = movie.recommendations
     - if recommendations.empty?
-        %p.empty= t 'no_movie_recommendations_found_msg'
+        %p.empty= t '.no_movie_recommendations_found_msg'
     - else
         .horizontal-scroller
             .items
