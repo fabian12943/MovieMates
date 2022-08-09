@@ -248,7 +248,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_07_23_162212) do
   create_table "watchlists", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.string "name", null: false
-    t.text "description", null: false
+    t.text "description"
     t.boolean "private", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

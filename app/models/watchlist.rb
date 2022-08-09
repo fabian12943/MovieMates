@@ -1,7 +1,7 @@
 class Watchlist < ApplicationRecord
 
-  validates :name, presence: true, length: { minimum: 5, maximum: 50 }
-  validates :description, presence: true, length: { minimum: 5, maximum: 200 }
+  validates :name, presence: true, length: { maximum: 50 }
+  validates :description, length: { maximum: 200 }
 
   has_one :user, primary_key: :user_id, foreign_key: :id
   has_many :watchlisted_movies, primary_key: :id, foreign_key: :watchlist_id, dependent: :destroy
