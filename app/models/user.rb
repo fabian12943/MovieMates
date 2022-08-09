@@ -15,6 +15,7 @@ class User < ApplicationRecord
     has_many :movie_ratings, class_name: "Movies::UserRating", dependent: :destroy
     has_many :watchlists, dependent: :destroy
 
+    before_validation { self.email.strip!; self.username.strip! }
     before_save { self.email.downcase!; self.username.downcase! }
 
     def self.from_omniauth(response)
