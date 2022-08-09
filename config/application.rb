@@ -11,9 +11,6 @@ module MovieMates
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 7.0
 
-    # Set API key for TMDb
-    Tmdb::Api.key(Rails.application.credentials.tmdb[:api_key])
-
     # Include custom errors
     config.autoload_paths << Rails.root.join('app/errors')
 
