@@ -31,15 +31,15 @@ de:
         resend_confirmation: Aktivierungslink erneut senden
         send_link: Aktivierungslink senden
         instructions_msg: Hast du bereits in der Vergangenheit ein MovieMates-Konto angelegt, dieses aber bisher noch 
-                          nicht aktiviert, kannst du den Aktivierungslink hier erneut anfordern. Geben in obiges Feld 
-                          einfach die E-Mail-Adresse deines Kontos ein und du erhälst den Aktivierungslink in wenigen 
+                          nicht aktiviert, kannst du den Aktivierungslink hier erneut anfordern. Gebe in obiges Feld 
+                          einfach die E-Mail-Adresse deines Kontos ein und du erhältst den Aktivierungslink in wenigen 
                           Minuten zugesendet!
 
       forgot_password:
         forgot_password: Passwort vergessen
         send_instructions: Anweisungen senden
         instructions_msg: Hast du dein Passwort vergessen, kannst du es hier unkompliziert zurücksetzen. Bitte gib in obiges Feld deine 
-                          E-Mail-Adresse ein, mit der du dich registriert hast. Im Anschluss erhältst eine E-Mail mit einem Link, um dein 
+                          E-Mail-Adresse ein, mit der du dich registriert hast. Im Anschluss erhältst du eine E-Mail mit einem Link, um dein 
                           Passwort zurückzusetzen.
 
   authentication:
